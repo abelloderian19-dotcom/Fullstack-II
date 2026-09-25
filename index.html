@@ -1,50 +1,138 @@
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pasteleria 1000 sabores</title>
-</head>
-<link rel = "stylesheet" href = "style.css">
 
+    <title>Pastelería 1000 Sabores</title>
+
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
+
 <body>
+
     <header class="container">
 
+        <nav id="navbar">
 
-
-       <nav id="navbar">
-          <div class="logo">
-            <img src="img/logo.png" alt="Logo de la pasteleria">
-            <h4>Pasteleria 1000 sabores</h4>
+            <div class="logo">
+                <img src="./img/logo.png" alt="Logo de la Pastelería 1000 Sabores">
+                <h4>Pastelería 1000 Sabores</h4>
             </div>
+
             <div class="links">
-                <a class="link active" href="/">Home</a>
-                <a class="link" href="/products">Productos</a>
-                <a class="link" href="/about">Nosotros</a>
-                <a class="link" href="/blog">Blogs</a>
-                <a class="link" href="/contact">Contacto</a>
+                <a class="link active" href="./index.html">Home</a>
+                <a class="link" href="./productos.html">Productos</a>
+                <a class="link" href="./nosotros.html">Nosotros</a>
+                <a class="link" href="./blogs.html">Blogs</a>
+                <a class="link" href="./contacto.html">Contacto</a>
             </div>
-            <div class="cart">
-                
-                cart (<span id="cart-count">0</span>)
+
+            <div class="carrito">
+                <a href="./carrito.html">
+                    <img src="./img/carrito.gif" alt="Carrito de compras">
+                    <span id="cart-count">0</span>
+                </a>
             </div>
+
         </nav>
+
     </header>
 
+
+    <div class="user-links">
+        <a href="./login.html">Iniciar Sesión</a>
+        <a href="./register.html">Registrarse</a>
+    </div>
+
+
     <main>
+
         <section class="hero">
+
             <div class="hero-content">
-                <h1>Bienvenido a Pasteleria 1000 sabores</h1>
-                <p>Descubre nuestros deliciosos pasteles y postres artesanales.</p>
-                <a href="/products" class="btn">Ver Productos</a>
+
+                <h1>Bienvenido a Pastelería 1000 Sabores</h1>
+
+                <p>
+                    Descubre nuestros deliciosos pasteles y postres artesanales.
+                </p>
+
+                <a href="./productos.html" class="btn">
+                    Ver Productos
+                </a>
+
             </div>
 
+        </section>
 
     </main>
 
+
     <footer>
-        <p>© 2026 Pasteleria 1000 sabores. Todos los derechos reservados.</p>
+
+        <div class="footer-left">
+
+            <div class="footer-brand">
+
+                <div class="square-icons"></div>
+
+                <span>Pastelería 1000 Sabores</span>
+
+            </div>
+
+
+            <div class="social-icons">
+
+                <div class="icon-box"></div>
+                <div class="icon-box"></div>
+                <div class="icon-box"></div>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="./productos.html">Productos</a>
+                <a href="./nosotros.html">Nosotros</a>
+                <a href="./blogs.html">Blogs</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="suscribe">
+
+            <p>
+                Suscríbete y te enviaremos ofertas y promociones
+            </p>
+
+            <form action="/suscribirse" method="POST">
+
+                <input
+                    type="email"
+                    id="email-input"
+                    name="email"
+                    placeholder="Ingresa tu correo electrónico"
+                    autocomplete="email"
+                    required
+                >
+
+                <button type="submit">
+                    Suscribirse
+                </button>
+
+            </form>
+
+        </div>
+
     </footer>
+
+
+    <script src="./js/script.js"></script>
+
 </body>
 </html>
+```
