@@ -1,0 +1,49 @@
+/* Fuentes: Lato (texto general) y Pacifico (encabezados) */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&display=swap");
+
+:root {
+  /* Colores */
+  --crema-pastel: #fff5e1; /* Fondo principal */
+  --rosa-suave: #ffc0cb; /* Acento: botones y elementos interactivos */
+  --chocolate: #8b4513; /* Acento: botones y elementos interactivos */
+  --marron-oscuro: #5d4037; /* Texto principal */
+  --gris-claro: #b0bec5; /* Texto secundario */
+
+  /* Tipografía */
+  --font-body: "Lato", sans-serif;
+  --font-heading: "Pacifico", cursive;
+}
+
+/* Fondo principal y texto principal */
+body {
+  background-color: var(--crema-pastel);
+  color: var(--marron-oscuro);
+  font-family: var(--font-body);
+}
+
+/* Encabezados */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+/* Texto secundario (descripciones) */
+.texto-secundario {
+  color: var(--gris-claro);
+}
+
+/* Botones y elementos interactivos */
+.btn-primary {
+  background-color: var(--chocolate);
+  border-color: var(--chocolate);
+}
+
+.btn-secondary {
+  background-color: var(--rosa-suave);
+  border-color: var(--rosa-suave);
+  color: var(--marron-oscuro);
+}
