@@ -23,7 +23,7 @@ a {
 }
 
 .container {
-    width: min(var(--container-width), calc(100% - 48px));
+    width: min(1120px, calc(100% - 48px));
     margin-inline: auto;
 }
 
@@ -39,15 +39,16 @@ a {
 /* header y nav */
 .site-header {
     background: var(--crema-pastel);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--gris-claro);
 }
 
 #navbar {
     min-height: 82px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 32px;
+    justify-content: center;
+    flex: 1;
 }
 
 .logo,
@@ -185,7 +186,7 @@ a {
 
 .btn:hover {
     transform: translateY(-2px);
-    background: var(--chocolate-oscuro);
+    background: var(--marron-oscuro);
 }
 
 .hero-image {
@@ -194,10 +195,10 @@ a {
     overflow: hidden;
     border-radius: 5px;
     background-color: var(--crema-pastel);
-    background-image: url("../img/logo.png");
+    background-image: url("../img/products/imagen_inicio.jpg");
     background-repeat: no-repeat;
-    background-size: 230% auto;
-    background-position: 78% 68%;
+    background-size: cover;
+    background-position: center;
     box-shadow: 0 18px 44px rgba(93, 64, 55, 0.1); /* Sombra basada en marrón oscuro */
 }
 
@@ -249,7 +250,7 @@ a {
 }
 
 .all-products:hover {
-    color: var(--chocolate-oscuro);
+    color: var(--marron-oscuro);
 }
 
 .products-grid {
@@ -262,8 +263,8 @@ a {
     min-width: 0;
     overflow: hidden;
     padding: 0 0 14px;
-    background: #fff; /* Se mantiene blanco para que resalte sobre el fondo crema */
-    border: 1px solid var(--color-border);
+    background: #fff;
+    border: 1px solid var(--gris-claro);
     border-radius: 4px;
     transition: transform .2s, box-shadow .2s;
 }
@@ -286,7 +287,7 @@ a {
     margin: 0 13px 7px;
     color: var(--marron-oscuro);
     font-family: var(--font-heading);
-    font-size: 18px; /* Ligeramente más grande para Pacifico */
+    font-size: 18px; 
     font-weight: 400;
     line-height: 1.35;
 }
@@ -302,9 +303,27 @@ a {
     font-weight: 700;
 }
 
+.info-section {
+    max-width: 760px;
+    margin: 0 auto 48px;
+    padding: 28px;
+    border-radius: 5px;
+    background: rgb(255 255 255 / 55%);
+    scroll-margin-top: 24px;
+}
+
+.info-section h2 {
+    margin-bottom: 10px;
+    color: var(--chocolate);
+    font-family: var(--font-heading);
+    font-weight: 400;
+}
+
+.info-section p { margin: 0; }
+
 /* footer */
 .site-footer {
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid var(--gris-claro);
     padding: 31px 0;
     background: var(--crema-pastel);
 }
@@ -347,7 +366,7 @@ a {
 
 .payment-icon {
     padding: 4px 9px;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--gris-claro);
     border-radius: 3px;
     color: var(--gris-claro);
     font-size: 9px;
@@ -374,7 +393,7 @@ a {
     width: min(270px, 56vw);
     min-height: 42px;
     padding: 0 12px;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--gris-claro);
     border-radius: 3px;
     background: white;
     font: inherit;
@@ -400,7 +419,7 @@ a {
 }
 
 .suscribe button:hover {
-    background: var(--chocolate-oscuro);
+    background: var(--marron-oscuro);
 }
 
 /* responsive ajuste automatico a pantallas */
