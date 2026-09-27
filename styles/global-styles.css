@@ -8,11 +8,14 @@
   --chocolate: #8b4513; /* Acento: botones y elementos interactivos */
   --marron-oscuro: #5d4037; /* Texto principal */
   --gris-claro: #b0bec5; /* Texto secundario */
+  
 
   /* Tipografía */
   --font-body: "Lato", sans-serif;
   --font-heading: "Pacifico", cursive;
 }
+
+
 
 /* Fondo principal y texto principal */
 body {
