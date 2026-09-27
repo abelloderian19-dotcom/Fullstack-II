@@ -95,17 +95,19 @@ function renderizarCarrito() {
     if (clearCartButton) clearCartButton.disabled = carrito.length === 0;
 }
 
-function agregarAlCarrito(codigo) {
-    if (!productos.some((producto) => producto.codigo === codigo)) return;
+function agregarAlCarrito(codigo, cantidad = 1) {
+    if (!productos.some((producto) => producto.codigo === codigo) ||
+        !Number.isInteger(cantidad) || cantidad < 1 || cantidad > 99) return false;
     const existente = carrito.find((item) => item.codigo === codigo);
     if (existente) {
-        if (existente.cantidad >= 99) return;
-        existente.cantidad += 1;
+        if (existente.cantidad + cantidad > 99) return false;
+        existente.cantidad += cantidad;
     } else {
-        carrito.push({ codigo, cantidad: 1 });
+        carrito.push({ codigo, cantidad });
     }
     guardarCarrito();
     renderizarCarrito();
+    return true;
 }
 
 function cambiarCantidad(codigo, cantidad) {

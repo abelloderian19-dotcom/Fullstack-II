@@ -27,7 +27,13 @@ if (productosDestacados && Array.isArray(productos)) {
         boton.textContent = "Agregar al carrito";
         boton.addEventListener("click", () => window.agregarAlCarrito(producto.codigo));
 
-        tarjeta.append(imagen, titulo, precio, boton);
+        const enlaceDetalle = document.createElement("a");
+        enlaceDetalle.className = "product-detail-link";
+        enlaceDetalle.href = `./detalle.html?codigo=${encodeURIComponent(producto.codigo)}`;
+        enlaceDetalle.setAttribute("aria-label", `Ver detalle de ${producto.nombre}`);
+        enlaceDetalle.append(imagen, titulo);
+
+        tarjeta.append(enlaceDetalle, precio, boton);
         productosDestacados.appendChild(tarjeta);
     });
 }

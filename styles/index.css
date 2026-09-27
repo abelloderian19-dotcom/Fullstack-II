@@ -451,6 +451,14 @@ body {
     line-height: 1.35;
 }
 
+.product-detail-link,
+.product-detail-link:visited {
+    display: block;
+    color: var(--marron-oscuro);
+    text-decoration: none;
+}
+
+.product-detail-link:hover .product-title,
 .product-title:hover {
     color: var(--chocolate);
 }
