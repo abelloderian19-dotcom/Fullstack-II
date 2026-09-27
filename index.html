@@ -23,6 +23,10 @@
                     <li><a class="link" href="#blog">Blogs</a></li>
                     <li><a class="link" href="./contacto.html">Contacto</a></li>
                 </ul>
+                <a class="carrito" href="#carrito" aria-label="Carrito de compras, 0 productos">
+                    <span class="carrito-icon" aria-hidden="true">🛒</span>
+                    <span>Carrito (<span id="cart-count" aria-live="polite">0</span>)</span>
+                </a>
             </nav>
         </div>
     </header>
@@ -43,7 +47,7 @@
                     Tortas y postres preparados con dedicación para acompañar tus celebraciones
                     y convertir cualquier día en una ocasión especial.
                 </p>
-                <a href="#productos" class="btn">Ver productos</a>
+                <a href="#productos" class="btn-primary">Ver productos</a>
             </div>
             <div class="hero-image" role="img" aria-label="Pasteles y postres de Pastelería 1000 Sabores"></div>
         </section>
@@ -55,6 +59,8 @@
             </div>
             <div class="products-grid recommended-grid" id="recommended-grid"></div>
         </section>
+
+        
 
     </main>
 
@@ -84,6 +90,7 @@
 
    
     <script src="./js/data/productos.js"></script>
+    <script src="./js/carrito.js"></script>
     <script src="./js/productosDestacados.js"></script>
 </body>
 </html>

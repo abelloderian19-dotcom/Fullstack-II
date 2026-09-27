@@ -1,6 +1,7 @@
 const productos = [
   {
     codigo: "TC001",
+    imagen: "./img/products/t_c_chocolate.jpg",
     categoria: "Tortas Cuadradas",
     nombre: "Torta Cuadrada de Chocolate",
     precio: 45000,
@@ -9,6 +10,7 @@ const productos = [
   },
   {
     codigo: "TC002",
+    imagen: "./img/products/torta-frutas.jpg",
     categoria: "Tortas Cuadradas",
     nombre: "Torta Cuadrada de Frutas",
     precio: 50000,
@@ -17,6 +19,7 @@ const productos = [
   },
   {
     codigo: "TT001",
+    imagen: "./img/products/cupcakes.jpg",
     categoria: "Tortas Circulares",
     nombre: "Torta Circular de Vainilla",
     precio: 40000,
@@ -25,6 +28,7 @@ const productos = [
   },
   {
     codigo: "TT002",
+    imagen: "./img/products/tarta-lucuma.jpg",
     categoria: "Tortas Circulares",
     nombre: "Torta Circular de Manjar",
     precio: 42000,
@@ -33,6 +37,7 @@ const productos = [
   },
   {
     codigo: "PI001",
+    imagen: "./img/products/brownies.jpg",
     categoria: "Postres Individuales",
     nombre: "Mousse de Chocolate",
     precio: 5000,
@@ -41,6 +46,7 @@ const productos = [
   },
   {
     codigo: "PI002",
+    imagen: "./img/products/cheesecake.jpg",
     categoria: "Postres Individuales",
     nombre: "Tiramisú Clásico",
     precio: 5500,
@@ -49,6 +55,7 @@ const productos = [
   },
   {
     codigo: "PSA001",
+    imagen: "./img/products/torta-frutas.jpg",
     categoria: "Productos Sin Azúcar",
     nombre: "Torta Sin Azúcar de Naranja",
     precio: 48000,
@@ -57,6 +64,7 @@ const productos = [
   },
   {
     codigo: "PSA002",
+    imagen: "./img/products/cheesecake.jpg",
     categoria: "Productos Sin Azúcar",
     nombre: "Cheesecake Sin Azúcar",
     precio: 47000,
@@ -65,6 +73,7 @@ const productos = [
   },
   {
     codigo: "PT001",
+    imagen: "./img/products/kuchen-manzana.jpg",
     categoria: "Pastelería Tradicional",
     nombre: "Empanada de Manzana",
     precio: 3000,
@@ -73,6 +82,7 @@ const productos = [
   },
   {
     codigo: "PT002",
+    imagen: "./img/products/tarta-lucuma.jpg",
     categoria: "Pastelería Tradicional",
     nombre: "Tarta de Santiago",
     precio: 6000,
@@ -81,6 +91,7 @@ const productos = [
   },
   {
     codigo: "PG001",
+    imagen: "./img/products/brownies.jpg",
     categoria: "Productos Sin Gluten",
     nombre: "Brownie Sin Gluten",
     precio: 4000,
@@ -89,6 +100,7 @@ const productos = [
   },
   {
     codigo: "PG002",
+    imagen: "./img/products/kuchen-manzana.jpg",
     categoria: "Productos Sin Gluten",
     nombre: "Pan Sin Gluten",
     precio: 3500,
@@ -97,6 +109,7 @@ const productos = [
   },
   {
     codigo: "PV001",
+    imagen: "./img/products/t_c_chocolate.jpg",
     categoria: "Productos Vegana",
     nombre: "Torta Vegana de Chocolate",
     precio: 50000,
@@ -105,6 +118,7 @@ const productos = [
   },
   {
     codigo: "PV002",
+    imagen: "./img/products/cupcakes.jpg",
     categoria: "Productos Vegana",
     nombre: "Galletas Veganas de Avena",
     precio: 4500,
@@ -113,6 +127,7 @@ const productos = [
   },
   {
     codigo: "TE001",
+    imagen: "./img/products/imagen_inicio.jpg",
     categoria: "Tortas Especiales",
     nombre: "Torta Especial de Cumpleaños",
     precio: 55000,
@@ -121,6 +136,7 @@ const productos = [
   },
   {
     codigo: "TE002",
+    imagen: "./img/products/imagen_inicio.jpg",
     categoria: "Tortas Especiales",
     nombre: "Torta Especial de Boda",
     precio: 60000,

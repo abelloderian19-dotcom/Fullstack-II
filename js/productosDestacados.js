@@ -1,10 +1,4 @@
 const productosDestacados = document.getElementById("recommended-grid");
-const imagenesPorCodigo = {
-    TC001: "./img/products/imagen_inicio.jpg",
-    TC002: "./img/products/torta-frutas.jpg",
-    TT001: "./img/products/tarta-lucuma.jpg",
-    TT002: "./img/products/kuchen-manzana.jpg"
-};
 
 if (productosDestacados && Array.isArray(productos)) {
     productos.slice(0, 4).forEach((producto) => {
@@ -13,7 +7,7 @@ if (productosDestacados && Array.isArray(productos)) {
 
         const imagen = document.createElement("img");
         imagen.className = "product-image";
-        imagen.src = imagenesPorCodigo[producto.codigo] || "./img/products/imagen_inicio.jpg";
+        imagen.src = producto.imagen || "./img/products/imagen_inicio.jpg";
         imagen.alt = producto.nombre;
         imagen.loading = "lazy";
         imagen.width = 600;
@@ -27,7 +21,13 @@ if (productosDestacados && Array.isArray(productos)) {
         precio.className = "product-price";
         precio.textContent = `$${producto.precio.toLocaleString("es-CL")}`;
 
-        tarjeta.append(imagen, titulo, precio);
+        const boton = document.createElement("button");
+        boton.className = "add-to-cart";
+        boton.type = "button";
+        boton.textContent = "Agregar al carrito";
+        boton.addEventListener("click", () => window.agregarAlCarrito(producto.codigo));
+
+        tarjeta.append(imagen, titulo, precio, boton);
         productosDestacados.appendChild(tarjeta);
     });
 }
