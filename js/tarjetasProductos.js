@@ -28,8 +28,21 @@ window.crearTarjetaProducto = function (producto, nivelTitulo = 3) {
     boton.className = "add-to-cart";
     boton.type = "button";
     boton.textContent = "Agregar al carrito";
-    boton.addEventListener("click", () => window.agregarAlCarrito(producto.codigo));
+    const confirmacion = document.createElement("p");
+    confirmacion.className = "cart-feedback";
+    confirmacion.setAttribute("role", "status");
+    confirmacion.setAttribute("aria-live", "polite");
+    confirmacion.hidden = true;
 
-    tarjeta.append(enlaceDetalle, precio, boton);
+    boton.addEventListener("click", () => {
+        const agregado = window.agregarAlCarrito(producto.codigo);
+        confirmacion.textContent = agregado
+            ? "Añadido al carrito."
+            : "No se pudo añadir. Máximo 99 unidades por producto.";
+        confirmacion.classList.toggle("cart-feedback-error", !agregado);
+        confirmacion.hidden = false;
+    });
+
+    tarjeta.append(enlaceDetalle, precio, boton, confirmacion);
     return tarjeta;
 };
