@@ -1,0 +1,30 @@
+/* Estilos de la vista de administrador */
+
+/* Menú lateral */
+.sidebar {
+  background-color: #ffffff;
+  min-height: 100vh;
+  border-right: 1px solid var(--gris-claro);
+}
+
+.sidebar-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.sidebar .nav-link {
+  color: var(--marron-oscuro);
+  padding: 12px 20px;
+}
+
+.sidebar .nav-link:hover {
+  background-color: var(--crema-pastel);
+  color: var(--chocolate);
+}
+
+.sidebar .nav-link.active {
+  background-color: var(--rosa-suave);
+  color: var(--chocolate);
+  font-weight: 700;
+}
