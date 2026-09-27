@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pasteles y postres de Pastelería 1000 Sabores.">
-    <title>Pastelería 1000 Sabores</title>
+    <meta name="description" content="Conoce los productos de Pastelería 1000 Sabores.">
+    <title>Productos | Pastelería 1000 Sabores</title>
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
     <header class="site-header">
         <div class="container">
             <nav id="navbar" aria-label="Navegación principal">
-                <a class="logo" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
+                <a class="logo" href="./index.html">
                     <span class="logo-square" aria-hidden="true"></span>
                     <span class="logo-text">Pastelería 1000 Sabores</span>
                 </a>
                 <ul class="links">
-                    <li><a class="link active" href="./index.html" aria-current="page">Inicio</a></li>
-                    <li><a class="link" href="./productos.html">Productos</a></li>
+                    <li><a class="link" href="./index.html">Home</a></li>
+                    <li><a class="link active" href="./productos.html" aria-current="page">Productos</a></li>
                     <li><a class="link" href="./nosotros.html">Nosotros</a></li>
                     <li><a class="link" href="./blogs.html">Blogs</a></li>
                     <li><a class="link" href="./contacto.html">Contacto</a></li>
@@ -34,29 +34,18 @@
         <div class="user-links">
             <a href="./login.html">Iniciar sesión</a>
             <span aria-hidden="true">|</span>
-            <a href="./registro.html">Registrar usuario</a>
+            <a href="./register.html">Registrar usuario</a>
         </div>
     </div>
 
-    <main class="container">
-        <section class="hero" aria-labelledby="home-title">
-            <div class="hero-content">
-                <h1 id="home-title">Dulces momentos, hechos para compartir.</h1>
-                <p>
-                    Tortas y postres preparados con dedicación para acompañar tus celebraciones
-                    y convertir cualquier día en una ocasión especial.
-                </p>
-                <a href="./productos.html" class="btn">Ver productos</a>
+    <main class="container catalog-main">
+        <section class="products" aria-labelledby="products-title">
+            <div class="products-heading catalog-heading">
+                <div>
+                    <h1 id="products-title">Nuestros productos</h1>
+                </div>
             </div>
-            <div class="hero-image" role="img" aria-label="Pasteles y postres de Pastelería 1000 Sabores"></div>
-        </section>
-
-        <section class="products recommended-products" aria-labelledby="recommended-title">
-            <div class="products-heading">
-                <h2 id="recommended-title">Los más recomendados</h2>
-                <a href="./productos.html" class="all-products">Ver todos los productos <span aria-hidden="true">→</span></a>
-            </div>
-            <div class="products-grid recommended-grid" id="recommended-grid"></div>
+            <div class="products-grid" id="products-grid" aria-live="polite"></div>
         </section>
     </main>
 
@@ -72,10 +61,6 @@
                     <a href="./productos.html">Productos</a>
                     <a href="./contacto.html">Contacto</a>
                 </nav>
-                <div class="payment-icons" aria-label="Medios de pago">
-                    <span class="payment-icon">VISA</span>
-                    <span class="payment-icon">EFECTIVO</span>
-                </div>
             </div>
             <div class="suscribe">
                 <p>¡Mantente en contacto! Únete a nuestro boletín</p>
