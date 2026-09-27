@@ -385,6 +385,28 @@ body {
     margin: 0 auto 78px;
 }
 
+.catalog-page {
+    padding-top: 38px;
+    padding-bottom: 64px;
+}
+
+.catalog-heading {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.catalog-heading h1 {
+    color: var(--marron-oscuro);
+    font-family: var(--font-heading);
+    font-size: clamp(30px, 4vw, 38px);
+    font-weight: 400;
+}
+
+.catalog-heading p {
+    margin-top: 6px;
+    color: var(--gris-claro);
+}
+
 .products-heading {
     margin-bottom: 22px;
 }
@@ -636,6 +658,10 @@ body {
 
     .products-grid {
         gap: 12px;
+    }
+
+    .catalog-page {
+        padding-top: 28px;
     }
 
     .product-title {
