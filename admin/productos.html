@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Administrador - Pastelería Mil Sabores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/global-styles.css">
+    <link rel="stylesheet" href="../styles/admin.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Menú lateral -->
+            <aside class="col-md-3 col-lg-2 sidebar p-0">
+                <header class="sidebar-header text-center p-3">
+                    <a href="index.html">
+                        <img src="../img/logo.png" alt="Logo Pastelería Mil Sabores" class="sidebar-logo">
+                    </a>
+                    <h2 class="fs-4 mt-2">Mil Sabores</h2>
+                    <span class="texto-secundario">Administrador</span>
+                </header>
+                <nav class="nav flex-column">
+                    <a class="nav-link" href="index.html">
+                        Inicio
+                    </a>
+                    <a class="nav-link active" href="productos.html">
+                        Productos
+                    </a>
+                    <a class="nav-link" href="usuarios.html">
+                        Usuarios
+                    </a>
+                    <a class="nav-link" href="../index.html">
+                        Ver tienda
+                    </a>
+                    <a class="nav-link" href="../login.html">
+                        Cerrar sesión
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Contenido -->
+            <div class="col-md-9 col-lg-10 d-flex flex-column min-vh-100">
+                <main class="flex-grow-1 p-4">
+                    <section>
+                        <h1>Productos</h1>
+                        <p class="texto-secundario">Listado de productos de la tienda</p>
+                    </section>
+
+                    <section class="mb-3">
+                        <a href="producto-form.html" class="btn btn-primary">Nuevo producto</a>
+                    </section>
+
+                    <section>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Nombre</th>
+                                    <th>Categoría</th>
+                                    <th>Precio</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla-productos"></tbody>
+                        </table>
+                    </section>
+
+
+                </main>
+
+                <footer class="text-center p-3">
+                    <p class="mb-0 texto-secundario">© 2026 Pastelería Mil Sabores - Panel de administración</p>
+                </footer>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="../js/data/productos.js"></script>
+    <script src="../js/admin/productos.js"></script>
+</body>
+
+</html>
