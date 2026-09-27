@@ -17,46 +17,44 @@ body {
     line-height: 1.55;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
+
 
 .container {
-    width: min(1120px, calc(100% - 48px));
+    width: min(1120px, calc(100% - 32px));
     margin-inline: auto;
 }
 
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-}
 
-/* header y nav */
-.site-header {
-    background: var(--crema-pastel);
-    border-bottom: 1px solid var(--gris-claro);
-}
+
 
 #navbar {
     min-height: 82px;
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
     gap: 32px;
-    justify-content: center;
-    flex: 1;
 }
-
-.logo,
+.logo {
+    justify-self: start;
+    margin-right: 0;
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--chocolate);
+    
+}
 .footer-brand {
     display: flex;
     align-items: center;
     gap: 11px;
     white-space: nowrap;
+}
+.logo-text,
+
+.footer-brand {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--chocolate);
 }
 
 .logo {
@@ -65,32 +63,19 @@ a {
     font-weight: 400; /* Pacifico no necesita font-weight alto */
     font-size: 22px; /* Aumentado un poco porque Pacifico es más pequeña visualmente */
     color: var(--chocolate);
+    
+   
 }
 
-.logo-square {
-    width: 28px;
-    height: 28px;
-    position: relative;
-    flex: 0 0 28px;
-    border: 2px solid var(--chocolate);
-    border-radius: 50% 50% 50% 4px;
-    transform: rotate(-45deg);
-}
 
-.logo-square::after {
-    content: "";
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border: 1.5px solid var(--chocolate);
-    border-radius: 50%;
-    left: 8px;
-    top: 8px;
-}
+
+
+
 
 .links {
     display: flex;
     align-items: center;
+    justify-self: center;
     list-style: none;
     gap: 27px;
 }
@@ -425,6 +410,8 @@ a {
 /* responsive ajuste automatico a pantallas */
 @media (max-width: 900px) {
     #navbar {
+        display: flex;
+        justify-content: space-between;
         flex-wrap: wrap;
         gap: 15px 20px;
         padding-top: 15px;
@@ -434,6 +421,7 @@ a {
     .links {
         order: 3;
         width: 100%;
+        justify-self: auto;
         justify-content: center;
         gap: clamp(15px, 4vw, 32px);
     }
