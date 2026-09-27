@@ -12,7 +12,7 @@
     <header class="site-header">
         <div class="container">
             <nav id="navbar" aria-label="Navegación principal">
-                <a class="logo" href="./index.html"><span class="logo-text">Pastelería 1000 Sabores</span></a>
+                <a class="logo" href="./index.html"><img class="logo-image" src="./img/logo-tienda.svg" alt=""><span class="logo-text">Pastelería 1000 Sabores</span></a>
                 <ul class="links">
                     <li><a class="link" href="./index.html">Inicio</a></li>
                     <li><a class="link" href="./index.html#productos">Productos</a></li>
@@ -32,7 +32,8 @@
         <h1>Mi carrito de compras</h1>
         <div class="cart-layout">
             <section class="cart-section" aria-label="Productos del carrito">
-                <p id="cart-empty" hidden>Tu carrito está vacío. <a href="./index.html#productos">Ver productos</a></p>
+                <p id="cart-empty" hidden>Tu carrito está vacío.</p>
+                <a id="cart-back-to-products" class="back-to-products" href="./index.html#productos" hidden>← Regresar a productos</a>
                 <ul id="cart-items" class="cart-items" aria-live="polite"></ul>
                 <button id="clear-cart" class="clear-cart" type="button">Vaciar carrito</button>
             </section>

@@ -3,6 +3,7 @@ const cartCount = document.getElementById("cart-count");
 const cartItems = document.getElementById("cart-items");
 const cartTotal = document.getElementById("cart-total");
 const cartEmpty = document.getElementById("cart-empty");
+const cartBackToProducts = document.getElementById("cart-back-to-products");
 const cartLink = document.querySelector(".carrito");
 const clearCartButton = document.getElementById("clear-cart");
 
@@ -92,6 +93,7 @@ function renderizarCarrito() {
     if (cartLink) cartLink.setAttribute("aria-label", `Carrito de compras, ${cantidadTotal} productos`);
     if (cartTotal) cartTotal.textContent = `$${total.toLocaleString("es-CL")}`;
     if (cartEmpty) cartEmpty.hidden = carrito.length > 0;
+    if (cartBackToProducts) cartBackToProducts.hidden = carrito.length > 0;
     if (clearCartButton) clearCartButton.disabled = carrito.length === 0;
 }
 
