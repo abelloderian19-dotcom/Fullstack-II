@@ -4,7 +4,8 @@ const productos = [
         nombre: "Torta de Chocolate",
         precio: 25000,
         imagen: "./img/products/torta-chocolate.jpg",
-        descripcionImagen: "Torta de chocolate"
+        descripcionImagen: "Torta de chocolate",
+        recomendado: true
     },
     {
         nombre: "Torta de Frutas",
@@ -16,7 +17,8 @@ const productos = [
         nombre: "Cheesecake",
         precio: 22000,
         imagen: "./img/products/cheesecake.jpg",
-        descripcionImagen: "Porciones de cheesecake"
+        descripcionImagen: "Porciones de cheesecake",
+        recomendado: true
     },
     {
         nombre: "Kuchen de Manzana",
@@ -34,7 +36,8 @@ const productos = [
         nombre: "Cupcakes (caja x4)",
         precio: 10000,
         imagen: "./img/products/cupcakes.jpg",
-        descripcionImagen: "Cupcakes decorados"
+        descripcionImagen: "Cupcakes decorados",
+        recomendado: true
     },
     {
         nombre: "Tarta de Lúcuma",
@@ -46,7 +49,8 @@ const productos = [
         nombre: "Alfajores (caja x8)",
         precio: 9000,
         imagen: "./img/products/alfajores.jpg",
-        descripcionImagen: "Alfajores rellenos"
+        descripcionImagen: "Alfajores rellenos",
+        recomendado: true
     }
 ];
 
@@ -78,9 +82,16 @@ function crearTarjetaProducto(producto) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const contenedor = document.getElementById("products-grid");
-    if (!contenedor) return;
+    const catalogo = document.getElementById("products-grid");
+    if (catalogo) {
+        catalogo.replaceChildren(...productos.map(crearTarjetaProducto));
+    }
 
-    const tarjetas = productos.map(crearTarjetaProducto);
-    contenedor.replaceChildren(...tarjetas);
+    const recomendados = document.getElementById("recommended-grid");
+    if (recomendados) {
+        const destacados = productos
+            .filter((producto) => producto.recomendado)
+            .map(crearTarjetaProducto);
+        recomendados.replaceChildren(...destacados);
+    }
 });
