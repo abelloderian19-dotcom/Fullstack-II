@@ -1,0 +1,63 @@
+/* Ajustes visuales propios del catálogo. */
+.catalog-main {
+    min-height: 55vh;
+}
+
+.catalog-heading h1 {
+    margin: 0;
+    color: var(--chocolate);
+}
+
+.products-grid .product-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+    padding: 18px;
+}
+
+.product-category {
+    margin-bottom: 8px;
+    color: var(--chocolate);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+.products-grid .product-title {
+    margin: 0 0 10px;
+    color: var(--marron-oscuro);
+    font-family: var(--font-heading);
+    font-size: 20px;
+}
+
+.product-description {
+    margin-bottom: 14px;
+    color: var(--marron-oscuro);
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.product-code {
+    margin-top: auto;
+    color: var(--gris-claro);
+    font-size: 12px;
+}
+
+.products-grid .product-price {
+    margin: 8px 0 0;
+    font-size: 16px;
+}
+
+.products-empty {
+    grid-column: 1 / -1;
+    padding: 24px;
+    color: var(--marron-oscuro);
+    text-align: center;
+}
+
+.products-empty a {
+    color: var(--chocolate);
+    font-weight: 700;
+    text-decoration: underline;
+}
