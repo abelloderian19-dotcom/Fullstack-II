@@ -1,11 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos - Pastelería Mil Sabores</title>
+    <meta name="description" content="Conoce los productos de Pastelería 1000 Sabores.">
+    <title>Productos | Pastelería 1000 Sabores</title>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-    <!--COPIAR Y PEGAR EL PINCHEEE NAVVVVVBARRSITOOOOO-->
+    <header class="site-header">
+        <div class="container">
+            <nav id="navbar" aria-label="Navegación principal">
+                <a class="logo" href="./index.html">
+                    <span class="logo-square" aria-hidden="true"></span>
+                    <span class="logo-text">Pastelería 1000 Sabores</span>
+                </a>
+                <ul class="links">
+                    <li><a class="link" href="./index.html">Home</a></li>
+                    <li><a class="link active" href="./productos.html" aria-current="page">Productos</a></li>
+                    <li><a class="link" href="./nosotros.html">Nosotros</a></li>
+                    <li><a class="link" href="./blogs.html">Blogs</a></li>
+                    <li><a class="link" href="./contacto.html">Contacto</a></li>
+                </ul>
+                <a class="carrito" href="./carrito.html">
+                    <span class="carrito-icon" aria-hidden="true">🛒</span>
+                    Carrito (<span id="cart-count">0</span>)
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="user-links">
+            <a href="./login.html">Iniciar sesión</a>
+            <span aria-hidden="true">|</span>
+            <a href="./register.html">Registrar usuario</a>
+        </div>
+    </div>
+
+    <main class="container catalog-main">
+        <section class="products" aria-labelledby="products-title">
+            <div class="products-heading catalog-heading">
+                <div>
+                    <h1 id="products-title">Nuestros productos</h1>
+                </div>
+            </div>
+            <div class="products-grid" id="products-grid" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <div class="footer-brand">
+                    <span class="logo-square" aria-hidden="true"></span>
+                    <span>Pastelería 1000 Sabores</span>
+                </div>
+                <nav class="footer-links" aria-label="Enlaces del pie de página">
+                    <a href="./index.html">Inicio</a>
+                    <a href="./productos.html">Productos</a>
+                    <a href="./contacto.html">Contacto</a>
+                </nav>
+            </div>
+            <div class="suscribe">
+                <p>¡Mantente en contacto! Únete a nuestro boletín</p>
+                <form action="/suscribirse" method="POST">
+                    <input type="email" id="email-input" name="email" placeholder="Ingresa tu correo electrónico" autocomplete="email" required>
+                    <button type="submit">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/script.js"></script>
+    <script src="./js/productos.js"></script>
 </body>
 </html>
