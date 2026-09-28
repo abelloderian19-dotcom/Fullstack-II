@@ -1,6 +1,9 @@
 const tabla = document.getElementById("tabla-productos");
 
-productos.forEach((producto) => {
+// Se leen desde localStorage (ver js/storage.js), no directo del arreglo del archivo
+const listaProductos = obtenerProductos();
+
+listaProductos.forEach((producto) => {
     const fila = document.createElement("tr");
     fila.innerHTML = `
         <td>${producto.codigo}</td>
