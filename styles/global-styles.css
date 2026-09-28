@@ -24,6 +24,17 @@ body {
   font-family: var(--font-body);
 }
 
+/* Los enlaces conservan los colores del sitio, incluso despues de visitarlos. */
+a,
+a:visited {
+  color: var(--marron-oscuro);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--chocolate);
+}
+
 /* Encabezados */
 h1,
 h2,

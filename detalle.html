@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detalle del producto de Pastelería 1000 Sabores.">
+    <title>Detalle del producto | Pastelería 1000 Sabores</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/global-styles.css">
+    <link rel="stylesheet" href="./styles/detalle.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav id="navbar" aria-label="Navegación principal">
+                <a class="logo" href="./index.html"><img class="logo-image" src="./img/logo-tienda.svg" alt=""><span class="logo-text">Pastelería 1000 Sabores</span></a>
+                <ul class="links">
+                    <li><a class="link" href="./index.html">Inicio</a></li>
+                    <li><a class="link" href="./productos.html">Productos</a></li>
+                    <li><a class="link" href="./index.html#nosotros">Nosotros</a></li>
+                    <li><a class="link" href="./index.html#blog">Blogs</a></li>
+                    <li><a class="link" href="./contacto.html">Contacto</a></li>
+                </ul>
+                <a class="carrito" href="./carrito.html" aria-label="Carrito de compras">
+                    <span class="carrito-icon" aria-hidden="true">🛒</span>
+                    <span>Carrito (<span id="cart-count" aria-live="polite">0</span>)</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container detail-page">
+        <nav class="breadcrumbs" aria-label="Ruta de navegación">
+            <a href="./index.html">Inicio</a><span aria-hidden="true">›</span>
+            <a href="./productos.html">Productos</a><span aria-hidden="true">›</span>
+            <span id="detail-breadcrumb">Detalle</span>
+        </nav>
+        <p id="detail-error" class="detail-error" hidden>No encontramos ese producto. <a href="./productos.html">Volver a productos</a></p>
+        <section id="product-detail" class="product-detail" aria-live="polite">
+            <div class="detail-gallery">
+                <img id="detail-image" class="detail-image" alt="">
+            </div>
+            <div class="detail-info">
+                <p id="detail-category" class="detail-category"></p>
+                <div class="detail-heading">
+                    <h1 id="detail-name"></h1>
+                    <strong id="detail-price"></strong>
+                </div>
+                <p id="detail-description" class="detail-description"></p>
+                <form id="add-product-form" class="detail-form" novalidate>
+                    <label for="detail-quantity">Cantidad</label>
+                    <input id="detail-quantity" name="cantidad" type="number" min="1" max="99" step="1" value="1" required inputmode="numeric">
+                    <small id="quantity-error" class="field-error" aria-live="polite"></small>
+                    <button class="detail-add-button" type="submit">Añadir al carrito</button>
+                    <p id="added-message" class="added-message" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+        <section class="related-products" aria-labelledby="related-title">
+            <h2 id="related-title">Productos relacionados</h2>
+            <div id="related-grid" class="products-grid"></div>
+        </section>
+    </main>
+
+    <script src="./js/data/productos.js"></script>
+    <script src="./js/carrito.js"></script>
+    <script src="./js/detalle.js"></script>
+</body>
+</html>

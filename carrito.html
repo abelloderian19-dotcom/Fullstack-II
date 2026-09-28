@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Revisa los productos de tu carrito de compras.">
+    <title>Mi carrito | Pastelería 1000 Sabores</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/global-styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav id="navbar" aria-label="Navegación principal">
+                <a class="logo" href="./index.html"><img class="logo-image" src="./img/logo-tienda.svg" alt=""><span class="logo-text">Pastelería 1000 Sabores</span></a>
+                <ul class="links">
+                    <li><a class="link" href="./index.html">Inicio</a></li>
+                    <li><a class="link" href="./productos.html">Productos</a></li>
+                    <li><a class="link" href="./index.html#nosotros">Nosotros</a></li>
+                    <li><a class="link" href="./index.html#blog">Blogs</a></li>
+                    <li><a class="link" href="./contacto.html">Contacto</a></li>
+                </ul>
+                <a class="carrito" href="./carrito.html" aria-current="page" aria-label="Carrito de compras">
+                    <span class="carrito-icon" aria-hidden="true">🛒</span>
+                    <span>Carrito (<span id="cart-count" aria-live="polite">0</span>)</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container cart-page">
+        <h1>Mi carrito de compras</h1>
+        <div class="cart-layout">
+            <section class="cart-section" aria-label="Productos del carrito">
+                <p id="cart-empty" hidden>Tu carrito está vacío.</p>
+                <a id="cart-back-to-products" class="back-to-products" href="./productos.html" hidden>← Regresar a productos</a>
+                <ul id="cart-items" class="cart-items" aria-live="polite"></ul>
+                <button id="clear-cart" class="clear-cart" type="button">Vaciar carrito</button>
+            </section>
+            <aside class="cart-checkout" aria-label="Resumen de compra">
+                <h2>Resumen</h2>
+                <p><span>Total:</span><strong id="cart-total">$0</strong></p>
+                <button class="checkout-button" type="button" disabled>Continuar compra</button>
+            </aside>
+        </div>
+    </main>
+
+    <script src="./js/data/productos.js"></script>
+    <script src="./js/carrito.js"></script>
+</body>
+</html>
