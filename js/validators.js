@@ -27,3 +27,32 @@ function esMayorIgualQue(valor, min) {
     if (Number(valor.replace(",", ".")) < min) return `Debe ser mayor o igual a ${min}`;
     return null;
 }
+
+function dominioPermitido(correo) {
+    const dominios = ["duoc.cl", "profesor.duoc.cl", "gmail.com"];
+    const permitido = dominios.some((dominio) => correo.endsWith("@" + dominio));
+    if (!permitido) return "Solo se permiten correos @duoc.cl, @profesor.duoc.cl o @gmail.com";
+    return null;
+}
+
+// Valida un RUN chileno sin puntos ni guion, por ejemplo 12345678K
+// El dígito verificador se calcula con el algoritmo módulo 11
+function validarRun(run) {
+    if (!/^\d{6,8}[0-9K]$/i.test(run)) return "El RUN debe tener solo números y el dígito verificador, sin puntos ni guion";
+
+    const cuerpo = run.slice(0, -1);
+    const dv = run.slice(-1).toUpperCase();
+
+    let suma = 0;
+    let multiplo = 2;
+    for (let i = cuerpo.length - 1; i >= 0; i--) {
+        suma += parseInt(cuerpo[i]) * multiplo;
+        multiplo = multiplo === 7 ? 2 : multiplo + 1;
+    }
+
+    const resto = 11 - (suma % 11);
+    const dvEsperado = resto === 11 ? "0" : resto === 10 ? "K" : String(resto);
+
+    if (dv !== dvEsperado) return "El RUN no es válido, revisa el dígito verificador";
+    return null;
+}
