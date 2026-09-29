@@ -1,0 +1,163 @@
+.contact-page {
+    display: flex;
+    justify-content: center;
+    padding-top: 38px;
+    padding-bottom: 64px;
+}
+
+.contact-panel {
+    width: min(100%, 620px);
+    text-align: center;
+}
+
+.contact-brand-mark {
+    display: grid;
+    width: 88px;
+    height: 72px;
+    margin: 0 auto 10px;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid var(--gris-claro);
+    border-radius: 4px;
+    background: var(--blanco);
+}
+
+.contact-brand-mark img {
+    display: block;
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+}
+
+.contact-panel > h1 {
+    margin-bottom: 4px;
+    color: var(--marron-oscuro);
+    font-family: var(--font-heading);
+    font-size: clamp(25px, 4vw, 32px);
+    font-weight: 400;
+}
+
+.contact-intro {
+    margin-bottom: 24px;
+    color: var(--gris-claro);
+    font-size: 14px;
+}
+
+.contact-form {
+    overflow: hidden;
+    border: 1px solid var(--gris-claro);
+    border-radius: 4px;
+    background: var(--blanco);
+    box-shadow: var(--sombra-suave);
+    text-align: left;
+}
+
+.contact-form > h2 {
+    padding: 12px 18px;
+    background: var(--crema-pastel);
+    color: var(--marron-oscuro);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.contact-form-fields {
+    display: grid;
+    gap: 13px;
+    padding: 22px clamp(18px, 5vw, 38px) 26px;
+}
+
+.contact-field {
+    display: grid;
+    gap: 5px;
+}
+
+.contact-field label {
+    color: var(--marron-oscuro);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.contact-field input,
+.contact-field textarea {
+    width: 100%;
+    min-height: 42px;
+    padding: 9px 11px;
+    border: 1px solid var(--gris-claro);
+    border-radius: 3px;
+    background: var(--blanco);
+    color: var(--marron-oscuro);
+    font-size: 14px;
+}
+
+.contact-field textarea {
+    min-height: 112px;
+    resize: vertical;
+}
+
+.contact-field input[aria-invalid="true"],
+.contact-field textarea[aria-invalid="true"] {
+    border-color: var(--color-error);
+}
+
+.field-error {
+    min-height: 0;
+    color: var(--color-error);
+    font-size: 12px;
+}
+
+.field-error:empty {
+    display: none;
+}
+
+.contact-feedback {
+    min-height: 0;
+    margin: 0;
+    color: var(--color-exito);
+    font-size: 13px;
+    text-align: center;
+}
+
+.contact-feedback:not(:empty) {
+    min-height: 20px;
+}
+
+.contact-submit {
+    justify-self: center;
+    min-height: 42px;
+    padding: 0 23px;
+    border: 1px solid var(--chocolate);
+    border-radius: 3px;
+    background: var(--chocolate);
+    color: var(--blanco);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color .2s, border-color .2s, transform .2s;
+}
+
+.contact-submit:hover {
+    transform: translateY(-1px);
+    border-color: var(--marron-oscuro);
+    background: var(--marron-oscuro);
+}
+
+@media (max-width: 600px) {
+    .contact-page {
+        padding-top: 28px;
+        padding-bottom: 44px;
+    }
+
+    .contact-form-fields {
+        gap: 11px;
+        padding-top: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-submit {
+        transition: none;
+    }
+}
