@@ -1,40 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosotros - Pastelería Mil Sabores</title>
+    <meta name="description" content="Conoce la historia, propósito y equipo detrás de Pastelería 1000 Sabores.">
+    <title>Nosotros | Pastelería 1000 Sabores</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/global-styles.css">
 </head>
 <body>
-    <!--COPIAR Y PEGAR EL NAV DEL HOME PRINCIPAL-->
-    <main>
-        <section class="nosotros">
-            <h1>Sobre Nosotros</h1>
-            <p>Pastelería Mil Sabores celebra su 50° aniversario como un referente en la repostería chilena. Famosa por su participación en un récord Guinness en 1995, cuando cuando colaboró en la creación de la torta más grande del mundo, hoy renovamos nuestra tienda para ofrecer una experiencia de compra moderna y accesible.</p>
+    <header class="site-header">
+        <div class="container">
+            <nav id="navbar" aria-label="Navegación principal">
+                <a class="logo" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
+                    <img class="logo-image" src="./img/logo-tienda.svg" alt="">
+                    <span class="logo-text">Pastelería 1000 Sabores</span>
+                </a>
+                <ul class="links">
+                    <li><a class="link" href="./index.html">Inicio</a></li>
+                    <li><a class="link" href="./productos.html">Productos</a></li>
+                    <li><a class="link active" href="./nosotros.html" aria-current="page">Nosotros</a></li>
+                    <li><a class="link" href="./blogs.html">Blogs</a></li>
+                    <li><a class="link" href="./contacto.html">Contacto</a></li>
+                </ul>
+                <a class="carrito" href="./carrito.html" aria-label="Carrito de compras">
+                    <span class="carrito-icon" aria-hidden="true">🛒</span>
+                    <span>Carrito (<span id="cart-count" aria-live="polite">0</span>)</span>
+                </a>
+            </nav>
+        </div>
+    </header>
 
-            <h2>Misión</h2>
-            <p>Ofrecer una experiencia dulce y memorable a nuestros clientes, proporcionando tortas y productos de repostería de alta calidad para todas las ocasiones.</p>
-
-            <h2>Visión</h2>
-            <p>Convertirnos en la tienda online líder de productos de repostería en Chile, conocida por nuestra innovación, calidad y el impacto positivo en la comunidad.</p>
-
-            <h2>Nuestro equipo de desarrollo</h2>
-            <p>Sitio desarrollado por Alan, Fernando y Felipe.</p>
+    <main class="container about-page">
+        <section class="about-intro" aria-labelledby="about-title">
+            <div class="about-copy">
+                <p class="about-eyebrow">Nuestra historia</p>
+                <h1 id="about-title">Dulces momentos, hechos para compartir</h1>
+                <p>Pastelería 1000 Sabores es una empresa dedicada a preparar tortas y postres para acompañar celebraciones y momentos cotidianos. Reunimos recetas tradicionales, ingredientes seleccionados y una presentación cuidada para que cada pedido sea especial.</p>
+                <a class="btn-primary" href="./productos.html">Conoce nuestros productos</a>
+            </div>
+            <img class="about-image" src="./img/products/imagen_inicio.jpg" alt="Selección de pasteles preparados por Pastelería 1000 Sabores">
         </section>
-        <section class="noticia-preview">
-            <h2>Noticias Importantes</h2>
 
-            <article class="noticia-card">
-                <img src="https://placehold.co/300x200?text=Caso+1" alt="Caso Curioso 1">
-                <h3>Caso Curioso #1 El Récord Guinness de 1995</h3>
-                <p>En 1995, Pastelería Mil Sabores participó en la creación de la torta más grande del mundo, un hito que la posicionó como un referente indiscutido de la repostería chilena. Este logro marcó el inicio de una tradición de innovación y calidad que se mantiene hasta hoy, 50 años después.</p>
-            </article>
-            <article class="noticia-card">
-                <img src="https://placehold.co/300x200?text=Caso+2" alt="Caso Curioso 2">
-                <h3>Caso Curioso #2 La Tarta de Santiago</h3>
-                <p>Uno de nuestros productos más tradicionales, la Tarta de Santiago, es una receta española hecha con almendras, azúcar y huevos que ha sido adaptada y querida por generaciones de clientes chilenos, combinando historia europea con identidad local.</p>
-            </article>
+        <section class="about-purpose" aria-labelledby="purpose-title">
+            <div class="about-section-heading">
+                <p class="about-eyebrow">Lo que nos inspira</p>
+                <h2 id="purpose-title">Nuestro propósito</h2>
+            </div>
+            <div class="purpose-grid">
+                <article class="purpose-card">
+                    <h3>Misión</h3>
+                    <p>Preparar productos de pastelería ricos y de calidad, ofreciendo una atención cercana y ayudando a crear momentos memorables.</p>
+                </article>
+                <article class="purpose-card">
+                    <h3>Visión</h3>
+                    <p>Ser una pastelería reconocida por la variedad de sus sabores, el cuidado de sus preparaciones y la confianza de sus clientes.</p>
+                </article>
+                <article class="purpose-card">
+                    <h3>Valores</h3>
+                    <p>Trabajamos con dedicación, creatividad y compromiso, cuidando cada detalle desde la preparación hasta la entrega.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="developers-section" aria-labelledby="developers-title">
+            <div class="about-section-heading">
+                <p class="about-eyebrow">Detrás del sitio</p>
+                <h2 id="developers-title">Equipo de desarrollo</h2>
+                <p>Este sitio fue construido por un equipo que trabajó en conjunto para presentar la pastelería y facilitar la navegación por sus productos.</p>
+            </div>
+            <div class="developers-grid">
+                <article class="developer-card">
+                    <span class="developer-mark" aria-hidden="true">01</span>
+                    <h3>Estructura y contenido</h3>
+                    <p>Organización de las páginas y presentación de la información del sitio.</p>
+                </article>
+                <article class="developer-card">
+                    <span class="developer-mark" aria-hidden="true">02</span>
+                    <h3>Diseño e interfaz</h3>
+                    <p>Estilos visuales, adaptación a distintos tamaños de pantalla y experiencia de navegación.</p>
+                </article>
+                <article class="developer-card">
+                    <span class="developer-mark" aria-hidden="true">03</span>
+                    <h3>Programación</h3>
+                    <p>Interacciones del catálogo, carrito, formularios y administración de datos del proyecto.</p>
+                </article>
+            </div>
         </section>
     </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <div class="footer-brand"><span>Pastelería 1000 Sabores</span></div>
+                <div class="payment-icons" aria-label="Medios de pago">
+                    <span class="payment-icon"><span class="visa-logo">VISA</span></span>
+                    <span class="payment-icon"><span class="cash-icon" aria-hidden="true">💵</span> EFECTIVO</span>
+                </div>
+            </div>
+            <div class="suscribe">
+                <p>¡Mantente en contacto! Únete a nuestro boletín</p>
+                <form action="/suscribirse" method="POST">
+                    <input type="email" name="email" placeholder="Ingresa tu correo electrónico" autocomplete="email" required>
+                    <button type="submit">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/data/productos.js"></script>
+    <script src="./js/carrito.js"></script>
 </body>
 </html>

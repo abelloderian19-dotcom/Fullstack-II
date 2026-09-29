@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pasteles y postres de Pastelería 1000 Sabores.">
-    <title>Pastelería 1000 Sabores</title>
+    <meta name="description" content="Conoce la historia detrás de una de las recetas favoritas de nuestra pastelería.">
+    <title>El origen de nuestros sabores | Pastelería 1000 Sabores</title>
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/global-styles.css">
+    <link rel="stylesheet" href="./styles/detalle-blog.css">
 </head>
 <body>
     <header class="site-header">
@@ -17,78 +18,59 @@
                     <span class="logo-text">Pastelería 1000 Sabores</span>
                 </a>
                 <ul class="links">
-                    <li><a class="link active" href="./index.html" aria-current="page">Inicio</a></li>
+                    <li><a class="link" href="./index.html">Inicio</a></li>
                     <li><a class="link" href="./productos.html">Productos</a></li>
                     <li><a class="link" href="./nosotros.html">Nosotros</a></li>
-                    <li><a class="link" href="#blog">Blogs</a></li>
+                    <li><a class="link active" href="./blogs.html" aria-current="page">Blogs</a></li>
                     <li><a class="link" href="./contacto.html">Contacto</a></li>
                 </ul>
-                <a class="carrito" href="./carrito.html" aria-label="Carrito de compras, 0 productos">
+                <a class="carrito" href="./carrito.html" aria-label="Carrito de compras">
                     <span class="carrito-icon" aria-hidden="true">🛒</span>
                     <span>Carrito (<span id="cart-count" aria-live="polite">0</span>)</span>
                 </a>
             </nav>
         </div>
     </header>
-
-    <div class="container">
-        <div class="user-links">
-            <a href="./login.html">Iniciar sesión</a>
-            <span aria-hidden="true">|</span>
-            <a href="./registro.html">Registrar usuario</a>
-        </div>
-    </div>
-
-    <main class="container">
-        <section class="hero" aria-labelledby="home-title">
-            <div class="hero-content">
-                <h1 id="home-title">Dulces momentos, hechos para compartir.</h1>
-                <p>
-                    Tortas y postres preparados con dedicación para acompañar tus celebraciones
-                    y convertir cualquier día en una ocasión especial.
-                </p>
-                <a href="./productos.html" class="btn-primary" type="button">Ver productos</a>
+    <main class="container blog-detail-page">
+        <a class="blog-back-link" href="./blogs.html">← Volver a noticias</a>
+        <article class="blog-detail">
+            <header class="blog-detail-header">
+                <p class="blog-detail-category">Nuestra historia · Caso curioso #1</p>
+                <h1>El origen de nuestros sabores</h1>
+                <p>Una receta familiar, ingredientes inesperados y el comienzo de una tradición dulce.</p>
+            </header>
+            <img class="blog-detail-image" src="./img/products/imagen_inicio.jpg" alt="Pastel artesanal de Pastelería 1000 Sabores">
+            <div class="blog-detail-content">
+                <p>En nuestra pastelería, cada receta tiene una historia. Esta comenzó en una cocina familiar, donde las tardes de preparación eran una oportunidad para compartir y probar nuevas combinaciones.</p>
+                <h2>Una combinación inesperada</h2>
+                <p>Al mezclar ingredientes clásicos con frutas de temporada, apareció un sabor equilibrado que pronto se convirtió en uno de los favoritos de quienes nos visitaban. La receta fue cambiando con el tiempo, pero siempre conservó su preparación artesanal.</p>
+                <p>Hoy seguimos preparando cada pastel con el mismo cuidado: ingredientes seleccionados, tiempo para cada etapa y ese toque casero que hace especial cada celebración.</p>
+                <a class="blog-detail-cta" href="./productos.html">Descubre nuestros productos</a>
             </div>
-            <div class="hero-image" role="img" aria-label="Pasteles y postres de Pastelería 1000 Sabores"></div>
-        </section>
-
-        <section class="products recommended-products" aria-labelledby="recommended-title">
-            <div class="products-heading">
-                <h2 id="recommended-title">Los más recomendados</h2>
-            </div>
-            <div class="products-grid recommended-grid" id="recommended-grid"></div>
-        </section>
-
+        </article>
     </main>
-
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="footer-left">
                 <div class="footer-brand">
                     <span>Pastelería 1000 Sabores</span>
                 </div>
-                
-                
                 <div class="payment-icons" aria-label="Medios de pago">
                     <span class="payment-icon"><span class="visa-logo">VISA</span></span>
                     <span class="payment-icon"><span class="cash-icon" aria-hidden="true">💵</span> EFECTIVO</span>
-
                 </div>
             </div>
             <div class="suscribe">
                 <p>¡Mantente en contacto! Únete a nuestro boletín</p>
                 <form action="/suscribirse" method="POST">
-                    <input type="email" id="email-input" name="email" placeholder="Ingresa tu correo electrónico" autocomplete="email" required>
+                    <input type="email" name="email" placeholder="Ingresa tu correo electrónico" autocomplete="email" required>
                     <button type="submit">Suscribirse</button>
                 </form>
             </div>
         </div>
     </footer>
 
-   
     <script src="./js/data/productos.js"></script>
     <script src="./js/carrito.js"></script>
-    <script src="./js/tarjetasProductos.js"></script>
-    <script src="./js/productosDestacados.js"></script>
 </body>
 </html>

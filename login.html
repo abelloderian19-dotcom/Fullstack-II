@@ -1,32 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login de Usuario | Pastelería Mil Sabores</title>
-    <link rel="stylesheet" href="./styles/global-styles.css">
+    <meta name="description" content="Inicia sesión en Pastelería 1000 Sabores.">
+    <title>Iniciar sesión | Pastelería 1000 Sabores</title>
     <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/global-styles.css">
 </head>
 <body>
-    <!--COPIAR Y PEGA EL NAV DEL HOME PRINCIPAL-->
-    <header class="header-login">
-        <!--en src la url de la imagen, en alt logo de la pastelería-->
-        <img src="https://placehold.co/150x150?text=LOGO" alt="Logo Pastelería Mil Sabores">
-        <h1>Pastelería Mil Sabores</h1>
+    <header class="site-header">
+        <div class="container">
+            <nav id="navbar" aria-label="Navegación principal">
+                <a class="logo" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
+                    <img class="logo-image" src="./img/logo-tienda.svg" alt="">
+                    <span class="logo-text">Pastelería 1000 Sabores</span>
+                </a>
+                <ul class="links">
+                    <li><a class="link" href="./index.html">Inicio</a></li>
+                    <li><a class="link" href="./productos.html">Productos</a></li>
+                    <li><a class="link" href="./nosotros.html">Nosotros</a></li>
+                    <li><a class="link" href="./blogs.html">Blogs</a></li>
+                    <li><a class="link" href="./contacto.html">Contacto</a></li>
+                </ul>
+                <a class="carrito" href="./carrito.html" aria-label="Carrito de compras">
+                    <span class="carrito-icon" aria-hidden="true">🛒</span>
+                    <span>Carrito (<span id="cart-count" aria-live="polite">0</span>)</span>
+                </a>
+            </nav>
+        </div>
     </header>
-    <main>
-        <section>
-            <h1>Inicio de sesión</h1>
-            <form action="">
-                <label for="correo">Correo</label>
-                <input type="email" id="correo">
 
-                <label for="password">Contraseña</label>
-                <input type="password" id="password">
+    <main class="container login-page">
+        <section class="login-panel" aria-labelledby="login-title">
+            <div class="login-brand-mark">
+                <img src="./img/logo-tienda.svg" alt="Logo de Pastelería 1000 Sabores">
+            </div>
+            <h1 class="login-brand-name">Pastelería 1000 Sabores</h1>
 
-                <button type="submit" class="btn-primary">Iniciar sesión</button>
+            <form class="login-form" action="#" method="post">
+                <h2 id="login-title">Inicio de sesión</h2>
+                <div class="login-fields">
+                    <div class="login-field">
+                        <label for="login-email">Correo</label>
+                        <input id="login-email" name="correo" type="email" autocomplete="username" required>
+                    </div>
+                    <div class="login-field">
+                        <label for="login-password">Contraseña</label>
+                        <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+                    </div>
+                    <button class="login-submit" type="submit">Iniciar sesión</button>
+                </div>
             </form>
         </section>
     </main>
+
+    <script src="./js/data/productos.js"></script>
+    <script src="./js/carrito.js"></script>
 </body>
 </html>
