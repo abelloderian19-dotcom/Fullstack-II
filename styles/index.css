@@ -361,6 +361,9 @@ body {
 }
 
 .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-height: 42px;
     padding: 0 15px;
     border: 0;
@@ -371,9 +374,15 @@ body {
     font-size: 13px;
     font-weight: 700;
     cursor: pointer;
+    text-decoration: none;
     
 }
 
+.btn-primary:visited,
+.btn-primary:hover,
+.btn-primary:focus-visible {
+    color: white;
+}
 
 
 
@@ -528,6 +537,19 @@ body {
     color: var(--gris-claro);
     font-size: 9px;
     letter-spacing: .3px;
+}
+
+.cash-icon {
+    font-size: 17px;
+    vertical-align: -2px;
+}
+
+.visa-logo {
+    color: #1434cb;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: -.5px;
 }
 
 .suscribe {
