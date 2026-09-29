@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ponte en contacto con Pastelería 1000 Sabores.">
+    <title>Contacto | Pastelería 1000 Sabores</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/global-styles.css">
+    <link rel="stylesheet" href="./styles/contacto.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav id="navbar" aria-label="Navegación principal">
+                <a class="logo" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
+                    <img class="logo-image" src="./img/logo-tienda.svg" alt="">
+                    <span class="logo-text">Pastelería 1000 Sabores</span>
+                </a>
+                <ul class="links">
+                    <li><a class="link" href="./index.html">Inicio</a></li>
+                    <li><a class="link" href="./productos.html">Productos</a></li>
+                    <li><a class="link" href="./index.html#nosotros">Nosotros</a></li>
+                    <li><a class="link" href="./blogs.html">Blogs</a></li>
+                    <li><a class="link active" href="./contacto.html" aria-current="page">Contacto</a></li>
+                </ul>
+                <a class="carrito" href="./carrito.html" aria-label="Carrito de compras">
+                    <span class="carrito-icon" aria-hidden="true">🛒</span>
+                    <span>Carrito (<span id="cart-count" aria-live="polite">0</span>)</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container contact-page">
+        <section class="contact-panel" aria-labelledby="contact-title">
+            <div class="contact-brand-mark" aria-hidden="true">
+                <img src="./img/logo-tienda.svg" alt="">
+            </div>
+            <h1 id="contact-title">Pastelería 1000 Sabores</h1>
+            <p class="contact-intro">¿Tienes una consulta o quieres cotizar un pedido? Escríbenos.</p>
+
+            <form class="contact-form" id="contact-form" novalidate>
+                <h2>Formulario de contacto</h2>
+                <div class="contact-form-fields">
+                    <div class="contact-field">
+                        <label for="contact-name">Nombre completo</label>
+                        <input id="contact-name" name="nombre" type="text" autocomplete="name" minlength="3" maxlength="80" required>
+                        <small class="field-error" id="name-error"></small>
+                    </div>
+                    <div class="contact-field">
+                        <label for="contact-email">Correo electrónico</label>
+                        <input id="contact-email" name="correo" type="email" autocomplete="email" maxlength="120" required>
+                        <small class="field-error" id="email-error"></small>
+                    </div>
+                    <div class="contact-field">
+                        <label for="contact-subject">Asunto</label>
+                        <input id="contact-subject" name="asunto" type="text" maxlength="100" required>
+                        <small class="field-error" id="subject-error"></small>
+                    </div>
+                    <div class="contact-field">
+                        <label for="contact-message">Mensaje</label>
+                        <textarea id="contact-message" name="mensaje" rows="4" minlength="10" maxlength="1000" required></textarea>
+                        <small class="field-error" id="message-error"></small>
+                    </div>
+                    <p class="contact-feedback" id="contact-feedback" role="status" aria-live="polite"></p>
+                    <button class="contact-submit" type="submit">Enviar mensaje</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="./js/data/productos.js"></script>
+    <script src="./js/carrito.js"></script>
+    <script src="./js/validators.js"></script>
+    <script src="./js/contacto.js"></script>
+</body>
+</html>
