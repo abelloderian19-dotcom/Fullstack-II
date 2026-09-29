@@ -1180,3 +1180,120 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* Login: acceso de usuario */
+.login-page {
+    display: flex;
+    justify-content: center;
+    min-height: 68vh;
+    padding-top: 24px;
+    padding-bottom: 64px;
+}
+
+.login-panel {
+    width: min(100%, 550px);
+    text-align: center;
+}
+
+.login-brand-mark {
+    display: grid;
+    width: 104px;
+    height: 82px;
+    margin: 0 auto 18px;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid var(--gris-claro);
+    background: var(--blanco);
+}
+
+.login-brand-mark img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.login-brand-name {
+    margin-bottom: 22px;
+    color: var(--marron-oscuro);
+    font-family: var(--font-body);
+    font-size: clamp(22px, 3vw, 29px);
+    font-weight: 400;
+}
+
+.login-form {
+    overflow: hidden;
+    border: 1px solid var(--marron-oscuro);
+    background: #f1f1f1;
+    box-shadow: var(--sombra-suave);
+    text-align: left;
+}
+
+.login-form > h2 {
+    padding: 13px 16px;
+    background: var(--crema-encabezado-formulario);
+    color: var(--marron-oscuro);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.login-fields {
+    display: grid;
+    gap: 20px;
+    padding: 22px 20px 26px;
+}
+
+.login-field {
+    display: grid;
+    gap: 7px;
+}
+
+.login-field label {
+    color: var(--marron-oscuro);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.login-field input {
+    width: 100%;
+    min-height: 42px;
+    padding: 8px 10px;
+    border: 1px solid var(--marron-oscuro);
+    border-radius: 2px;
+    background: var(--blanco);
+    color: var(--marron-oscuro);
+}
+
+.login-submit {
+    justify-self: center;
+    width: 150px;
+    min-height: 58px;
+    margin-top: 4px;
+    border: 1px solid var(--marron-oscuro);
+    border-radius: 3px;
+    background: var(--blanco);
+    color: var(--marron-oscuro);
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: 0 2px 0 var(--marron-oscuro);
+    transition: background-color .2s, color .2s;
+}
+
+.login-submit:hover {
+    background: var(--chocolate);
+    color: var(--blanco);
+}
+
+@media (max-width: 600px) {
+    .login-page {
+        min-height: auto;
+        padding-top: 28px;
+        padding-bottom: 44px;
+    }
+
+    .login-fields {
+        gap: 16px;
+        padding: 18px 16px 22px;
+    }
+}
