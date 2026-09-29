@@ -10,12 +10,17 @@ function pintarTabla() {
     tabla.innerHTML = "";
 
     listaProductos.forEach((producto) => {
+        let celdaStock = producto.stock;
+        if (producto.stockCritico != null && celdaStock <= producto.stockCritico) {
+            celdaStock = `<span class="text-danger">Stock crítico: ${producto.stock.toLocaleString("es-CL")}</span>`;
+        }
         const fila = document.createElement("tr");
         fila.innerHTML = `
             <td>${producto.codigo}</td>
             <td>${producto.nombre}</td>
             <td>${producto.categoria}</td>
             <td>$${producto.precio.toLocaleString("es-CL")}</td>
+            <td>${celdaStock}</td>
             <td class="text-nowrap">
                 <a href="../detalle.html?codigo=${producto.codigo}" class="btn btn-sm btn-secondary">Ver</a>
                 <a href="producto-form.html?codigo=${producto.codigo}" class="btn btn-sm btn-primary">Editar</a>

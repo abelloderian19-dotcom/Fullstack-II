@@ -84,7 +84,7 @@ const productos = [
     categoria: "Productos Sin Azúcar",
     nombre: "Torta Sin Azúcar de Naranja",
     precio: 48000,
-    stock: 6,
+    stock: 2,
     stockCritico: 2,
     descripcion:
       "Torta ligera y deliciosa, endulzada naturalmente, ideal para quienes buscan opciones más saludables.",
