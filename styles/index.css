@@ -1,20 +1,7 @@
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    /* Usando la variable de fuente general (Lato) y colores globales */
-    font-family: var(--font-body);
-    color: var(--marron-oscuro);
-    background: var(--crema-pastel);
-    line-height: 1.55;
 }
 
 
@@ -158,10 +145,6 @@ body {
     grid-template-columns: minmax(0, 1fr) 280px;
     align-items: start;
     gap: 24px;
-}
-
-.cart-item {
-    justify-content: flex-start;
 }
 
 .cart-item-image {
@@ -933,7 +916,6 @@ body {
 
 .contact-form > h2 {
     padding: 12px 18px;
-    background: var(--crema-encabezado-formulario);
     color: var(--marron-oscuro);
     font-family: var(--font-body);
     font-size: 14px;
@@ -1230,7 +1212,6 @@ body {
 
 .login-form > h2 {
     padding: 13px 16px;
-    background: var(--crema-encabezado-formulario);
     color: var(--marron-oscuro);
     font-family: var(--font-body);
     font-size: 14px;
