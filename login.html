@@ -38,17 +38,18 @@
             </div>
             <h1 class="login-brand-name">Pastelería 1000 Sabores</h1>
 
-            <form class="login-form" action="#" method="post">
+            <form class="login-form" id="login-form" novalidate>
                 <h2 id="login-title">Inicio de sesión</h2>
                 <div class="login-fields">
                     <div class="login-field">
                         <label for="login-email">Correo</label>
-                        <input id="login-email" name="correo" type="email" autocomplete="username" required>
+                        <input id="login-email" name="correo" type="email" autocomplete="username" aria-describedby="login-feedback" required>
                     </div>
                     <div class="login-field">
                         <label for="login-password">Contraseña</label>
-                        <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+                        <input id="login-password" name="password" type="password" autocomplete="current-password" aria-describedby="login-feedback" required>
                     </div>
+                    <p class="login-feedback" id="login-feedback" role="status" aria-live="polite"></p>
                     <button class="login-submit" type="submit">Iniciar sesión</button>
                 </div>
             </form>
@@ -57,5 +58,8 @@
 
     <script src="./js/data/productos.js"></script>
     <script src="./js/carrito.js"></script>
+    <script src="./js/data/usuarios.js"></script>
+    <script src="./js/storage.js"></script>
+    <script src="./js/login.js"></script>
 </body>
 </html>
