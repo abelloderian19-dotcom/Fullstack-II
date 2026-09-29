@@ -11,6 +11,7 @@
 
   /* Superficies y estados compartidos */
   --blanco: #fff;
+  --crema-encabezado-formulario: #e6d3b0;
   --color-error: #b42318;
   --color-exito: #26733b;
   --sombra-suave: 0 8px 24px rgba(93, 64, 55, 0.06);
@@ -64,6 +65,10 @@ input,
 select,
 textarea {
   font: inherit;
+}
+
+form > h2 {
+  background-color: var(--crema-encabezado-formulario);
 }
 
 /* Encabezados */

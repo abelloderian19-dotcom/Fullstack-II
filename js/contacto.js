@@ -73,8 +73,8 @@ formularioContacto.addEventListener("submit", (evento) => {
         listaMensajes.push(nuevoMensaje);
         localStorage.setItem(CLAVE_MENSAJES_CONTACTO, JSON.stringify(listaMensajes));
         formularioContacto.reset();
-        mensajeContacto.textContent = "¡Gracias! Tu mensaje se guardó correctamente.";
+        mensajeContacto.textContent = "¡Gracias! Tu mensaje se envio correctamente.";
     } catch {
-        mensajeContacto.textContent = "No se pudo guardar el mensaje en este navegador. Inténtalo nuevamente.";
+        mensajeContacto.textContent = "No se pudo enviar el mensaje en este navegador. Inténtalo nuevamente mas tarde.";
     }
 });

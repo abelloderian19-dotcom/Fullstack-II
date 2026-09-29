@@ -54,7 +54,7 @@
 
 .contact-form > h2 {
     padding: 12px 18px;
-    background: var(--crema-pastel);
+    background: var(--crema-encabezado-formulario);
     color: var(--marron-oscuro);
     font-family: var(--font-body);
     font-size: 14px;
