@@ -17,7 +17,6 @@ function pintarTabla() {
         <td>${usuario.correo}</td>
         <td>${usuario.tipoUsuario}</td>
         <td>
-            <a href="usuario-detalle.html?run=${usuario.run}" class="btn btn-sm btn-secondary">Ver</a>
             <a href="usuario-form.html?run=${usuario.run}" class="btn btn-sm btn-primary">Editar</a>
             <button type="button" class="btn btn-sm btn-danger btn-eliminar">Eliminar</button>
         </td>
