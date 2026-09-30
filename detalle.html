@@ -7,13 +7,12 @@
     <title>Detalle del producto | Pastelería 1000 Sabores</title>
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/global-styles.css">
-    <link rel="stylesheet" href="./styles/detalle.css">
 </head>
 <body>
     <header class="site-header">
         <div class="container">
             <nav id="navbar" aria-label="Navegación principal">
-                <a class="logo" href="./index.html"><img class="logo-image" src="./img/logo-tienda.svg" alt=""><span class="logo-text">Pastelería 1000 Sabores</span></a>
+                <a class="logo" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio"><img class="logo-image" src="./img/logo-tienda.svg" alt=""><span class="logo-text">Pastelería 1000 Sabores</span></a>
                 <ul class="links">
                     <li><a class="link" href="./index.html">Inicio</a></li>
                     <li><a class="link" href="./productos.html">Productos</a></li>
@@ -33,8 +32,9 @@
         <nav class="breadcrumbs" aria-label="Ruta de navegación">
             <a href="./index.html">Inicio</a><span aria-hidden="true">›</span>
             <a href="./productos.html">Productos</a><span aria-hidden="true">›</span>
-            <span id="detail-breadcrumb">Detalle</span>
+            <span id="detail-breadcrumb" aria-current="page">Detalle</span>
         </nav>
+        <a class="back-to-products" href="./productos.html">← Regresar a productos</a>
         <p id="detail-error" class="detail-error" hidden>No encontramos ese producto. <a href="./productos.html">Volver a productos</a></p>
         <section id="product-detail" class="product-detail" aria-live="polite">
             <div class="detail-gallery">
@@ -49,7 +49,7 @@
                 <p id="detail-description" class="detail-description"></p>
                 <form id="add-product-form" class="detail-form" novalidate>
                     <label for="detail-quantity">Cantidad</label>
-                    <input id="detail-quantity" name="cantidad" type="number" min="1" max="99" step="1" value="1" required inputmode="numeric">
+                    <input id="detail-quantity" name="cantidad" type="number" min="1" max="99" step="1" value="1" required inputmode="numeric" aria-describedby="quantity-error">
                     <small id="quantity-error" class="field-error" aria-live="polite"></small>
                     <button class="detail-add-button" type="submit">Añadir al carrito</button>
                     <p id="added-message" class="added-message" role="status" aria-live="polite"></p>
@@ -58,7 +58,7 @@
         </section>
         <section class="related-products" aria-labelledby="related-title">
             <h2 id="related-title">Productos relacionados</h2>
-            <div id="related-grid" class="products-grid"></div>
+            <div id="related-grid" class="related-products-grid"></div>
         </section>
     </main>
 
