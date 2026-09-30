@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto - Administrador - Pastelería Mil Sabores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/global-styles.css">
+    <link rel="stylesheet" href="../styles/admin.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Menú lateral -->
+            <aside class="col-md-3 col-lg-2 sidebar p-0">
+                <header class="sidebar-header text-center p-3">
+                    <a href="index.html">
+                        <img src="../img/logo-tienda.svg" alt="Logo Pastelería Mil Sabores" class="sidebar-logo">
+                    </a>
+                    <h2 class="fs-4 mt-2">Mil Sabores</h2>
+                    <span class="texto-secundario">Administrador</span>
+                </header>
+                <nav class="nav flex-column">
+                    <a class="nav-link" href="index.html">
+                        Inicio
+                    </a>
+                    <a class="nav-link active" href="productos.html">
+                        Productos
+                    </a>
+                    <a class="nav-link" href="usuarios.html">
+                        Usuarios
+                    </a>
+                    <a class="nav-link" href="../index.html">
+                        Ver tienda
+                    </a>
+                    <a class="nav-link" href="../login.html">
+                        Cerrar sesión
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Contenido -->
+            <div class="col-md-9 col-lg-10 d-flex flex-column min-vh-100">
+                <main class="flex-grow-1 p-4">
+                    <section>
+                        <h1 id="titulo-formulario">Nuevo producto</h1>
+                        <p class="texto-secundario">Los campos marcados con * son obligatorios</p>
+                    </section>
+
+                    <section>
+                        <form id="form-producto" class="row g-3" novalidate>
+
+                            <div class="col-md-4">
+                                <label for="codigo" class="form-label">Código *</label>
+                                <input type="text" class="form-control" id="codigo" name="codigo"
+                                    placeholder="Ej: TC003">
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-8">
+                                <label for="nombre" class="form-label">Nombre *</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre"
+                                    placeholder="Ej: Torta Cuadrada de Chocolate">
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="descripcion" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="descripcion" name="descripcion" rows="3"
+                                    placeholder="Descripción del producto (opcional)"></textarea>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="precio" class="form-label">Precio *</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" id="precio" name="precio"
+                                        inputmode="decimal" placeholder="0">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="stock" class="form-label">Stock *</label>
+                                <input type="text" class="form-control" id="stock" name="stock" inputmode="numeric"
+                                    placeholder="0">
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="stockCritico" class="form-label">Stock crítico</label>
+                                <input type="text" class="form-control" id="stockCritico" name="stockCritico"
+                                    inputmode="numeric" placeholder="Opcional">
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="categoria" class="form-label">Categoría *</label>
+                                <select class="form-select" id="categoria" name="categoria">
+                                    <option value="">Selecciona una categoría</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="imagen" class="form-label">Imagen</label>
+                                <input type="text" class="form-control" id="imagen" name="imagen"
+                                    placeholder="Ej: ./img/products/web-TC001.jpg (opcional)">
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-12 d-flex gap-2">
+                                <button type="submit" class="btn btn-primary" id="btn-guardar">Guardar producto</button>
+                                <a href="productos.html" class="btn btn-secondary">Cancelar</a>
+                            </div>
+
+                        </form>
+                    </section>
+                </main>
+
+                <footer class="text-center p-3">
+                    <p class="mb-0 texto-secundario">© 2026 Pastelería Mil Sabores - Panel de administración</p>
+                </footer>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="../js/data/productos.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/validators.js"></script>
+    <script src="../js/admin/producto-form.js"></script>
+</body>
+
+</html>

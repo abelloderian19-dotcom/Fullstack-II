@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Noticias, historias y novedades de Pastelería 1000 Sabores.">
+    <title>Blogs | Pastelería 1000 Sabores</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/global-styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav id="navbar" aria-label="Navegación principal">
+                <a class="logo" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
+                    <img class="logo-image" src="./img/logo-tienda.svg" alt="">
+                    <span class="logo-text">Pastelería 1000 Sabores</span>
+                </a>
+                <ul class="links">
+                    <li><a class="link" href="./index.html">Inicio</a></li>
+                    <li><a class="link" href="./productos.html">Productos</a></li>
+                    <li><a class="link" href="./nosotros.html">Nosotros</a></li>
+                    <li><a class="link active" href="./blogs.html" aria-current="page">Blogs</a></li>
+                    <li><a class="link" href="./contacto.html">Contacto</a></li>
+                </ul>
+                <a class="carrito" href="./carrito.html" aria-label="Carrito de compras">
+                    <span class="carrito-icon" aria-hidden="true">🛒</span>
+                    <span>Carrito (<span id="cart-count" aria-live="polite">0</span>)</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container blogs-page">
+        <header class="blogs-heading">
+            <p class="blogs-eyebrow">Historias recién horneadas</p>
+            <h1>Noticias importantes</h1>
+            <p>Conoce las novedades, ideas y momentos especiales de nuestra pastelería.</p>
+        </header>
+
+        <section class="blogs-list" aria-label="Noticias y artículos">
+            <article class="blog-card">
+                <div class="blog-copy">
+                    <p class="blog-category">Nuestra historia</p>
+                    <h2>Un caso curioso: el origen de nuestros sabores</h2>
+                    <p>Descubre cómo una receta familiar y algunos ingredientes inesperados dieron vida a uno de nuestros pasteles favoritos.</p>
+                    <a class="blog-button" href="./detalle-blog1.html">Ver caso <span aria-hidden="true">→</span></a>
+                </div>
+                <img class="blog-image" src="./img/products/imagen_inicio.jpg" alt="Pastel preparado en nuestra pastelería">
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-copy">
+                    <p class="blog-category">Consejos dulces</p>
+                    <h2>Un caso curioso: cómo conservar un pastel</h2>
+                    <p>Te contamos algunos consejos sencillos para conservar la frescura y disfrutar cada porción como recién preparada.</p>
+                    <a class="blog-button" href="./detalle-blog2.html">Ver caso <span aria-hidden="true">→</span></a>
+                </div>
+                <img class="blog-image" src="./img/products/torta-frutas.jpg" alt="Detalle de un pastel artesanal">
+            </article>
+        </section>
+    </main>
+
+    <script src="./js/carrito.js"></script>
+</body>
+</html>

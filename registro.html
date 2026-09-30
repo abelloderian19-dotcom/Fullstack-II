@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario | Pastelería Mil Sabores</title>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/global-styles.css">
+</head>
+<body>
+    <!-- Espacio para el NAV (creo que debemos usar el mismo en cada interfaz, y nos aseguramos de una navegación más limpia)-->
+    <header class="site-header">
+        <div class="container">
+            <nav id="navbar" aria-label="Navegación principal">
+                <a class="logo" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
+                    <img class="logo-image" src="./img/logo-tienda.svg" alt="">
+                    <span class="logo-text">Pastelería 1000 Sabores</span>
+                </a>
+                <ul class="links">
+                    <li><a class="link" href="./index.html">Inicio</a></li>
+                    <li><a class="link" href="./productos.html">Productos</a></li>
+                    <li><a class="link" href="./nosotros.html">Nosotros</a></li>
+                    <li><a class="link" href="./blogs.html">Blogs</a></li>
+                    <li><a class="link" href="./contacto.html">Contacto</a></li>
+                </ul>
+                <a class="carrito" href="./carrito.html" aria-label="Carrito de compras">
+                    <span class="carrito-icon" aria-hidden="true">🛒</span>
+                    <span>Carrito (<span id="cart-count" aria-live="polite">0</span>)</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container login-page"> <!--main es lo más importante de una página, y esta pág es sólo para el registro, por ende acá irá el formulario del registro ;) sólo puede haber 1 x pag No puede contener header o footer-->
+        <section class="login-panel" aria-labelledby="registro-title">
+            <div class="login-brand-mark">
+                <img src="./img/logo-tienda.svg" alt="Logo de Pastelería 1000 Sabores">
+            </div>
+            <h1 class="login-brand-name">Pastelería 1000 sabores</h1>
+
+            <form class="login-form" id="form-registro" action="#" method="post"> <!--creo que acá linkeamos-->
+                <h2 id="registro-title">Registro de usuarios</h2>
+                <div class="login-fields">
+
+                    <div class="login-field">
+                        <label for="reg-run">RUN (Sin puntos ni guión)</label>
+                        <input id="reg-run" name="run" type="text" placeholder="19011022k" required>
+                        <span class="error-message" id="run-error"></span>
+                    </div>
+
+                    <div class="login-field">
+                        <label for="reg-nombre">Nombre</label>
+                        <input id="reg-nombre" name="nombre" type="text" required>
+                        <span class="error-message" id="nombre-error"></span>
+                    </div>
+
+                    <div class="login-field">
+                        <label for="reg-apellidos">Apellidos</label>
+                        <input id="reg-apellidos" name="apellidos" type="text" required>
+                        <span class="error-message" id="apellidos-error"></span>
+                    </div>
+
+                    <div class="login-field">
+                        <label for="reg-email">Correo</label>
+                        <input id="reg-email" name="correo" type="email" autocomplete="username" required>
+                        <span class="error-message" id="correo-error"></span>
+                    </div>
+
+                    <div class="login-field">
+                        <label for="reg-password">Contraseña</label>
+                        <input id="reg-password" name="password" type="password" autocomplete="new-password" required>
+                        <span class="error-message" id="password-error"></span>
+                    </div>
+
+                    <div class="login-field">
+                        <label for="reg-confirmar-password">Confirmar contraseña</label>
+                        <input id="reg-confirmar-password" name="confirmar-password" type="password" autocomplete="new-password" required>
+                        <span class="error-message" id="confirmar-password-error"></span>
+                    </div>
+
+                    <div class="login-field">
+                        <label for="reg-telefono">Teléfono (opcional)</label>
+                        <input id="reg-telefono" name="telefono" type="tel">
+                        <!--Por si acaso la rúbrica dice que es opcional acá la validacipon-->
+                    </div>
+
+                    <div class="login-field">
+                        <label for="reg-fecha-nacimiento">Fecha de nacimiento (opcional)</label>
+                        <input id="reg-fecha-nacimiento" name="fecha_nacimiento" type="date">
+                        <!--acá tmbn es opcional-->
+                    </div>
+
+                    <div class="login-field">
+                        <label for="reg-region">Región</label>
+                        <select id="reg-region" name="region" required>
+                            <option value="">-- Seleccione la región --</option>
+                        </select>
+                        <span class="error-message" id="region-error"></span>
+                    </div>
+
+                    <div class="login-field">
+                        <label for="reg-comuna">Comuna</label>
+                        <select id="reg-comuna" name="comuna" required>
+                            <option value="">-- Seleccione la comuna --</option>
+                        </select>
+                        <span class="error-message" id="comuna-error"></span>
+                    </div>
+
+                    <div class="login-field">
+                        <label for="reg-direccion">Dirección</label>
+                        <input id="reg-direccion" name="direccion" type="text" required>
+                        <span class="error-message" id="comuna-error"></span>
+                    </div>
+
+                    <button class="login-submit" type="submit">Registrar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="./js/data/regiones.js"></script>
+    <script src="./js/validators.js"></script>
+    <script src="./js/registro.js"></script>
+</body>
+</html>
