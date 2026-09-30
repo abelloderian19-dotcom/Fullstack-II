@@ -45,41 +45,49 @@
                     <div class="login-field">
                         <label for="reg-run">RUN (Sin puntos ni guión)</label>
                         <input id="reg-run" name="run" type="text" placeholder="19011022k" required>
+                        <span class="error-message" id="run-error"></span>
                     </div>
 
                     <div class="login-field">
                         <label for="reg-nombre">Nombre</label>
                         <input id="reg-nombre" name="nombre" type="text" required>
+                        <span class="error-message" id="nombre-error"></span>
                     </div>
 
                     <div class="login-field">
                         <label for="reg-apellidos">Apellidos</label>
                         <input id="reg-apellidos" name="apellidos" type="text" required>
+                        <span class="error-message" id="apellidos-error"></span>
                     </div>
 
                     <div class="login-field">
                         <label for="reg-email">Correo</label>
                         <input id="reg-email" name="correo" type="email" autocomplete="username" required>
+                        <span class="error-message" id="correo-error"></span>
                     </div>
 
                     <div class="login-field">
                         <label for="reg-password">Contraseña</label>
                         <input id="reg-password" name="password" type="password" autocomplete="new-password" required>
+                        <span class="error-message" id="password-error"></span>
                     </div>
 
                     <div class="login-field">
                         <label for="reg-confirmar-password">Confirmar contraseña</label>
                         <input id="reg-confirmar-password" name="confirmar-password" type="password" autocomplete="new-password" required>
+                        <span class="error-message" id="confirmar-password-error"></span>
                     </div>
 
                     <div class="login-field">
                         <label for="reg-telefono">Teléfono (opcional)</label>
                         <input id="reg-telefono" name="telefono" type="tel">
+                        <!--Por si acaso la rúbrica dice que es opcional acá la validacipon-->
                     </div>
 
                     <div class="login-field">
                         <label for="reg-fecha-nacimiento">Fecha de nacimiento (opcional)</label>
                         <input id="reg-fecha-nacimiento" name="fecha_nacimiento" type="date">
+                        <!--acá tmbn es opcional-->
                     </div>
 
                     <div class="login-field">
@@ -87,6 +95,7 @@
                         <select id="reg-region" name="region" required>
                             <option value="">-- Seleccione la región --</option>
                         </select>
+                        <span class="error-message" id="region-error"></span>
                     </div>
 
                     <div class="login-field">
@@ -94,11 +103,13 @@
                         <select id="reg-comuna" name="comuna" required>
                             <option value="">-- Seleccione la comuna --</option>
                         </select>
+                        <span class="error-message" id="comuna-error"></span>
                     </div>
 
                     <div class="login-field">
                         <label for="reg-direccion">Dirección</label>
                         <input id="reg-direccion" name="direccion" type="text" required>
+                        <span class="error-message" id="comuna-error"></span>
                     </div>
 
                     <button class="login-submit" type="submit">Registrar</button>
@@ -107,7 +118,8 @@
         </section>
     </main>
 
-    <script src="./js/data/productos.js"></script>
-    <script src="./js/carrito.js"></script>
+    <script src="./js/data/regiones.js"></script>
+    <script src="./js/validators.js"></script>
+    <script src="./js/registro.js"></script>
 </body>
 </html>
