@@ -5,104 +5,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Conoce la historia, propósito y equipo detrás de Pastelería 1000 Sabores.">
     <title>Nosotros | Pastelería 1000 Sabores</title>
-    <link rel="stylesheet" href="./styles/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/global-styles.css">
 </head>
-<body>
-    <header class="site-header">
+<body class="bg-white text-dark">
+    <header class="bg-secondary-subtle border-bottom border-dark">
         <div class="container">
-            <nav id="navbar" aria-label="Navegación principal">
-                <a class="logo" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
-                    <img class="logo-image" src="./img/logo-tienda.svg" alt="">
-                    <span class="logo-text">Pastelería 1000 Sabores</span>
+            <nav class="d-flex flex-wrap align-items-center gap-3 py-3" aria-label="Navegación principal">
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-semibold text-dark text-decoration-none order-1" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
+                    <img src="./img/logo-tienda.svg" alt="" width="36" height="36">
+                    <span>Pastelería 1000 Sabores</span>
                 </a>
-                <ul class="links">
-                    <li><a class="link" href="./index.html">Inicio</a></li>
-                    <li><a class="link" href="./productos.html">Productos</a></li>
-                    <li><a class="link active" href="./nosotros.html" aria-current="page">Nosotros</a></li>
-                    <li><a class="link" href="./blogs.html">Blogs</a></li>
-                    <li><a class="link" href="./contacto.html">Contacto</a></li>
+                <ul class="nav order-3 order-lg-2 flex-grow-1 flex-lg-fill justify-content-center gap-1 col-12 col-lg-auto">
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./productos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2 active" href="./nosotros.html" aria-current="page">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./blogs.html">Blogs</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./contacto.html">Contacto</a></li>
                 </ul>
-                <a class="carrito" href="./carrito.html" aria-label="Carrito de compras">
-                    <span class="carrito-icon" aria-hidden="true">🛒</span>
+                <a class="d-flex align-items-center gap-2 text-dark text-decoration-none text-nowrap order-2 order-lg-3 ms-auto" href="./carrito.html" aria-label="Carrito de compras">
+                    <span class="fs-5" aria-hidden="true">🛒</span>
                     <span>Carrito (<span id="cart-count" aria-live="polite">0</span>)</span>
                 </a>
             </nav>
         </div>
     </header>
 
-    <main class="container about-page">
-        <section class="about-intro" aria-labelledby="about-title">
-            <div class="about-copy">
-                <p class="about-eyebrow">Nuestra historia</p>
-                <h1 id="about-title">Dulces momentos, hechos para compartir</h1>
-                <p>Pastelería 1000 Sabores es una empresa dedicada a preparar tortas y postres para acompañar celebraciones y momentos cotidianos. Reunimos recetas tradicionales, ingredientes seleccionados y una presentación cuidada para que cada pedido sea especial.</p>
-                <a class="btn-primary" href="./productos.html">Conoce nuestros productos</a>
+    <main class="container py-4 py-lg-5">
+        <section class="row align-items-center g-4 g-lg-5 pb-5 mb-4 border-bottom" aria-labelledby="about-title">
+            <div class="col-12 col-md-6 order-2 order-md-1">
+                <p class="small fw-bold text-uppercase text-primary mb-2">Nuestra historia</p>
+                <h1 id="about-title" class="display-6 text-primary mb-3">Dulces momentos, hechos para compartir</h1>
+                <p class="lh-lg">Pastelería 1000 Sabores es una empresa dedicada a preparar tortas y postres para acompañar celebraciones y momentos cotidianos. Reunimos recetas tradicionales, ingredientes seleccionados y una presentación cuidada para que cada pedido sea especial.</p>
+                <a class="btn btn-primary" href="./productos.html">Conoce nuestros productos</a>
             </div>
-            <img class="about-image" src="./img/products/imagen_inicio.jpg" alt="Selección de pasteles preparados por Pastelería 1000 Sabores">
-        </section>
-
-        <section class="about-purpose" aria-labelledby="purpose-title">
-            <div class="about-section-heading">
-                <p class="about-eyebrow">Lo que nos inspira</p>
-                <h2 id="purpose-title">Nuestro propósito</h2>
-            </div>
-            <div class="purpose-grid">
-                <article class="purpose-card">
-                    <h3>Misión</h3>
-                    <p>Preparar productos de pastelería ricos y de calidad, ofreciendo una atención cercana y ayudando a crear momentos memorables.</p>
-                </article>
-                <article class="purpose-card">
-                    <h3>Visión</h3>
-                    <p>Ser una pastelería reconocida por la variedad de sus sabores, el cuidado de sus preparaciones y la confianza de sus clientes.</p>
-                </article>
-                <article class="purpose-card">
-                    <h3>Valores</h3>
-                    <p>Trabajamos con dedicación, creatividad y compromiso, cuidando cada detalle desde la preparación hasta la entrega.</p>
-                </article>
+            <div class="col-12 col-md-6 order-1 order-md-2">
+                <div class="ratio ratio-4x3 overflow-hidden rounded shadow-sm">
+                    <img class="w-100 h-100 object-fit-cover" src="./img/products/imagen_inicio.jpg" alt="Selección de pasteles preparados por Pastelería 1000 Sabores">
+                </div>
             </div>
         </section>
 
-        <section class="developers-section" aria-labelledby="developers-title">
-            <div class="about-section-heading">
-                <p class="about-eyebrow">Detrás del sitio</p>
-                <h2 id="developers-title">Equipo de desarrollo</h2>
+        <section class="py-4" aria-labelledby="purpose-title">
+            <header class="col-12 col-lg-8 text-center mx-auto mb-4">
+                <p class="small fw-bold text-uppercase text-primary mb-2">Lo que nos inspira</p>
+                <h2 id="purpose-title" class="h2 text-primary mb-2">Nuestro propósito</h2>
+            </header>
+            <div class="row g-3">
+                <article class="col-12 col-md-4">
+                    <div class="card card card-values h-100 border-secondary-subtle rounded-0 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="h4 text-primary">Misión</h3>
+                            <p class="mb-0">Preparar productos de pastelería ricos y de calidad, ofreciendo una atención cercana y ayudando a crear momentos memorables.</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-12 col-md-4">
+                    <div class="card card card-values h-100 border-secondary-subtle rounded-0 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="h4 text-primary">Visión</h3>
+                            <p class="mb-0">Ser una pastelería reconocida por la variedad de sus sabores, el cuidado de sus preparaciones y la confianza de sus clientes.</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-12 col-md-4">
+                    <div class="card card-values h-100 border-secondary-subtle rounded-0 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="h4 text-primary">Valores</h3>
+                            <p class="mb-0">Trabajamos con dedicación, creatividad y compromiso, cuidando cada detalle desde la preparación hasta la entrega.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="mt-4 pt-5 border-top" aria-labelledby="developers-title">
+            <header class="col-12 col-lg-8 text-center mx-auto mb-4">
+                <p class="small fw-bold text-uppercase text-primary mb-2">Detrás del sitio</p>
+                <h2 id="developers-title" class="h2 text-primary mb-2">Equipo de desarrollo</h2>
                 <p>Este sitio fue construido por un equipo que trabajó en conjunto para presentar la pastelería y facilitar la navegación por sus productos.</p>
-            </div>
-            <div class="developers-grid">
-                <article class="developer-card">
-                    <span class="developer-mark" aria-hidden="true">01</span>
-                    <h3>Estructura y contenido</h3>
-                    <p>Organización de las páginas y presentación de la información del sitio.</p>
+            </header>
+            <div class="row g-3">
+                <article class="col-12 col-md-4">
+                    <div class="card card card-values h-100 border-secondary-subtle rounded-0 shadow-sm">
+                        <div class="card-body">
+                            <span class="badge rounded-circle bg-secondary-subtle text-primary fs-6 p-3 mb-3" aria-hidden="true">01</span>
+                            <h3 class="h4 text-primary">Estructura y contenido</h3>
+                            <p class="mb-0">Organización de las páginas y presentación de la información del sitio.</p>
+                        </div>
+                    </div>
                 </article>
-                <article class="developer-card">
-                    <span class="developer-mark" aria-hidden="true">02</span>
-                    <h3>Diseño e interfaz</h3>
-                    <p>Estilos visuales, adaptación a distintos tamaños de pantalla y experiencia de navegación.</p>
+                <article class="col-12 col-md-4">
+                    <div class="card card card-values h-100 border-secondary-subtle rounded-0 shadow-sm">
+                        <div class="card-body">
+                            <span class="badge rounded-circle bg-secondary-subtle text-primary fs-6 p-3 mb-3" aria-hidden="true">02</span>
+                            <h3 class="h4 text-primary">Diseño e interfaz</h3>
+                            <p class="mb-0">Estilos visuales, adaptación a distintos tamaños de pantalla y experiencia de navegación.</p>
+                        </div>
+                    </div>
                 </article>
-                <article class="developer-card">
-                    <span class="developer-mark" aria-hidden="true">03</span>
-                    <h3>Programación</h3>
-                    <p>Interacciones del catálogo, carrito, formularios y administración de datos del proyecto.</p>
+                <article class="col-12 col-md-4">
+                    <div class="card card card-values h-100 border-secondary-subtle rounded-0 shadow-sm">
+                        <div class="card-body">
+                            <span class="badge rounded-circle bg-secondary-subtle text-primary fs-6 p-3 mb-3" aria-hidden="true">03</span>
+                            <h3 class="h4 text-primary">Programación</h3>
+                            <p class="mb-0">Interacciones del catálogo, carrito, formularios y administración de datos del proyecto.</p>
+                        </div>
+                    </div>
                 </article>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <div class="footer-left">
-                <div class="footer-brand"><span>Pastelería 1000 Sabores</span></div>
-                <div class="payment-icons" aria-label="Medios de pago">
-                    <span class="payment-icon"><span class="visa-logo">VISA</span></span>
-                    <span class="payment-icon"><span class="cash-icon" aria-hidden="true">💵</span> EFECTIVO</span>
+    <footer class="border-top bg-light mt-4 py-4">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-start gap-4">
+            <div>
+                <div class="fw-semibold mb-3">Pastelería 1000 Sabores</div>
+                <div class="d-flex gap-2" aria-label="Medios de pago">
+                    <span class="border rounded px-2 py-1 small"><span class="fw-bold fst-italic text-primary">VISA</span></span>
+                    <span class="border rounded px-2 py-1 small"><span aria-hidden="true">💵</span> EFECTIVO</span>
                 </div>
             </div>
-            <div class="suscribe">
-                <p>¡Mantente en contacto! Únete a nuestro boletín</p>
-                <form action="/suscribirse" method="POST">
-                    <input type="email" name="email" placeholder="Ingresa tu correo electrónico" autocomplete="email" required>
-                    <button type="submit">Suscribirse</button>
+            <div class="footer-newsletter">
+                <p class="fw-semibold mb-2">¡Mantente en contacto! Únete a nuestro boletín</p>
+                <form class="d-flex gap-2" action="/suscribirse" method="POST">
+                    <input class="form-control form-control-sm" type="email" name="email" placeholder="Ingresa tu correo electrónico" autocomplete="email" required>
+                    <button class="btn btn-primary btn-sm flex-shrink-0" type="submit">Suscribirse</button>
                 </form>
             </div>
         </div>

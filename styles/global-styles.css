@@ -2,16 +2,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Pacifico&display=swap");
 
 :root {
-  /* Colores */
-  --crema-pastel: #fff5e1; /* Fondo principal */
-  --rosa-suave: #ffc0cb; /* Acento: botones y elementos interactivos */
-  --chocolate: #8b4513; /* Acento: botones y elementos interactivos */
-  --marron-oscuro: #5d4037; /* Texto principal */
-  --gris-claro: #b0bec5; /* Texto secundario */
+  --bs-primary: var(--chocolate);
+  --bs-primary-rgb: 117, 69, 44;
+  --bs-body-color: var(--marron-oscuro);
+  --bs-body-bg: var(--fondo-principal);
+  --bs-link-color: var(--marron-oscuro);
+  --bs-link-color-rgb: 69, 53, 45;
+  --bs-link-hover-color: var(--chocolate);
+  --bs-link-hover-color-rgb: 117, 69, 44;
+  --bs-nav-link-color: var(--marron-oscuro);
+  --bs-nav-link-hover-color: var(--chocolate);
+  --bs-navbar-brand-color: var(--chocolate);
+  --bs-navbar-brand-hover-color: var(--chocolate);
+  --bs-secondary-bg-subtle: var(--fondo-superficie-secundaria);
+
+  /* Paleta de pastelería: crema, cacao y caramelo */
+  --fondo-principal: #f3eee6;
+  --fondo-superficie: #fff;
+  --fondo-superficie-secundaria: #e8dfd3;
+  --fondo-superficie-acento: #f7f2ea;
+  --fondo-pie: #e2d5c6;
+  --crema-pastel: var(--fondo-principal);
+  --rosa-suave: #ead6cd;
+  --chocolate: #75452c;
+  --marron-oscuro: #45352d;
+  --gris-claro: #71665e;
+  --borde-suave: #d5c8b8;
 
   /* Superficies y estados compartidos */
   --blanco: #fff;
-  --crema-encabezado-formulario: #e6d3b0;
+  --crema-encabezado-formulario: var(--fondo-superficie-secundaria);
   --color-error: #b42318;
   --color-exito: #26733b;
   --sombra-suave: 0 8px 24px rgba(93, 64, 55, 0.06);
@@ -90,13 +110,86 @@ h6 {
 .btn-primary {
   background-color: var(--chocolate);
   border-color: var(--chocolate);
-  color: var(--blanco);
+  color: var(--blanco) !important;
 }
 
 .btn-secondary {
   background-color: var(--rosa-suave);
   border-color: var(--rosa-suave);
   color: var(--marron-oscuro);
+}
+
+/* Ajusta los colores utilitarios de Bootstrap a la identidad de la tienda. */
+.bg-white {
+  background-color: var(--fondo-principal) !important;
+}
+
+.bg-light {
+  background-color: var(--fondo-superficie-secundaria) !important;
+}
+
+footer.bg-light {
+  background-color: var(--fondo-pie) !important;
+  border-color: var(--borde-suave) !important;
+}
+
+.bg-secondary-subtle {
+  background-color: var(--fondo-superficie-secundaria) !important;
+}
+
+.text-dark {
+  color: var(--marron-oscuro) !important;
+}
+
+.border-dark {
+  border-color: var(--marron-oscuro) !important;
+}
+
+.border-secondary-subtle {
+  border-color: var(--borde-suave) !important;
+}
+
+.btn-light {
+  --bs-btn-color: var(--marron-oscuro);
+  --bs-btn-bg: var(--fondo-superficie-acento);
+  --bs-btn-border-color: var(--borde-suave);
+  --bs-btn-hover-color: var(--marron-oscuro);
+  --bs-btn-hover-bg: var(--fondo-superficie-secundaria);
+  --bs-btn-hover-border-color: var(--borde-suave);
+  --bs-btn-active-color: var(--marron-oscuro);
+  --bs-btn-active-bg: var(--fondo-superficie-secundaria);
+  --bs-btn-active-border-color: var(--borde-suave);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--chocolate);
+  --bs-btn-border-color: var(--chocolate);
+  --bs-btn-hover-color: var(--blanco);
+  --bs-btn-hover-bg: var(--chocolate);
+  --bs-btn-hover-border-color: var(--chocolate);
+  --bs-btn-active-color: var(--blanco);
+  --bs-btn-active-bg: var(--chocolate);
+  --bs-btn-active-border-color: var(--chocolate);
+}
+.card-values {
+  background-color: var(--fondo-superficie-secundaria);
+  border-color: var(--chocolate) !important;
+}
+
+.card-values .card-body {
+  color: var(--marron-oscuro);
+}
+
+.card-values h3 {
+  color: var(--chocolate);
+}
+.cart-back-to-products{
+  background-color: var(--fondo-superficie-acento);
+}
+
+.cart-product-item {
+  border-left: 4px solid var(--chocolate) !important;
+  background-color: var(--fondo-superficie-secundaria)!important;
 }
 
 @media (prefers-reduced-motion: reduce) {

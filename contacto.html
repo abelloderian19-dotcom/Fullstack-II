@@ -5,65 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ponte en contacto con Pastelería 1000 Sabores.">
     <title>Contacto | Pastelería 1000 Sabores</title>
-    <link rel="stylesheet" href="./styles/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/global-styles.css">
 </head>
-<body>
-    <header class="site-header">
+<body class="bg-white text-dark">
+    <header class="bg-secondary-subtle border-bottom">
         <div class="container">
-            <nav id="navbar" aria-label="Navegación principal">
-                <a class="logo" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
-                    <img class="logo-image" src="./img/logo-tienda.svg" alt="">
-                    <span class="logo-text">Pastelería 1000 Sabores</span>
+            <nav class="d-flex flex-wrap align-items-center justify-content-between gap-3 py-3" aria-label="Navegación principal">
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-semibold text-dark text-decoration-none" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
+                    <img src="./img/logo-tienda.svg" alt="" width="42" height="42">
+                    <span>Pastelería 1000 Sabores</span>
                 </a>
-                <ul class="links">
-                    <li><a class="link" href="./index.html">Inicio</a></li>
-                    <li><a class="link" href="./productos.html">Productos</a></li>
-                    <li><a class="link" href="./nosotros.html">Nosotros</a></li>
-                    <li><a class="link" href="./blogs.html">Blogs</a></li>
-                    <li><a class="link active" href="./contacto.html" aria-current="page">Contacto</a></li>
+                <ul class="nav flex-grow-1 justify-content-center gap-1">
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./productos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./blogs.html">Blogs</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2 active" href="./contacto.html" aria-current="page">Contacto</a></li>
                 </ul>
-                <a class="carrito" href="./carrito.html" aria-label="Carrito de compras">
-                    <span class="carrito-icon" aria-hidden="true">🛒</span>
+                <a class="d-flex align-items-center gap-2 fw-semibold text-dark text-decoration-none" href="./carrito.html" aria-label="Carrito de compras">
+                    <span aria-hidden="true">🛒</span>
                     <span>Carrito (<span id="cart-count" aria-live="polite">0</span>)</span>
                 </a>
             </nav>
         </div>
     </header>
 
-    <main class="container contact-page">
-        <section class="contact-panel" aria-labelledby="contact-title">
-            <div class="contact-brand-mark" aria-hidden="true">
-                <img src="./img/logo-tienda.svg" alt="">
-            </div>
-            <h1 id="contact-title">Pastelería 1000 Sabores</h1>
-            <p class="contact-intro">¿Tienes una consulta o quieres cotizar un pedido? Escríbenos.</p>
+    <main class="container d-flex justify-content-center py-3">
+        <section class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4" aria-labelledby="contact-title">
+            <img class="d-block mx-auto mb-4 border border-dark object-fit-contain" src="./img/logo-tienda.svg" alt="Logo de Pastelería 1000 Sabores" width="145" height="76">
+            <p class="h5 text-center text-dark mb-4" id="contact-title">Pastelería 1000 Sabores</p>
 
-            <form class="contact-form" id="contact-form" novalidate>
-                <h2>Formulario de contacto</h2>
-                <div class="contact-form-fields">
-                    <div class="contact-field">
-                        <label for="contact-name">Nombre completo</label>
-                        <input id="contact-name" name="nombre" type="text" autocomplete="name" minlength="3" maxlength="80" required>
-                        <small class="field-error" id="name-error"></small>
+            <form class="card bg-light border-dark rounded-0 p-0" id="contact-form" novalidate>
+                <div class="h6 fw-bold text-dark text-uppercase text-center bg-secondary-subtle px-3 py-3 mb-0" role="heading" aria-level="2">Formulario de contactos</div>
+                <div class="d-grid gap-3 p-3 p-md-4">
+                    <div class="d-grid gap-2">
+                        <label class="form-label small text-uppercase mb-0" for="contact-name">Nombre completo</label>
+                        <input class="form-control form-control-sm rounded-0 border-dark" id="contact-name" name="nombre" type="text" autocomplete="name" minlength="3" maxlength="80" required>
+                        <small class="text-danger" id="name-error"></small>
                     </div>
-                    <div class="contact-field">
-                        <label for="contact-email">Correo electrónico</label>
-                        <input id="contact-email" name="correo" type="email" autocomplete="email" maxlength="120" required>
-                        <small class="field-error" id="email-error"></small>
+                    <div class="d-grid gap-2">
+                        <label class="form-label small text-uppercase mb-0" for="contact-email">Correo</label>
+                        <input class="form-control form-control-sm rounded-0 border-dark" id="contact-email" name="correo" type="email" autocomplete="email" maxlength="120" required>
+                        <small class="text-danger" id="email-error"></small>
                     </div>
-                    <div class="contact-field">
-                        <label for="contact-subject">Asunto</label>
-                        <input id="contact-subject" name="asunto" type="text" maxlength="100" required>
-                        <small class="field-error" id="subject-error"></small>
+                    <div class="d-grid gap-2">
+                        <label class="form-label small text-uppercase mb-0" for="contact-message">Contenido</label>
+                        <textarea class="form-control form-control-sm rounded-0 border-dark" id="contact-message" name="mensaje" rows="3" minlength="10" maxlength="1000" required></textarea>
+                        <small class="text-danger" id="message-error"></small>
                     </div>
-                    <div class="contact-field">
-                        <label for="contact-message">Mensaje</label>
-                        <textarea id="contact-message" name="mensaje" rows="4" minlength="10" maxlength="1000" required></textarea>
-                        <small class="field-error" id="message-error"></small>
-                    </div>
-                    <p class="contact-feedback" id="contact-feedback" role="status" aria-live="polite"></p>
-                    <button class="contact-submit" type="submit">Enviar mensaje</button>
+                    <p class="small text-danger text-center mb-0" id="contact-feedback" role="status" aria-live="polite"></p>
+                    <button class="btn btn-light border-dark rounded-0 shadow-sm text-uppercase mx-auto px-4 mt-2" type="submit">Enviar mensaje</button>
                 </div>
             </form>
         </section>

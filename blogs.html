@@ -5,58 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Noticias, historias y novedades de Pastelería 1000 Sabores.">
     <title>Blogs | Pastelería 1000 Sabores</title>
-    <link rel="stylesheet" href="./styles/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/global-styles.css">
 </head>
-<body>
-    <header class="site-header">
+<body class="bg-white text-dark">
+    <header class="bg-secondary-subtle border-bottom">
         <div class="container">
-            <nav id="navbar" aria-label="Navegación principal">
-                <a class="logo" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
-                    <img class="logo-image" src="./img/logo-tienda.svg" alt="">
-                    <span class="logo-text">Pastelería 1000 Sabores</span>
+            <nav class="d-flex flex-wrap align-items-center justify-content-between gap-3 py-3" aria-label="Navegación principal">
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-semibold text-dark text-decoration-none" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
+                    <img src="./img/logo-tienda.svg" alt="" width="42" height="42">
+                    <span>Pastelería 1000 Sabores</span>
                 </a>
-                <ul class="links">
-                    <li><a class="link" href="./index.html">Inicio</a></li>
-                    <li><a class="link" href="./productos.html">Productos</a></li>
-                    <li><a class="link" href="./nosotros.html">Nosotros</a></li>
-                    <li><a class="link active" href="./blogs.html" aria-current="page">Blogs</a></li>
-                    <li><a class="link" href="./contacto.html">Contacto</a></li>
+                <ul class="nav flex-grow-1 justify-content-center gap-1">
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./productos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2 active" href="./blogs.html" aria-current="page">Blogs</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./contacto.html">Contacto</a></li>
                 </ul>
-                <a class="carrito" href="./carrito.html" aria-label="Carrito de compras">
-                    <span class="carrito-icon" aria-hidden="true">🛒</span>
+                <a class="d-flex align-items-center gap-2 fw-semibold text-dark text-decoration-none" href="./carrito.html" aria-label="Carrito de compras">
+                    <span aria-hidden="true">🛒</span>
                     <span>Carrito (<span id="cart-count" aria-live="polite">0</span>)</span>
                 </a>
             </nav>
         </div>
     </header>
 
-    <main class="container blogs-page">
-        <header class="blogs-heading">
-            <p class="blogs-eyebrow">Historias recién horneadas</p>
-            <h1>Noticias importantes</h1>
-            <p>Conoce las novedades, ideas y momentos especiales de nuestra pastelería.</p>
+    <main class="container py-4">
+        <header class="mb-3">
+            <div class="h5 fw-bold text-center text-uppercase mb-3" role="heading" aria-level="1">Noticias importantes</div>
         </header>
 
-        <section class="blogs-list" aria-label="Noticias y artículos">
-            <article class="blog-card">
-                <div class="blog-copy">
-                    <p class="blog-category">Nuestra historia</p>
-                    <h2>Un caso curioso: el origen de nuestros sabores</h2>
+        <section class="d-grid gap-4" aria-label="Noticias y artículos">
+            <article class="row align-items-stretch g-0 bg-secondary-subtle">
+                <div class="col-12 col-md-5 order-2 order-md-1 d-flex flex-column p-4 p-lg-5">
+                    <div class="h4 text-uppercase mb-3" role="heading" aria-level="2">Caso curioso #1</div>
                     <p>Descubre cómo una receta familiar y algunos ingredientes inesperados dieron vida a uno de nuestros pasteles favoritos.</p>
-                    <a class="blog-button" href="./detalle-blog1.html">Ver caso <span aria-hidden="true">→</span></a>
+                    <a class="btn btn-light border-dark rounded-0 shadow-sm text-uppercase mt-auto align-self-start" href="./detalle-blog1.html">Ver caso</a>
                 </div>
-                <img class="blog-image" src="./img/products/imagen_inicio.jpg" alt="Pastel preparado en nuestra pastelería">
+                <div class="col-12 col-md-7 order-1 order-md-2 p-3">
+                    <div class="ratio ratio-16x9 border border-dark">
+                        <img class="object-fit-cover" src="./img/products/imagen_inicio.jpg" alt="Pastel preparado en nuestra pastelería">
+                    </div>
+                </div>
             </article>
 
-            <article class="blog-card">
-                <div class="blog-copy">
-                    <p class="blog-category">Consejos dulces</p>
-                    <h2>Un caso curioso: cómo conservar un pastel</h2>
+            <article class="row align-items-stretch g-0 bg-secondary-subtle">
+                <div class="col-12 col-md-5 order-2 order-md-1 d-flex flex-column p-4 p-lg-5">
+                    <div class="h4 text-uppercase mb-3" role="heading" aria-level="2">Caso curioso #2</div>
                     <p>Te contamos algunos consejos sencillos para conservar la frescura y disfrutar cada porción como recién preparada.</p>
-                    <a class="blog-button" href="./detalle-blog2.html">Ver caso <span aria-hidden="true">→</span></a>
+                    <a class="btn btn-light border-dark rounded-0 shadow-sm text-uppercase mt-auto align-self-start" href="./detalle-blog2.html">Ver caso</a>
                 </div>
-                <img class="blog-image" src="./img/products/torta-frutas.jpg" alt="Detalle de un pastel artesanal">
+                <div class="col-12 col-md-7 order-1 order-md-2 p-3">
+                    <div class="ratio ratio-16x9 border border-dark">
+                        <img class="object-fit-cover" src="./img/products/torta-frutas.jpg" alt="Detalle de un pastel artesanal">
+                    </div>
+                </div>
             </article>
         </section>
     </main>

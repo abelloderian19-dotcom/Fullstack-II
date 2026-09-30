@@ -3,7 +3,6 @@ const cartCount = document.getElementById("cart-count");
 const cartItems = document.getElementById("cart-items");
 const cartTotal = document.getElementById("cart-total");
 const cartEmpty = document.getElementById("cart-empty");
-const cartBackToProducts = document.getElementById("cart-back-to-products");
 const cartLink = document.querySelector(".carrito");
 const clearCartButton = document.getElementById("clear-cart");
 
@@ -40,37 +39,43 @@ function renderizarCarrito() {
         if (!cartItems) return;
 
         const fila = document.createElement("li");
-        fila.className = "cart-item";
+        fila.className = "cart-product-item d-flex flex-wrap align-items-center gap-3 p-3 bg-light border border-secondary-subtle rounded-2 shadow-sm";
 
         const imagen = document.createElement("img");
-        imagen.className = "cart-item-image";
+        imagen.className = "rounded border object-fit-cover";
         imagen.src = producto.imagen || "./img/products/imagen_inicio.jpg";
         imagen.alt = producto.nombre;
         imagen.loading = "lazy";
+        imagen.width = 76;
+        imagen.height = 70;
 
         const detalle = document.createElement("div");
-        detalle.className = "cart-item-details";
+        detalle.className = "flex-grow-1";
         const nombre = document.createElement("strong");
         nombre.textContent = producto.nombre;
         const descripcion = document.createElement("small");
+        descripcion.className = "d-block text-secondary small mt-1";
         descripcion.textContent = producto.descripcion;
         detalle.append(nombre, descripcion);
 
         const precio = document.createElement("strong");
-        precio.className = "cart-item-price";
+        precio.className = "text-start text-md-end text-nowrap";
         precio.textContent = `$${producto.precio.toLocaleString("es-CL")}`;
 
         const cantidad = document.createElement("div");
-        cantidad.className = "cart-quantity";
+        cantidad.className = "d-flex align-items-center gap-2";
         const restar = document.createElement("button");
+        restar.className = "btn btn-outline-secondary btn-sm";
         restar.type = "button";
         restar.textContent = "−";
         restar.setAttribute("aria-label", `Reducir cantidad de ${producto.nombre}`);
         restar.disabled = item.cantidad <= 1;
         restar.addEventListener("click", () => cambiarCantidad(item.codigo, item.cantidad - 1));
         const valorCantidad = document.createElement("span");
+        valorCantidad.className = "px-1";
         valorCantidad.textContent = item.cantidad;
         const sumar = document.createElement("button");
+        sumar.className = "btn btn-outline-secondary btn-sm";
         sumar.type = "button";
         sumar.textContent = "+";
         sumar.setAttribute("aria-label", `Aumentar cantidad de ${producto.nombre}`);
@@ -79,7 +84,7 @@ function renderizarCarrito() {
         cantidad.append(restar, valorCantidad, sumar);
 
         const quitar = document.createElement("button");
-        quitar.className = "remove-from-cart";
+        quitar.className = "btn btn-outline-primary btn-sm";
         quitar.type = "button";
         quitar.textContent = "Quitar";
         quitar.setAttribute("aria-label", `Quitar ${producto.nombre} del carrito`);
@@ -93,7 +98,6 @@ function renderizarCarrito() {
     if (cartLink) cartLink.setAttribute("aria-label", `Carrito de compras, ${cantidadTotal} productos`);
     if (cartTotal) cartTotal.textContent = `$${total.toLocaleString("es-CL")}`;
     if (cartEmpty) cartEmpty.hidden = carrito.length > 0;
-    if (cartBackToProducts) cartBackToProducts.hidden = carrito.length > 0;
     if (clearCartButton) clearCartButton.disabled = carrito.length === 0;
 }
 

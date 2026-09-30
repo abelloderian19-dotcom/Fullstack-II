@@ -19,13 +19,6 @@ const camposContacto = [
         },
     },
     {
-        input: document.getElementById("contact-subject"),
-        error: document.getElementById("subject-error"),
-        validar(valor) {
-            return esRequerido(valor) || largoMaximo(valor.trim(), 100);
-        },
-    },
-    {
         input: document.getElementById("contact-message"),
         error: document.getElementById("message-error"),
         validar(valor) {
@@ -39,12 +32,16 @@ camposContacto.forEach(({ input }) => {
         input.removeAttribute("aria-invalid");
         document.getElementById(`${input.id.replace("contact-", "")}-error`).textContent = "";
         mensajeContacto.textContent = "";
+        mensajeContacto.classList.remove("text-success");
+        mensajeContacto.classList.add("text-danger");
     });
 });
 
 formularioContacto.addEventListener("submit", (evento) => {
     evento.preventDefault();
     mensajeContacto.textContent = "";
+    mensajeContacto.classList.remove("text-success");
+    mensajeContacto.classList.add("text-danger");
 
     let primerCampoInvalido = null;
     camposContacto.forEach(({ input, error, validar }) => {
@@ -62,7 +59,6 @@ formularioContacto.addEventListener("submit", (evento) => {
     const nuevoMensaje = {
         nombre: document.getElementById("contact-name").value.trim(),
         correo: document.getElementById("contact-email").value.trim(),
-        asunto: document.getElementById("contact-subject").value.trim(),
         mensaje: document.getElementById("contact-message").value.trim(),
         fecha: new Date().toISOString(),
     };
@@ -74,7 +70,11 @@ formularioContacto.addEventListener("submit", (evento) => {
         localStorage.setItem(CLAVE_MENSAJES_CONTACTO, JSON.stringify(listaMensajes));
         formularioContacto.reset();
         mensajeContacto.textContent = "¡Gracias! Tu mensaje se envio correctamente.";
+        mensajeContacto.classList.remove("text-danger");
+        mensajeContacto.classList.add("text-success");
     } catch {
         mensajeContacto.textContent = "No se pudo enviar el mensaje en este navegador. Inténtalo nuevamente mas tarde.";
+        mensajeContacto.classList.remove("text-success");
+        mensajeContacto.classList.add("text-danger");
     }
 });

@@ -5,52 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Inicia sesión en Pastelería 1000 Sabores.">
     <title>Iniciar sesión | Pastelería 1000 Sabores</title>
-    <link rel="stylesheet" href="./styles/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/global-styles.css">
 </head>
-<body>
-    <header class="site-header">
+<body class="text-dark">
+    <header class="bg-secondary-subtle border-bottom">
         <div class="container">
-            <nav id="navbar" aria-label="Navegación principal">
-                <a class="logo" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
-                    <img class="logo-image" src="./img/logo-tienda.svg" alt="">
-                    <span class="logo-text">Pastelería 1000 Sabores</span>
+            <nav class="d-flex flex-wrap align-items-center justify-content-between gap-3 py-3" aria-label="Navegación principal">
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-semibold text-dark text-decoration-none" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
+                    <img src="./img/logo-tienda.svg" alt="" width="42" height="42">
+                    <span>Pastelería 1000 Sabores</span>
                 </a>
-                <ul class="links">
-                    <li><a class="link" href="./index.html">Inicio</a></li>
-                    <li><a class="link" href="./productos.html">Productos</a></li>
-                    <li><a class="link" href="./nosotros.html">Nosotros</a></li>
-                    <li><a class="link" href="./blogs.html">Blogs</a></li>
-                    <li><a class="link" href="./contacto.html">Contacto</a></li>
+                <ul class="nav flex-grow-1 justify-content-center gap-1">
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./productos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./blogs.html">Blogs</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./contacto.html">Contacto</a></li>
                 </ul>
-                <a class="carrito" href="./carrito.html" aria-label="Carrito de compras">
-                    <span class="carrito-icon" aria-hidden="true">🛒</span>
+                <a class="d-flex align-items-center gap-2 fw-semibold text-dark text-decoration-none" href="./carrito.html" aria-label="Carrito de compras">
+                    <span aria-hidden="true">🛒</span>
                     <span>Carrito (<span id="cart-count" aria-live="polite">0</span>)</span>
                 </a>
             </nav>
         </div>
     </header>
 
-    <main class="container login-page">
-        <section class="login-panel" aria-labelledby="login-title">
-            <div class="login-brand-mark">
-                <img src="./img/logo-tienda.svg" alt="Logo de Pastelería 1000 Sabores">
-            </div>
-            <h1 class="login-brand-name">Pastelería 1000 Sabores</h1>
+    <main class="container d-flex justify-content-center py-3">
+        <section class="col-12 col-sm-10 col-md-8 col-lg-7" aria-labelledby="login-title">
+            <img class="d-block mx-auto mb-4 border border-dark object-fit-contain" src="./img/logo-tienda.svg" alt="Logo de Pastelería 1000 Sabores" width="145" height="76">
+            <p class="h4 text-center text-dark mb-4">Pastelería 1000 Sabores</p>
 
-            <form class="login-form" id="login-form" novalidate>
-                <h2 id="login-title">Inicio de sesión</h2>
-                <div class="login-fields">
-                    <div class="login-field">
-                        <label for="login-email">Correo</label>
-                        <input id="login-email" name="correo" type="email" autocomplete="username" aria-describedby="login-feedback" required>
+            <form class="card bg-light border-dark rounded-0 p-0" id="login-form" novalidate>
+                <div class="h6 fw-bold text-dark bg-secondary-subtle px-3 py-3 mb-0" id="login-title" role="heading" aria-level="2">Inicio de sesión</div>
+                <div class="d-grid gap-4 p-3 p-md-4">
+                    <div class="d-grid gap-2">
+                        <label class="form-label small text-uppercase mb-0" for="login-email">Correo</label>
+                        <input class="form-control form-control-sm rounded-0 border-dark" id="login-email" name="correo" type="email" autocomplete="username" aria-describedby="login-feedback" required>
                     </div>
-                    <div class="login-field">
-                        <label for="login-password">Contraseña</label>
-                        <input id="login-password" name="password" type="password" autocomplete="current-password" aria-describedby="login-feedback" required>
+                    <div class="d-grid gap-2">
+                        <label class="form-label small text-uppercase mb-0" for="login-password">Contraseña</label>
+                        <input class="form-control form-control-sm rounded-0 border-dark" id="login-password" name="password" type="password" autocomplete="current-password" aria-describedby="login-feedback" required>
                     </div>
-                    <p class="login-feedback" id="login-feedback" role="status" aria-live="polite"></p>
-                    <button class="login-submit" type="submit">Iniciar sesión</button>
+                    <p class="small text-danger text-center mb-0" id="login-feedback" role="status" aria-live="polite"></p>
+                    <div class="d-flex justify-content-center">
+                       <button class="btn btn-primary"  type="submit">Iniciar sesión</button>
+                    </div>
                 </div>
             </form>
         </section>

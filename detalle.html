@@ -3,62 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Detalle del producto de Pastelería 1000 Sabores.">
+    <meta name="description" content="Detalle de producto de Pastelería 1000 Sabores.">
     <title>Detalle del producto | Pastelería 1000 Sabores</title>
-    <link rel="stylesheet" href="./styles/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/global-styles.css">
-    <link rel="stylesheet" href="./styles/detalle.css">
 </head>
-<body>
-    <header class="site-header">
+<body class="bg-white text-dark">
+    <header class="bg-secondary-subtle border-bottom border-dark">
         <div class="container">
-            <nav id="navbar" aria-label="Navegación principal">
-                <a class="logo" href="./index.html"><img class="logo-image" src="./img/logo-tienda.svg" alt=""><span class="logo-text">Pastelería 1000 Sabores</span></a>
-                <ul class="links">
-                    <li><a class="link" href="./index.html">Inicio</a></li>
-                    <li><a class="link" href="./productos.html">Productos</a></li>
-                    <li><a class="link" href="./nosotros.html">Nosotros</a></li>
-                    <li><a class="link" href="./index.html#blog">Blogs</a></li>
-                    <li><a class="link" href="./contacto.html">Contacto</a></li>
+            <nav class="d-flex flex-wrap align-items-center gap-3 py-3" aria-label="Navegación principal">
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-semibold text-dark text-decoration-none" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
+                    <img src="./img/logo-tienda.svg" alt="" width="36" height="36">
+                    <span>Pastelería 1000 Sabores</span>
+                </a>
+                <ul class="nav flex-grow-1 justify-content-center">
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./productos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./blogs.html">Blogs</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./contacto.html">Contacto</a></li>
                 </ul>
-                <a class="carrito" href="./carrito.html" aria-label="Carrito de compras">
-                    <span class="carrito-icon" aria-hidden="true">🛒</span>
-                    <span>Carrito (<span id="cart-count" aria-live="polite">0</span>)</span>
+                <a class="d-flex align-items-center gap-2 text-dark text-decoration-none" href="./carrito.html" aria-label="Carrito de compras">
+                    <span class="fs-5" aria-hidden="true">🛒</span>
+                    <span>Cart (<span id="cart-count" aria-live="polite">0</span>)</span>
                 </a>
             </nav>
         </div>
     </header>
 
-    <main class="container detail-page">
-        <nav class="breadcrumbs" aria-label="Ruta de navegación">
-            <a href="./index.html">Inicio</a><span aria-hidden="true">›</span>
-            <a href="./productos.html">Productos</a><span aria-hidden="true">›</span>
-            <span id="detail-breadcrumb">Detalle</span>
+    <main class="container py-4 py-lg-5">
+        <nav class="small mb-3" aria-label="Ruta de navegación">
+            <a href="./index.html">Inicio</a><span class="px-1" aria-hidden="true">›</span>
+            <a href="./productos.html">Productos</a><span class="px-1" aria-hidden="true">›</span>
+            <span id="detail-breadcrumb" aria-current="page">Detalle</span>
         </nav>
-        <p id="detail-error" class="detail-error" hidden>No encontramos ese producto. <a href="./productos.html">Volver a productos</a></p>
-        <section id="product-detail" class="product-detail" aria-live="polite">
-            <div class="detail-gallery">
-                <img id="detail-image" class="detail-image" alt="">
-            </div>
-            <div class="detail-info">
-                <p id="detail-category" class="detail-category"></p>
-                <div class="detail-heading">
-                    <h1 id="detail-name"></h1>
-                    <strong id="detail-price"></strong>
+        <a id="cart-back-to-products" class="btn btn-primary mb-3" href="./productos.html">← Regresar a productos</a>
+        <p id="detail-error" class="alert alert-warning" hidden>No encontramos ese producto. <a href="./productos.html" class="alert-link">Volver a productos</a></p>
+
+        <section id="product-detail" class="row g-4 g-lg-5" aria-live="polite">
+            <div class="col-12 col-lg-8">
+                <div class="ratio ratio-4x3 border border-dark rounded-0 overflow-hidden">
+                    <img id="detail-image" class="w-100 h-100 object-fit-cover" alt="">
                 </div>
-                <p id="detail-description" class="detail-description"></p>
-                <form id="add-product-form" class="detail-form" novalidate>
-                    <label for="detail-quantity">Cantidad</label>
-                    <input id="detail-quantity" name="cantidad" type="number" min="1" max="99" step="1" value="1" required inputmode="numeric">
-                    <small id="quantity-error" class="field-error" aria-live="polite"></small>
-                    <button class="detail-add-button" type="submit">Añadir al carrito</button>
-                    <p id="added-message" class="added-message" role="status" aria-live="polite"></p>
+                <div id="detail-thumbnails" class="d-flex gap-2 border border-top-0 border-dark p-2" aria-label="Imágenes del producto"></div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="d-flex justify-content-between align-items-start gap-3 border-bottom pb-3 mb-3">
+                    <h1 id="detail-name" class="h3 mb-0"></h1>
+                    <strong id="detail-price" class="fs-5 text-nowrap"></strong>
+                </div>
+                <p id="detail-description" class="small border-bottom pb-4 mb-4"></p>
+                <form id="add-product-form" class="border-bottom pb-4" novalidate>
+                    <div class="d-flex align-items-center justify-content-between gap-3 mb-3">
+                        <label for="detail-quantity" class="form-label small mb-0">Cantidad</label>
+                        <input class="form-control form-control-sm w-auto" id="detail-quantity" name="cantidad" type="number" min="1" max="99" step="1" value="1" required inputmode="numeric" aria-describedby="quantity-error">
+                    </div>
+                    <small id="quantity-error" class="d-block text-danger mb-2" aria-live="polite"></small>
+                    <button class="btn btn-primary w-100" type="submit">Añadir al carrito</button>
+                    <p id="added-message" class="small text-success mt-2 mb-0" role="status" aria-live="polite"></p>
                 </form>
             </div>
         </section>
-        <section class="related-products" aria-labelledby="related-title">
-            <h2 id="related-title">Productos relacionados</h2>
-            <div id="related-grid" class="products-grid"></div>
+
+        <section class="mt-5 pt-4 border-top" aria-labelledby="related-title">
+            <h2 id="related-title" class="h6 mb-3">Productos Relacionados</h2>
+            <div id="related-grid" class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3"></div>
         </section>
     </main>
 

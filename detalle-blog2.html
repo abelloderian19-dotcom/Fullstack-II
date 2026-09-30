@@ -5,66 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Consejos sencillos para conservar la frescura de tus pasteles y disfrutar cada porción.">
     <title>Cómo conservar un pastel | Pastelería 1000 Sabores</title>
-    <link rel="stylesheet" href="./styles/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/global-styles.css">
-    <link rel="stylesheet" href="./styles/detalle-blog.css">
 </head>
-<body>
-    <header class="site-header">
+<body class="bg-white text-dark">
+    <header class="bg-secondary-subtle border-bottom border-dark">
         <div class="container">
-            <nav id="navbar" aria-label="Navegación principal">
-                <a class="logo" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
-                    <img class="logo-image" src="./img/logo-tienda.svg" alt="">
-                    <span class="logo-text">Pastelería 1000 Sabores</span>
+            <nav class="d-flex flex-wrap align-items-center gap-3 py-3" aria-label="Navegación principal">
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-semibold text-dark text-decoration-none order-1" href="./index.html" aria-label="Pastelería 1000 Sabores, inicio">
+                    <img src="./img/logo-tienda.svg" alt="" width="36" height="36">
+                    <span>Pastelería 1000 Sabores</span>
                 </a>
-                <ul class="links">
-                    <li><a class="link" href="./index.html">Inicio</a></li>
-                    <li><a class="link" href="./productos.html">Productos</a></li>
-                    <li><a class="link" href="./nosotros.html">Nosotros</a></li>
-                    <li><a class="link active" href="./blogs.html" aria-current="page">Blogs</a></li>
-                    <li><a class="link" href="./contacto.html">Contacto</a></li>
+                <ul class="nav order-3 order-lg-2 flex-grow-1 flex-lg-fill justify-content-center gap-1 col-12 col-lg-auto">
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./productos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2 active" href="./blogs.html" aria-current="page">Blogs</a></li>
+                    <li class="nav-item"><a class="nav-link link-primary px-2" href="./contacto.html">Contacto</a></li>
                 </ul>
-                <a class="carrito" href="./carrito.html" aria-label="Carrito de compras">
-                    <span class="carrito-icon" aria-hidden="true">🛒</span>
+                <a class="carrito d-flex align-items-center gap-2 text-dark text-decoration-none text-nowrap order-2 order-lg-3 ms-auto" href="./carrito.html" aria-label="Carrito de compras">
+                    <span class="fs-5" aria-hidden="true">🛒</span>
                     <span>Carrito (<span id="cart-count" aria-live="polite">0</span>)</span>
                 </a>
             </nav>
         </div>
     </header>
-    <main class="container blog-detail-page">
-        <a class="blog-back-link" href="./blogs.html">← Volver a noticias</a>
-        <article class="blog-detail">
-            <header class="blog-detail-header">
-                <p class="blog-detail-category">Consejos dulces · Caso curioso #2</p>
-                <h1>Cómo conservar un pastel</h1>
-                <p>Pequeños cuidados para mantener su textura, sabor y frescura por más tiempo.</p>
+
+    <main class="container py-4 py-lg-5">
+        <a class="link-primary" href="./blogs.html">← Volver a noticias</a>
+        <article class="row justify-content-center mt-4">
+            <header class="col-12 col-lg-10 col-xl-9 mb-4">
+                <p class="small fw-bold text-uppercase text-primary mb-2">Consejos dulces · Caso curioso #2</p>
+                <h1 class="display-6 text-primary mb-3">Cómo conservar un pastel</h1>
+                <p class="lead mb-0">Pequeños cuidados para mantener su textura, sabor y frescura por más tiempo.</p>
             </header>
-            <img class="blog-detail-image" src="./img/products/torta-frutas.jpg" alt="Pastel de frutas artesanal">
-            <div class="blog-detail-content">
-                <p>Para disfrutar tu pastel como recién preparado, conviene protegerlo del aire y de los cambios de temperatura. Si no lo servirás de inmediato, guárdalo cubierto en el refrigerador.</p>
-                <h2>Antes de servir</h2>
-                <p>Saca las porciones del refrigerador unos minutos antes de servirlas para que recuperen su textura y aroma. Evita dejar el pastel expuesto al sol o cerca de fuentes de calor, especialmente si tiene crema o fruta fresca.</p>
-                <p>Si quedan porciones, guárdalas en un recipiente hermético. Así conservarán mejor su humedad y no absorberán aromas de otros alimentos.</p>
-                <a class="blog-detail-cta" href="./productos.html">Encuentra tu próximo pastel</a>
+            <div class="col-12 col-lg-10 col-xl-9">
+                <div class="ratio ratio-16x9 mb-4">
+                    <img class="w-100 h-100 object-fit-cover" src="./img/products/torta-frutas.jpg" alt="Pastel de frutas artesanal">
+                </div>
+                <div class="lh-lg">
+                    <p>Para disfrutar tu pastel como recién preparado, conviene protegerlo del aire y de los cambios de temperatura. Si no lo servirás de inmediato, guárdalo cubierto en el refrigerador.</p>
+                    <h2 class="h3 text-primary mt-4">Antes de servir</h2>
+                    <p>Saca las porciones del refrigerador unos minutos antes de servirlas para que recuperen su textura y aroma. Evita dejar el pastel expuesto al sol o cerca de fuentes de calor, especialmente si tiene crema o fruta fresca.</p>
+                    <p>Si quedan porciones, guárdalas en un recipiente hermético. Así conservarán mejor su humedad y no absorberán aromas de otros alimentos.</p>
+                    <a class="btn btn-primary mt-2" href="./productos.html">Encuentra tu próximo pastel</a>
+                </div>
             </div>
         </article>
     </main>
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <div class="footer-left">
-                <div class="footer-brand">
-                    <span>Pastelería 1000 Sabores</span>
-                </div>
-                <div class="payment-icons" aria-label="Medios de pago">
-                    <span class="payment-icon"><span class="visa-logo">VISA</span></span>
-                    <span class="payment-icon"><span class="cash-icon" aria-hidden="true">💵</span> EFECTIVO</span>
+
+    <footer class="border-top bg-light mt-4 py-4">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-start gap-4">
+            <div>
+                <div class="fw-semibold mb-3">Pastelería 1000 Sabores</div>
+                <div class="d-flex gap-2" aria-label="Medios de pago">
+                    <span class="border rounded px-2 py-1 small"><span class="fw-bold fst-italic text-primary">VISA</span></span>
+                    <span class="border rounded px-2 py-1 small"><span aria-hidden="true">💵</span> EFECTIVO</span>
                 </div>
             </div>
-            <div class="suscribe">
-                <p>¡Mantente en contacto! Únete a nuestro boletín</p>
-                <form action="/suscribirse" method="POST">
-                    <input type="email" name="email" placeholder="Ingresa tu correo electrónico" autocomplete="email" required>
-                    <button type="submit">Suscribirse</button>
+            <div class="footer-newsletter">
+                <p class="fw-semibold mb-2">¡Mantente en contacto! Únete a nuestro boletín</p>
+                <form class="d-flex gap-2" action="/suscribirse" method="POST">
+                    <input class="form-control form-control-sm" type="email" name="email" placeholder="Ingresa tu correo electrónico" autocomplete="email" required>
+                    <button class="btn btn-primary btn-sm flex-shrink-0" type="submit">Suscribirse</button>
                 </form>
             </div>
         </div>
