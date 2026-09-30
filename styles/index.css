@@ -1,20 +1,7 @@
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    /* Usando la variable de fuente general (Lato) y colores globales */
-    font-family: var(--font-body);
-    color: var(--marron-oscuro);
-    background: var(--crema-pastel);
-    line-height: 1.55;
 }
 
 
@@ -158,10 +145,6 @@ body {
     grid-template-columns: minmax(0, 1fr) 280px;
     align-items: start;
     gap: 24px;
-}
-
-.cart-item {
-    justify-content: flex-start;
 }
 
 .cart-item-image {
@@ -361,6 +344,9 @@ body {
 }
 
 .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-height: 42px;
     padding: 0 15px;
     border: 0;
@@ -371,9 +357,15 @@ body {
     font-size: 13px;
     font-weight: 700;
     cursor: pointer;
+    text-decoration: none;
     
 }
 
+.btn-primary:visited,
+.btn-primary:hover,
+.btn-primary:focus-visible {
+    color: white;
+}
 
 
 
@@ -528,6 +520,19 @@ body {
     color: var(--gris-claro);
     font-size: 9px;
     letter-spacing: .3px;
+}
+
+.cash-icon {
+    font-size: 17px;
+    vertical-align: -2px;
+}
+
+.visa-logo {
+    color: #1434cb;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: -.5px;
 }
 
 .suscribe {
@@ -719,5 +724,557 @@ body {
     *::before,
     *::after {
         transition-duration: .01ms !important;
+    }
+}
+
+/* Blogs: tarjetas de noticias */
+.blogs-page {
+    padding-top: 34px;
+    padding-bottom: 64px;
+}
+
+.blogs-heading {
+    margin: 0 auto 24px;
+    text-align: center;
+}
+
+.blogs-eyebrow {
+    display: none;
+}
+
+.blogs-heading h1 {
+    margin-bottom: 10px;
+    color: var(--marron-oscuro);
+    font-family: var(--font-body);
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.blogs-heading > p:last-child {
+    color: var(--gris-claro);
+    font-size: 14px;
+}
+
+.blogs-list {
+    display: grid;
+    gap: 22px;
+}
+
+.blog-card {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    align-items: stretch;
+    gap: 24px;
+    min-height: 250px;
+    padding: 18px 22px;
+    background: var(--crema-encabezado-formulario);
+}
+
+.blog-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 0;
+}
+
+.blog-category {
+    margin-bottom: 5px;
+    color: var(--chocolate);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.blog-copy h2 {
+    margin-bottom: 8px;
+    color: var(--marron-oscuro);
+    font-family: var(--font-body);
+    font-size: clamp(20px, 2.5vw, 26px);
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+.blog-copy > p:not(.blog-category) {
+    margin-bottom: 18px;
+    color: var(--marron-oscuro);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.blog-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-width: 120px;
+    min-height: 38px;
+    margin-top: auto;
+    padding: 0 12px;
+    border: 1px solid var(--marron-oscuro);
+    border-radius: 3px;
+    background: var(--blanco);
+    color: var(--marron-oscuro);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color .2s, color .2s;
+}
+
+.blog-button:visited {
+    color: var(--marron-oscuro);
+}
+
+.blog-button:hover,
+.blog-button:focus-visible {
+    background: var(--chocolate);
+    color: var(--blanco);
+}
+
+.blog-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 210px;
+    max-height: 280px;
+    object-fit: cover;
+}
+
+@media (max-width: 700px) {
+    .blogs-page {
+        padding-top: 26px;
+        padding-bottom: 46px;
+    }
+
+    .blog-card {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .blog-image {
+        grid-row: 1;
+        min-height: 190px;
+        max-height: 260px;
+    }
+}
+
+/* Contacto: formulario y encabezado */
+.contact-page {
+    display: flex;
+    justify-content: center;
+    padding-top: 38px;
+    padding-bottom: 64px;
+}
+
+.contact-panel {
+    width: min(100%, 620px);
+    text-align: center;
+}
+
+.contact-brand-mark {
+    display: grid;
+    width: 88px;
+    height: 72px;
+    margin: 0 auto 10px;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid var(--gris-claro);
+    border-radius: 4px;
+    background: var(--blanco);
+}
+
+.contact-brand-mark img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+}
+
+.contact-panel > h1 {
+    margin-bottom: 4px;
+    color: var(--marron-oscuro);
+    font-family: var(--font-heading);
+    font-size: clamp(25px, 4vw, 32px);
+    font-weight: 400;
+}
+
+.contact-intro {
+    margin-bottom: 24px;
+    color: var(--gris-claro);
+    font-size: 14px;
+}
+
+.contact-form {
+    overflow: hidden;
+    border: 1px solid var(--gris-claro);
+    border-radius: 4px;
+    background: var(--blanco);
+    box-shadow: var(--sombra-suave);
+    text-align: left;
+}
+
+.contact-form > h2 {
+    padding: 12px 18px;
+    color: var(--marron-oscuro);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.contact-form-fields {
+    display: grid;
+    gap: 13px;
+    padding: 22px clamp(18px, 5vw, 38px) 26px;
+}
+
+.contact-field {
+    display: grid;
+    gap: 5px;
+}
+
+.contact-field label {
+    color: var(--marron-oscuro);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.contact-field input,
+.contact-field textarea {
+    width: 100%;
+    min-height: 42px;
+    padding: 9px 11px;
+    border: 1px solid var(--gris-claro);
+    border-radius: 3px;
+    background: var(--blanco);
+    color: var(--marron-oscuro);
+    font-size: 14px;
+}
+
+.contact-field textarea {
+    min-height: 112px;
+    resize: vertical;
+}
+
+.contact-field input[aria-invalid="true"],
+.contact-field textarea[aria-invalid="true"] {
+    border-color: var(--color-error);
+}
+
+.contact-field .field-error {
+    color: var(--color-error);
+    font-size: 12px;
+}
+
+.contact-field .field-error:empty {
+    display: none;
+}
+
+.contact-feedback {
+    min-height: 0;
+    margin: 0;
+    color: var(--color-exito);
+    font-size: 13px;
+    text-align: center;
+}
+
+.contact-feedback:not(:empty) {
+    min-height: 20px;
+}
+
+.contact-submit {
+    justify-self: center;
+    min-height: 42px;
+    padding: 0 23px;
+    border: 1px solid var(--chocolate);
+    border-radius: 3px;
+    background: var(--chocolate);
+    color: var(--blanco);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color .2s, border-color .2s, transform .2s;
+}
+
+.contact-submit:hover {
+    transform: translateY(-1px);
+    border-color: var(--marron-oscuro);
+    background: var(--marron-oscuro);
+}
+
+@media (max-width: 600px) {
+    .contact-page {
+        padding-top: 28px;
+        padding-bottom: 44px;
+    }
+
+    .contact-form-fields {
+        gap: 11px;
+        padding-top: 18px;
+    }
+}
+
+/* Nosotros: historia, propósito y equipo */
+.about-page {
+    padding-top: 46px;
+    padding-bottom: 72px;
+}
+
+.about-intro {
+    display: grid;
+    grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+    align-items: center;
+    gap: clamp(28px, 6vw, 68px);
+    padding-bottom: 54px;
+}
+
+.about-copy h1 {
+    max-width: 520px;
+    margin: 5px 0 14px;
+    color: var(--chocolate);
+    font-family: var(--font-heading);
+    font-size: clamp(32px, 4.4vw, 48px);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.about-copy > p:not(.about-eyebrow) {
+    margin-bottom: 22px;
+    color: var(--marron-oscuro);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.about-eyebrow {
+    color: var(--chocolate);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.about-copy .btn-primary {
+    min-height: 44px;
+}
+
+.about-image {
+    display: block;
+    width: 100%;
+    min-height: 280px;
+    max-height: 400px;
+    aspect-ratio: 1.35 / 1;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: var(--sombra-suave);
+}
+
+.about-purpose,
+.developers-section {
+    padding-top: 38px;
+    border-top: 1px solid var(--gris-claro);
+}
+
+.about-section-heading {
+    max-width: 680px;
+    margin: 0 auto 25px;
+    text-align: center;
+}
+
+.about-section-heading h2 {
+    margin: 4px 0 8px;
+    color: var(--marron-oscuro);
+    font-family: var(--font-heading);
+    font-size: clamp(27px, 4vw, 34px);
+    font-weight: 400;
+}
+
+.about-section-heading > p:last-child {
+    color: var(--gris-claro);
+    font-size: 14px;
+}
+
+.purpose-grid,
+.developers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.purpose-card,
+.developer-card {
+    padding: 23px;
+    border: 1px solid var(--gris-claro);
+    border-radius: 4px;
+    background: var(--blanco);
+    box-shadow: var(--sombra-suave);
+}
+
+.purpose-card h3,
+.developer-card h3 {
+    margin-bottom: 9px;
+    color: var(--chocolate);
+    font-family: var(--font-heading);
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.purpose-card p,
+.developer-card p {
+    color: var(--marron-oscuro);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.developers-section {
+    margin-top: 42px;
+}
+
+.developer-mark {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    margin-bottom: 13px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--crema-encabezado-formulario);
+    color: var(--chocolate);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+@media (max-width: 760px) {
+    .about-intro {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding-bottom: 38px;
+    }
+
+    .about-image {
+        grid-row: 1;
+        min-height: 220px;
+        max-height: 320px;
+    }
+
+    .purpose-grid,
+    .developers-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Login: acceso de usuario */
+.login-page {
+    display: flex;
+    justify-content: center;
+    min-height: 68vh;
+    padding-top: 24px;
+    padding-bottom: 64px;
+}
+
+.login-panel {
+    width: min(100%, 550px);
+    text-align: center;
+}
+
+.login-brand-mark {
+    display: grid;
+    width: 104px;
+    height: 82px;
+    margin: 0 auto 18px;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid var(--gris-claro);
+    background: var(--blanco);
+}
+
+.login-brand-mark img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.login-brand-name {
+    margin-bottom: 22px;
+    color: var(--marron-oscuro);
+    font-family: var(--font-body);
+    font-size: clamp(22px, 3vw, 29px);
+    font-weight: 400;
+}
+
+.login-form {
+    overflow: hidden;
+    border: 1px solid var(--marron-oscuro);
+    background: #f1f1f1;
+    box-shadow: var(--sombra-suave);
+    text-align: left;
+}
+
+.login-form > h2 {
+    padding: 13px 16px;
+    color: var(--marron-oscuro);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.login-fields {
+    display: grid;
+    gap: 20px;
+    padding: 22px 20px 26px;
+}
+
+.login-field {
+    display: grid;
+    gap: 7px;
+}
+
+.login-field label {
+    color: var(--marron-oscuro);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.login-field input {
+    width: 100%;
+    min-height: 42px;
+    padding: 8px 10px;
+    border: 1px solid var(--marron-oscuro);
+    border-radius: 2px;
+    background: var(--blanco);
+    color: var(--marron-oscuro);
+}
+
+.login-submit {
+    justify-self: center;
+    width: 150px;
+    min-height: 58px;
+    margin-top: 4px;
+    border: 1px solid var(--marron-oscuro);
+    border-radius: 3px;
+    background: var(--blanco);
+    color: var(--marron-oscuro);
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: 0 2px 0 var(--marron-oscuro);
+    transition: background-color .2s, color .2s;
+}
+
+.login-submit:hover {
+    background: var(--chocolate);
+    color: var(--blanco);
+}
+
+@media (max-width: 600px) {
+    .login-page {
+        min-height: auto;
+        padding-top: 28px;
+        padding-bottom: 44px;
+    }
+
+    .login-fields {
+        gap: 16px;
+        padding: 18px 16px 22px;
     }
 }

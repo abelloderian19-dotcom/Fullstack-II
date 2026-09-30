@@ -19,7 +19,7 @@
                 <ul class="links">
                     <li><a class="link" href="./index.html">Inicio</a></li>
                     <li><a class="link active" href="./productos.html" aria-current="page">Productos</a></li>
-                    <li><a class="link" href="./index.html#nosotros">Nosotros</a></li>
+                    <li><a class="link" href="./nosotros.html">Nosotros</a></li>
                     <li><a class="link" href="./index.html#blog">Blogs</a></li>
                     <li><a class="link" href="./contacto.html">Contacto</a></li>
                 </ul>
@@ -38,6 +38,27 @@
         </div>
         <section id="product-catalog" class="products-grid" aria-label="Todos los productos"></section>
     </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <div class="footer-brand">
+                    <span>Pastelería 1000 Sabores</span>
+                </div>
+                <div class="payment-icons" aria-label="Medios de pago">
+                    <span class="payment-icon"><span class="visa-logo">VISA</span></span>
+                    <span class="payment-icon"><span class="cash-icon" aria-hidden="true">💵</span> EFECTIVO</span>
+                </div>
+            </div>
+            <div class="suscribe">
+                <p>¡Mantente en contacto! Únete a nuestro boletín</p>
+                <form action="/suscribirse" method="POST">
+                    <input type="email" id="email-input" name="email" placeholder="Ingresa tu correo electrónico" autocomplete="email" required>
+                    <button type="submit">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+    </footer>
 
     <script src="./js/data/productos.js"></script>
     <script src="./js/carrito.js"></script>
