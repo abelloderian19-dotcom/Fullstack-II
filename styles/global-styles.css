@@ -424,6 +424,10 @@ footer.bg-light {
   max-width: 760px;
 }
 
+.auth-panel {
+  max-width: 900px;
+}
+
 .admin-sidebar {
   background-color: var(--fondo-superficie);
   border-right: 1px solid var(--borde-suave);

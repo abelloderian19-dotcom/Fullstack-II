@@ -115,26 +115,27 @@ export function RegisterPage() {
     <main className="container py-4">
       <section className="mx-auto auth-panel">
         <h1 className="h2 mb-3">Crear cuenta</h1>
-        <form className="row g-3 card bg-light p-3 p-md-4" onSubmit={submit}>
+        <form className="card bg-light p-3 p-md-4 shadow-sm" onSubmit={submit} noValidate>
+          <div className="row g-3">
           <div className="col-12 col-md-4">
             <label className="form-label" htmlFor="register-run">RUN*</label>
-            <input className="form-control" id="register-run" name="run" value={form.run} onChange={update} placeholder="12345678K" minLength="7" maxLength="9" required />
+            <input className="form-control" id="register-run" name="run" autoComplete="off" value={form.run} onChange={update} placeholder="12345678K" minLength="7" maxLength="9" required />
           </div>
           <div className="col-12 col-md-4">
             <label className="form-label" htmlFor="register-name">Nombre*</label>
-            <input className="form-control" id="register-name" name="nombre" value={form.nombre} onChange={update} required maxLength="50" />
+            <input className="form-control" id="register-name" name="nombre" autoComplete="given-name" value={form.nombre} onChange={update} required maxLength="50" />
           </div>
           <div className="col-12 col-md-4">
             <label className="form-label" htmlFor="register-lastname">Apellidos*</label>
-            <input className="form-control" id="register-lastname" name="apellidos" value={form.apellidos} onChange={update} required maxLength="100" />
+            <input className="form-control" id="register-lastname" name="apellidos" autoComplete="family-name" value={form.apellidos} onChange={update} required maxLength="100" />
           </div>
-          <div className="col-12 col-md-6">
+          <div className="col-12">
             <label className="form-label" htmlFor="register-email">Correo*</label>
-            <input className="form-control" id="register-email" name="correo" type="email" value={form.correo} onChange={update} required maxLength="100" />
+            <input className="form-control" id="register-email" name="correo" type="email" autoComplete="email" value={form.correo} onChange={update} required maxLength="100" />
           </div>
-          <div className="col-12 col-md-6">
+          <div className="col-12">
             <label className="form-label" htmlFor="register-password">Contraseña*</label>
-            <input className="form-control" id="register-password" name="password" type="password" value={form.password} onChange={update} required minLength="4" maxLength="10" />
+            <input className="form-control" id="register-password" name="password" type="password" autoComplete="new-password" value={form.password} onChange={update} required minLength="4" maxLength="10" />
           </div>
           <div className="col-12 col-md-6">
             <label className="form-label" htmlFor="register-region">Región*</label>
@@ -152,12 +153,13 @@ export function RegisterPage() {
           </div>
           <div className="col-12">
             <label className="form-label" htmlFor="register-address">Dirección*</label>
-            <input className="form-control" id="register-address" name="direccion" value={form.direccion} onChange={update} required maxLength="300" />
+            <input className="form-control" id="register-address" name="direccion" autoComplete="street-address" value={form.direccion} onChange={update} required maxLength="300" />
           </div>
           {error && <p className="col-12 text-danger mb-0" role="alert">{error}</p>}
           <div className="col-12 d-flex flex-wrap gap-2">
             <button className="btn btn-primary" type="submit">Crear cuenta</button>
             <Link className="btn btn-outline-secondary" to="/login">Ya tengo una cuenta</Link>
+          </div>
           </div>
         </form>
       </section>
