@@ -1,5 +1,6 @@
 import { Link, useSearchParams } from "react-router-dom";
-import ProductCard from "../components/ProductCard.jsx";
+import ProductGrid from "../components/ProductGrid.jsx";
+import ProductImage from "../components/ProductImage.jsx";
 import { useStore } from "../context/StoreContext.jsx";
 
 export default function CategoryPage() {
@@ -22,11 +23,10 @@ export default function CategoryPage() {
               aria-current={category === selectedCategory ? "page" : undefined}
             >
               <span className="ratio ratio-4x3 mb-2">
-                <img
+                <ProductImage
+                  product={products.find((product) => product.categoria === category)}
                   className="object-fit-cover"
-                  src="/img/products/imagen_inicio.jpg"
-                  alt=""
-                  loading="lazy"
+                  alt={"Productos de " + category}
                 />
               </span>
               <span className="fw-semibold">{category}</span>
@@ -40,11 +40,10 @@ export default function CategoryPage() {
             {selectedCategory}
           </h2>
           {selectedProducts.length ? (
-            <div className="row g-3 g-lg-4">
-              {selectedProducts.map((product) => (
-                <ProductCard key={product.codigo} product={product} />
-              ))}
-            </div>
+            <ProductGrid
+              products={selectedProducts}
+              ariaLabel={selectedCategory}
+            />
           ) : (
             <p className="alert alert-light border" role="status">
               Esta categoría aún no tiene productos disponibles.

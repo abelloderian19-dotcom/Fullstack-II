@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useStore } from "../context/StoreContext.jsx";
 import { effectivePrice, formatPrice } from "../utils/pricing.js";
 import ActionButton from "./ActionButton.jsx";
+import ProductImage from "./ProductImage.jsx";
 
 export default function ProductCard({ product }) {
   const { addToCart } = useStore();
@@ -28,11 +29,9 @@ export default function ProductCard({ product }) {
           aria-label={`Ver detalle de ${product.nombre}`}
         >
           <div className="ratio ratio-4x3 overflow-hidden">
-            <img
+            <ProductImage
+              product={product}
               className="w-100 h-100 object-fit-cover"
-              src={product.imagen?.replace(/^\./, "") || "/img/products/imagen_inicio.jpg"}
-              alt={product.nombre}
-              loading="lazy"
               width="600"
               height="400"
             />

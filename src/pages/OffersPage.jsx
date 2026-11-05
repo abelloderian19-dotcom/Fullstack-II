@@ -1,4 +1,4 @@
-import ProductCard from "../components/ProductCard.jsx";
+import ProductGrid from "../components/ProductGrid.jsx";
 import { useStore } from "../context/StoreContext.jsx";
 
 export default function OffersPage() {
@@ -15,11 +15,7 @@ export default function OffersPage() {
         <p>Encuentra tus favoritos a un precio especial.</p>
       </header>
       {offers.length ? (
-        <div className="row g-3 g-lg-4">
-          {offers.map((product) => (
-            <ProductCard key={product.codigo} product={product} />
-          ))}
-        </div>
+        <ProductGrid products={offers} ariaLabel="Productos en oferta" />
       ) : (
         <p className="alert alert-light border" role="status">
           Actualmente no hay productos en oferta.

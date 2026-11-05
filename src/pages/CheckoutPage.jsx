@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useStore } from "../context/StoreContext.jsx";
 import { getRegions, saveOrder } from "../data/database.js";
 import { effectivePrice, formatPrice } from "../utils/pricing.js";
+import ProductImage from "../components/ProductImage.jsx";
 
 const blankAddress = {
   nombre: "",
@@ -157,12 +158,12 @@ export default function CheckoutPage() {
                 {cartItems.map(({ codigo, cantidad, product }) => (
                   <tr key={codigo}>
                     <td>
-                      <img
-                        src={product.imagen?.replace(/^\./, "") || "/img/products/imagen_inicio.jpg"}
+                      <ProductImage
+                        product={product}
                         alt=""
+                        className="object-fit-cover"
                         width="48"
                         height="48"
-                        className="object-fit-cover"
                       />
                     </td>
                     <td>{product.nombre}</td>

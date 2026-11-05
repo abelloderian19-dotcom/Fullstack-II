@@ -584,16 +584,16 @@ footer.bg-light {
   html {
     scroll-behavior: auto;
   }
+}
 
-  @media print {
-    header,
-    footer,
-    .btn {
-      display: none !important;
-    }
+@media print {
+  header,
+  footer,
+  .btn {
+    display: none !important;
+  }
 
-    body {
-      background: #fff;
-    }
+  body {
+    background: #fff;
   }
 }

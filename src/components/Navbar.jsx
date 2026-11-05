@@ -12,7 +12,7 @@ const navigation = [
   ["Contacto", "/contacto"],
 ];
 
-export default function SiteHeader() {
+export default function Navbar() {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const { cartCount } = useStore();
@@ -82,7 +82,7 @@ export default function SiteHeader() {
             </span>
           </Link>
           <div className="d-flex gap-2 ms-lg-auto">
-            <Link className="btn btn-outline-primary btn-sm" to="/login">
+            <Link className="btn btn-primary btn-sm" to="/login">
               Iniciar sesión
             </Link>
             <Link className="btn btn-primary btn-sm" to="/registro">

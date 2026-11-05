@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import SiteFooter from "./SiteFooter.jsx";
-import SiteHeader from "./SiteHeader.jsx";
+import Navbar from "./Navbar.jsx";
 
 export default function StoreLayout() {
   return (
     <>
-      <SiteHeader />
+      <Navbar />
       <Outlet />
       <SiteFooter />
     </>

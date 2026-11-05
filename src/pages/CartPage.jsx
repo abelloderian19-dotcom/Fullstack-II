@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { useStore } from "../context/StoreContext.jsx";
 import { effectivePrice, formatPrice } from "../utils/pricing.js";
+import ActionButton from "../components/ActionButton.jsx";
+import CartItemCounter from "../components/CartItemCounter.jsx";
+import ProductImage from "../components/ProductImage.jsx";
 
 export default function CartPage() {
   const { cartItems, cartTotal, setCartQuantity, removeFromCart, clearCart } =
@@ -22,63 +25,56 @@ export default function CartPage() {
         <div className="row g-4">
           <section className="col-12 col-lg-8" aria-label="Productos del carrito">
             <ul className="list-group list-group-flush">
-              {cartItems.map(({ codigo, cantidad, product }) => (
-                <li
-                  className="cart-product-item list-group-item d-flex flex-wrap align-items-center gap-3 p-3"
-                  key={codigo}
-                >
-                  <img
-                    className="rounded border object-fit-cover"
-                    src={product.imagen?.replace(/^\./, "") || "/img/products/imagen_inicio.jpg"}
-                    alt={product.nombre}
-                    width="76"
-                    height="70"
-                  />
-                  <div className="flex-grow-1">
-                    <Link
-                      className="fw-semibold text-decoration-none"
-                      to={`/producto/${encodeURIComponent(codigo)}`}
-                    >
-                      {product.nombre}
-                    </Link>
-                    <small className="d-block text-secondary">
-                      {formatPrice(effectivePrice(product))} por unidad
-                    </small>
-                  </div>
-                  <div className="d-flex align-items-center gap-2">
-                    <button
-                      className="btn btn-outline-secondary btn-sm"
-                      type="button"
-                      aria-label={`Reducir cantidad de ${product.nombre}`}
-                      disabled={cantidad <= 1}
-                      onClick={() => setCartQuantity(codigo, cantidad - 1)}
-                    >
-                      −
-                    </button>
-                    <span aria-label={`${cantidad} unidades`}>{cantidad}</span>
-                    <button
-                      className="btn btn-outline-secondary btn-sm"
-                      type="button"
-                      aria-label={`Aumentar cantidad de ${product.nombre}`}
-                      disabled={cantidad >= Math.min(99, product.stock ?? 99)}
-                      onClick={() => setCartQuantity(codigo, cantidad + 1)}
-                    >
-                      +
-                    </button>
-                  </div>
-                  <strong className="text-nowrap">
-                    {formatPrice(effectivePrice(product) * cantidad)}
-                  </strong>
-                  <button
-                    className="btn btn-outline-danger btn-sm"
-                    type="button"
-                    aria-label={`Quitar ${product.nombre} del carrito`}
-                    onClick={() => removeFromCart(codigo)}
+              {cartItems.map(({ codigo, cantidad, product }) => {
+                const setClicks = (updateClicks) => {
+                  const valorClicks =
+                    typeof updateClicks === "function"
+                      ? updateClicks(cantidad)
+                      : updateClicks;
+                  setCartQuantity(codigo, valorClicks);
+                };
+
+                return (
+                  <li
+                    className="cart-product-item list-group-item d-flex flex-wrap align-items-center gap-3 p-3"
+                    key={codigo}
                   >
-                    Quitar
-                  </button>
-                </li>
-              ))}
+                    <ProductImage
+                      product={product}
+                      className="rounded border object-fit-cover"
+                      width="76"
+                      height="70"
+                    />
+                    <div className="flex-grow-1">
+                      <Link
+                        className="fw-semibold text-decoration-none"
+                        to={"/producto/" + encodeURIComponent(codigo)}
+                      >
+                        {product.nombre}
+                      </Link>
+                      <small className="d-block text-secondary">
+                        {formatPrice(effectivePrice(product))} por unidad
+                      </small>
+                    </div>
+                    <CartItemCounter
+                      clicks={cantidad}
+                      setClicks={setClicks}
+                      maxClicks={Math.min(99, product.stock ?? 99)}
+                      productName={product.nombre}
+                    />
+                    <strong className="text-nowrap">
+                      {formatPrice(effectivePrice(product) * cantidad)}
+                    </strong>
+                    <ActionButton
+                      className="btn btn-outline-danger btn-sm"
+                      aria-label={"Quitar " + product.nombre + " del carrito"}
+                      onClick={() => removeFromCart(codigo)}
+                    >
+                      Quitar
+                    </ActionButton>
+                  </li>
+                );
+              })}
             </ul>
             <button
               className="btn btn-outline-danger mt-3"

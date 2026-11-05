@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import ProductCard from "../components/ProductCard.jsx";
+import ProductGrid from "../components/ProductGrid.jsx";
+import ProductImage from "../components/ProductImage.jsx";
 import { useStore } from "../context/StoreContext.jsx";
 import { effectivePrice, formatPrice } from "../utils/pricing.js";
 
@@ -63,10 +64,9 @@ export default function ProductDetailPage() {
       <section className="row g-4 g-lg-5">
         <div className="col-12 col-lg-7">
           <div className="ratio ratio-4x3 border overflow-hidden">
-            <img
+            <ProductImage
+              product={product}
               className="w-100 h-100 object-fit-cover"
-              src={product.imagen?.replace(/^\./, "") || "/img/products/imagen_inicio.jpg"}
-              alt={product.nombre}
             />
           </div>
         </div>
@@ -126,11 +126,11 @@ export default function ProductDetailPage() {
           <h2 id="related-title" className="h4 mb-3">
             Productos relacionados
           </h2>
-          <div className="row g-3">
-            {relatedProducts.map((relatedProduct) => (
-              <ProductCard key={relatedProduct.codigo} product={relatedProduct} />
-            ))}
-          </div>
+          <ProductGrid
+            products={relatedProducts}
+            className="row g-3"
+            ariaLabel="Productos relacionados"
+          />
         </section>
       )}
     </main>

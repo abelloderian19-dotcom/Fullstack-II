@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import ProductCard from "../components/ProductCard.jsx";
+import ProductGrid from "../components/ProductGrid.jsx";
 import { useStore } from "../context/StoreContext.jsx";
 
 const slides = [
@@ -102,11 +102,11 @@ export default function HomePage() {
         <h2 id="migration-title" className="h4 text-uppercase mb-3">
           {"Los m\u00e1s recomendados"}
         </h2>
-        <div className="row g-3 g-lg-4 text-start mb-4">
-          {products.slice(0, 4).map((product) => (
-            <ProductCard key={product.codigo} product={product} />
-          ))}
-        </div>
+        <ProductGrid
+          products={products.slice(0, 4)}
+          className="row g-3 g-lg-4 text-start mb-4"
+          ariaLabel="Productos recomendados"
+        />
         <h2 className="h4 text-uppercase mb-3">{"Compra por categor\u00eda"}</h2>
         <div className="row row-cols-2 row-cols-md-4 g-3 mb-4">
           {categories.slice(0, 4).map((category) => (

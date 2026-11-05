@@ -3,9 +3,11 @@ export default function ActionButton({
   onClick,
   disabled = false,
   className = "",
+  ...buttonProps
 }) {
   return (
     <button
+      {...buttonProps}
       className={className}
       type="button"
       onClick={onClick}

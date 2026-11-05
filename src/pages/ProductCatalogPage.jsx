@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
-import ProductCard from "../components/ProductCard.jsx";
+import ProductGrid from "../components/ProductGrid.jsx";
 import { useStore } from "../context/StoreContext.jsx";
 
 export default function ProductCatalogPage() {
@@ -80,11 +80,10 @@ export default function ProductCatalogPage() {
         </p>
       )}
       {filteredProducts.length ? (
-        <div className="row g-3 g-lg-4" aria-label="Todos los productos">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.codigo} product={product} />
-          ))}
-        </div>
+        <ProductGrid
+          products={filteredProducts}
+          ariaLabel="Todos los productos"
+        />
       ) : (
         <p className="alert alert-light border" role="status">
           No encontramos productos con esos filtros.

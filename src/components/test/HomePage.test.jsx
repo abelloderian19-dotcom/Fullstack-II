@@ -1,7 +1,7 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import SiteHeader from "../SiteHeader.jsx";
+import Navbar from "../Navbar.jsx";
 import { StoreProvider } from "../../context/StoreContext.jsx";
 import HomePage from "../../pages/HomePage.jsx";
 
@@ -21,7 +21,7 @@ describe("HomePage", () => {
           React.createElement(
             React.Fragment,
             null,
-            React.createElement(SiteHeader),
+            React.createElement(Navbar),
             React.createElement(HomePage),
           ),
         ),
