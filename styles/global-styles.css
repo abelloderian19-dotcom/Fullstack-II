@@ -302,7 +302,25 @@ footer.bg-light {
 }
 
 .home-carousel-caption .btn {
+  --bs-btn-color: #45352d;
+  --bs-btn-bg: #eee0ca;
+  --bs-btn-border-color: #d6c3a5;
+  --bs-btn-hover-color: #35271e;
+  --bs-btn-hover-bg: #e5d2b4;
+  --bs-btn-hover-border-color: #cbb38f;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 18%);
   text-shadow: none;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.home-carousel-caption .btn:hover {
+  box-shadow: 0 5px 12px rgb(0 0 0 / 24%);
+  transform: translateY(-2px);
+}
+
+.home-carousel-caption .btn:active {
+  box-shadow: 0 1px 3px rgb(0 0 0 / 18%);
+  transform: translateY(0) scale(0.98);
 }
 
 .home-carousel-control {
@@ -648,6 +666,15 @@ footer.bg-light {
 
   .navbar-cart {
     transition: none;
+  }
+
+  .home-carousel-caption .btn {
+    transition: none;
+  }
+
+  .home-carousel-caption .btn:hover,
+  .home-carousel-caption .btn:active {
+    transform: none;
   }
 
   .navbar-cart.is-updating .navbar-cart-icon,
