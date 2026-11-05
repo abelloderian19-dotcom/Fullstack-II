@@ -73,3 +73,36 @@ export function validateRegistration(form, regions) {
 
   return "";
 }
+
+export function validateCheckoutDetails(address, regions) {
+  if (!address.nombre.trim() || address.nombre.trim().length > 50) {
+    return "Ingresa un nombre de hasta 50 caracteres.";
+  }
+  if (!address.apellidos.trim() || address.apellidos.trim().length > 100) {
+    return "Ingresa apellidos de hasta 100 caracteres.";
+  }
+  if (!isValidEmail(address.correo)) {
+    return "Ingresa un correo v\u00e1lido que incluya @.";
+  }
+  if (!address.calle.trim() || address.calle.trim().length > 200) {
+    return "Ingresa una direcci\u00f3n de hasta 200 caracteres.";
+  }
+  if (address.departamento.length > 50) {
+    return "El departamento debe tener hasta 50 caracteres.";
+  }
+  if (address.indicaciones.length > 500) {
+    return "Las indicaciones deben tener hasta 500 caracteres.";
+  }
+
+  const selectedRegion = regions.find(
+    (region) => region.nombre === address.region,
+  );
+  if (!selectedRegion) {
+    return "Selecciona una regi\u00f3n v\u00e1lida.";
+  }
+  if (!selectedRegion.comunas.includes(address.comuna)) {
+    return "Selecciona una comuna v\u00e1lida para la regi\u00f3n indicada.";
+  }
+
+  return "";
+}

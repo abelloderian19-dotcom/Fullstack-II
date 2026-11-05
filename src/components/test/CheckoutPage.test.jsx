@@ -81,6 +81,19 @@ describe("checkout", () => {
     expect(getProducts()[0].stock).toBe(stockBeforePurchase - 1);
   });
 
+  it("shows a validation message for an email address without an @", () => {
+    renderCheckout();
+    completeShippingForm();
+    fireEvent.change(screen.getByLabelText("Correo*"), {
+      target: { value: "aslkdjlkasdjasljdasd4" },
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: /Pagar ahora/ }));
+
+    expect(screen.getByRole("alert").textContent).toContain("@");
+    expect(localStorage.getItem("pasteleria-ordenes")).toBeNull();
+  });
+
   it("shows a declined payment and keeps the cart for retry", () => {
     const stockBeforePurchase = getProducts()[0].stock;
     renderCheckout();

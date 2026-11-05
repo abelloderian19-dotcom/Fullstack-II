@@ -4,6 +4,7 @@ import { useStore } from "../context/StoreContext.jsx";
 import { getRegions, saveOrder } from "../data/database.js";
 import { effectivePrice, formatPrice } from "../utils/pricing.js";
 import ProductImage from "../components/ProductImage.jsx";
+import { validateCheckoutDetails } from "../utils/validators.js";
 
 const blankAddress = {
   nombre: "",
@@ -57,14 +58,18 @@ export default function CheckoutPage() {
 
   function submitCheckout(event) {
     event.preventDefault();
+    setError("");
     if (cartItems.length === 0) {
       setError("Agrega al menos un producto antes de continuar.");
       return;
     }
-    if (!selectedRegion?.comunas.includes(address.comuna)) {
-      setError("Selecciona una comuna válida para la región indicada.");
+
+    const validationError = validateCheckoutDetails(address, regions);
+    if (validationError) {
+      setError(validationError);
       return;
     }
+
     const unavailableItem = cartItems.find(
       ({ cantidad, product }) =>
         Number.isFinite(product.stock) && cantidad > product.stock,
@@ -176,7 +181,7 @@ export default function CheckoutPage() {
             </table>
           </div>
 
-          <form className="row g-3" onSubmit={submitCheckout}>
+          <form className="row g-3" onSubmit={submitCheckout} noValidate>
             <div className="col-12">
               <h2 className="h5 mb-0">Información del cliente</h2>
             </div>
