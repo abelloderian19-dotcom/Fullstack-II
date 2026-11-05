@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { createUser, getRegions, getUsers } from "../data/database.js";
 import {
   validateLogin,
@@ -176,9 +176,10 @@ export function RegisterPage() {
         direccion: form.direccion.trim(),
         tipoUsuario: "Cliente",
         fechaNacimiento: "",
+        descuentoPrimeraCompraDisponible: true,
       });
       saveSession(user);
-      navigate("/");
+      navigate("/bienvenida");
     } catch (registrationError) {
       setError(registrationError.message);
     }
@@ -209,12 +210,12 @@ export function RegisterPage() {
             <input className={`form-control${fieldErrors.apellidos ? " is-invalid" : ""}`} id="register-lastname" name="apellidos" autoComplete="family-name" value={form.apellidos} onChange={update} onBlur={blurField} required maxLength="100" aria-invalid={Boolean(fieldErrors.apellidos)} />
             {fieldErrors.apellidos && <div className="invalid-feedback" role="alert">{fieldErrors.apellidos}</div>}
           </div>
-          <div className="col-12">
+          <div className="col-12 col-md-6">
             <label className="form-label" htmlFor="register-email">Correo*</label>
             <input className={`form-control${fieldErrors.correo ? " is-invalid" : ""}`} id="register-email" name="correo" type="email" autoComplete="email" value={form.correo} onChange={update} onBlur={blurField} required maxLength="100" aria-invalid={Boolean(fieldErrors.correo)} />
             {fieldErrors.correo && <div className="invalid-feedback" role="alert">{fieldErrors.correo}</div>}
           </div>
-          <div className="col-12">
+          <div className="col-12 col-md-6">
             <label className="form-label" htmlFor="register-password">Contraseña*</label>
             <input className={`form-control${fieldErrors.password ? " is-invalid" : ""}`} id="register-password" name="password" type="password" autoComplete="new-password" value={form.password} onChange={update} onBlur={blurField} required minLength="4" maxLength="10" aria-invalid={Boolean(fieldErrors.password)} />
             {fieldErrors.password && <div className="invalid-feedback" role="alert">{fieldErrors.password}</div>}
@@ -247,6 +248,38 @@ export function RegisterPage() {
           </div>
           </div>
         </form>
+      </section>
+    </main>
+  );
+}
+
+export function RegistrationSuccessPage() {
+  const session = sessionStorage.getItem("usuarioActual");
+  let customer = null;
+  try {
+    customer = session ? JSON.parse(session) : null;
+  } catch {
+    customer = null;
+  }
+
+  if (!customer) return <Navigate to="/registro" replace />;
+
+  return (
+    <main className="container py-5">
+      <section className="card shadow-sm mx-auto text-center" style={{ maxWidth: "760px" }}>
+        <div className="card-body p-4 p-md-5">
+          <p className="display-5 text-success mb-3" aria-hidden="true">✓</p>
+          <h1 className="h2">¡Cuenta creada correctamente!</h1>
+          <p className="lead">{customer?.nombre ? `¡Bienvenido/a, ${customer.nombre}!` : "Tu cuenta ya está lista."} Ya iniciaste sesión como cliente.</p>
+          {customer.descuentoPrimeraCompraDisponible && (
+          <div className="alert alert-warning my-4" role="status">
+            <strong>Regalo de bienvenida: 10% de descuento</strong>
+            <br />
+            Se aplicará automáticamente en tu primera compra al pagar con esta cuenta.
+          </div>
+          )}
+          <Link className="btn btn-primary" to="/productos">Explorar productos</Link>
+        </div>
       </section>
     </main>
   );

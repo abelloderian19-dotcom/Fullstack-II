@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useStore } from "../context/StoreContext.jsx";
 
 const navigation = [
@@ -15,9 +15,16 @@ const navigation = [
 export default function Navbar() {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
   const { cartCount } = useStore();
   const previousCartCount = useRef(cartCount);
   const [cartUpdated, setCartUpdated] = useState(false);
+  let currentUser = null;
+  try {
+    currentUser = JSON.parse(sessionStorage.getItem("usuarioActual") ?? "null");
+  } catch {
+    currentUser = null;
+  }
 
   useEffect(() => {
     if (previousCartCount.current === cartCount) return undefined;
@@ -97,6 +104,15 @@ export default function Navbar() {
               {cartCount}
             </span>
           </Link>
+          {currentUser ? (
+            <div className="d-flex flex-wrap align-items-center gap-2 ms-lg-auto">
+              <span className="small text-nowrap">Hola, {currentUser.nombre}</span>
+              <button className="btn btn-outline-secondary btn-sm" type="button" onClick={() => {
+                sessionStorage.removeItem("usuarioActual");
+                navigate(location.pathname === "/login" ? "/" : "/login");
+              }}>Cerrar sesión</button>
+            </div>
+          ) : (
           <div className="d-flex gap-2 ms-lg-auto">
             <Link className="btn btn-primary btn-sm" to="/login">
               Iniciar sesión
@@ -105,6 +121,7 @@ export default function Navbar() {
               Crear cuenta
             </Link>
           </div>
+          )}
         </nav>
       </div>
     </header>

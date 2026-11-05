@@ -3,7 +3,7 @@ import AdminLayout from "./components/AdminLayout.jsx";
 import StoreLayout from "./components/StoreLayout.jsx";
 import { StoreProvider } from "./context/StoreContext.jsx";
 import { AdminCategoriesPage, AdminDashboardPage, AdminOrderDetailPage, AdminOrdersPage, AdminProductFormPage, AdminProductsPage, AdminProfilePage, AdminReportsPage, AdminUserFormPage, AdminUsersPage } from "./pages/AdminPages.jsx";
-import { LoginPage, RegisterPage } from "./pages/AuthPages.jsx";
+import { LoginPage, RegisterPage, RegistrationSuccessPage } from "./pages/AuthPages.jsx";
 import CartPage from "./pages/CartPage.jsx";
 import CategoryPage from "./pages/CategoryPage.jsx";
 import { AboutPage, BlogDetailPage, BlogPage, ContactPage } from "./pages/ContentPages.jsx";
@@ -52,6 +52,7 @@ function ApplicationRoutes() {
         <Route path="login.html" element={<LoginPage />} />
         <Route path="registro" element={<RegisterPage />} />
         <Route path="registro.html" element={<RegisterPage />} />
+        <Route path="bienvenida" element={<RegistrationSuccessPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
       <Route path="/admin" element={<AdminLayout />}>

@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useStore } from "../context/StoreContext.jsx";
-import { getRegions, saveOrder } from "../data/database.js";
+import { getRegions, getUsers, saveOrder, updateUser } from "../data/database.js";
 import { effectivePrice, formatPrice } from "../utils/pricing.js";
 import ProductImage from "../components/ProductImage.jsx";
 import { validateCheckoutDetails, validateCheckoutField } from "../utils/validators.js";
@@ -43,6 +43,23 @@ export default function CheckoutPage() {
   const [simulateFailure, setSimulateFailure] = useState(false);
   const [error, setError] = useState("");
   const [fieldErrors, setFieldErrors] = useState({});
+  let activeCustomer = null;
+  try {
+    activeCustomer = JSON.parse(sessionStorage.getItem("usuarioActual") ?? "null");
+  } catch {
+    activeCustomer = null;
+  }
+  const savedCustomer = activeCustomer?.run
+    ? getUsers().find((user) => user.run === activeCustomer.run)
+    : null;
+  const firstPurchaseDiscountAvailable = savedCustomer?.descuentoPrimeraCompraDisponible === true;
+  const firstPurchaseDiscount = firstPurchaseDiscountAvailable
+    ? cartItems.reduce((sum, item) => {
+        const subtotal = effectivePrice(item.product) * item.cantidad;
+        return sum + subtotal - Math.round(subtotal * 0.9);
+      }, 0)
+    : 0;
+  const payableTotal = cartTotal - firstPurchaseDiscount;
   const selectedRegion = useMemo(
     () => regions.find((region) => region.nombre === address.region),
     [address.region, regions],
@@ -103,7 +120,9 @@ export default function CheckoutPage() {
       id: orderId,
       fecha: new Date().toISOString(),
       estado: simulateFailure ? "Pago rechazado" : "Pagada",
-      total: cartTotal,
+      subtotal: cartTotal,
+      descuentoPrimeraCompra: firstPurchaseDiscount,
+      total: payableTotal,
       cliente: {
         nombre: address.nombre.trim(),
         apellidos: address.apellidos.trim(),
@@ -118,13 +137,19 @@ export default function CheckoutPage() {
         entrega: address.entrega,
       },
       pago: address.pago,
-      items: cartItems.map(({ codigo, cantidad, product }) => ({
-        codigo,
-        nombre: product.nombre,
-        precio: effectivePrice(product),
-        cantidad,
-        subtotal: effectivePrice(product) * cantidad,
-      })),
+      items: cartItems.map(({ codigo, cantidad, product }) => {
+        const itemSubtotal = effectivePrice(product) * cantidad;
+        const itemDiscount = firstPurchaseDiscountAvailable
+          ? itemSubtotal - Math.round(itemSubtotal * 0.9)
+          : 0;
+        return {
+          codigo,
+          nombre: product.nombre,
+          precio: effectivePrice(product),
+          cantidad,
+          subtotal: itemSubtotal - itemDiscount,
+        };
+      }),
     };
 
     try {
@@ -132,6 +157,13 @@ export default function CheckoutPage() {
         saveOrder(order);
       } else {
         completePurchase(order);
+        if (firstPurchaseDiscountAvailable && activeCustomer?.run) {
+          const updatedCustomer = updateUser(activeCustomer.run, {
+            descuentoPrimeraCompraDisponible: false,
+          });
+          const { password: _password, ...sessionCustomer } = updatedCustomer;
+          sessionStorage.setItem("usuarioActual", JSON.stringify(sessionCustomer));
+        }
       }
     } catch (purchaseError) {
       setError(purchaseError.message);
@@ -163,9 +195,19 @@ export default function CheckoutPage() {
               </p>
             </div>
             <span className="badge text-bg-primary fs-6">
-              Total a pagar: {formatPrice(cartTotal)}
+              Total a pagar: {formatPrice(payableTotal)}
             </span>
           </header>
+          {firstPurchaseDiscountAvailable && (
+            <div className="alert alert-success" role="status">
+              Tienes 10% de descuento de bienvenida. Se aplica a esta compra: {formatPrice(firstPurchaseDiscount)}.
+            </div>
+          )}
+          {firstPurchaseDiscountAvailable && (
+            <p className="d-flex justify-content-between border-top pt-3">
+              <span>Subtotal antes del descuento</span><span>{formatPrice(cartTotal)}</span>
+            </p>
+          )}
 
           <div className="table-responsive mb-4">
             <table className="table table-sm align-middle">
@@ -281,7 +323,7 @@ export default function CheckoutPage() {
             {error && <p className="col-12 text-danger mb-0" role="alert">{error}</p>}
             <div className="col-12 d-flex justify-content-end">
               <button className="btn btn-success" type="submit">
-                Pagar ahora {formatPrice(cartTotal)}
+                Pagar ahora {formatPrice(payableTotal)}
               </button>
             </div>
           </form>

@@ -68,6 +68,14 @@ export default function PaymentResultPage() {
               </tbody>
             </table>
           </div>
+          {order.descuentoPrimeraCompra > 0 && (
+            <dl className="row ms-auto" style={{ maxWidth: "360px" }}>
+              <dt className="col-7">Subtotal</dt>
+              <dd className="col-5 text-end">{formatPrice(order.subtotal)}</dd>
+              <dt className="col-7 text-success">Descuento de bienvenida</dt>
+              <dd className="col-5 text-end text-success">-{formatPrice(order.descuentoPrimeraCompra)}</dd>
+            </dl>
+          )}
           <p className="h5 text-center bg-light rounded p-3">
             Total {succeeded ? "pagado" : "pendiente"}: {formatPrice(order.total)}
           </p>
