@@ -1,4 +1,13 @@
+import { useState } from "react";
+
 export default function SiteFooter() {
+  const [subscribed, setSubscribed] = useState(false);
+
+  function subscribe(event) {
+    event.preventDefault();
+    setSubscribed(true);
+  }
+
   return (
     <footer className="border-top bg-light mt-4 py-4">
       <div className="container d-flex flex-column flex-md-row justify-content-between align-items-start gap-4">
@@ -15,7 +24,7 @@ export default function SiteFooter() {
           </p>
           <form
             className="d-flex gap-2"
-            onSubmit={(event) => event.preventDefault()}
+            onSubmit={subscribe}
           >
             <label className="visually-hidden" htmlFor="newsletter-email">
               Correo electrónico
@@ -33,6 +42,11 @@ export default function SiteFooter() {
               Suscribirse
             </button>
           </form>
+          {subscribed && (
+            <p className="small text-success mt-2 mb-0" role="status">
+              ¡Gracias por suscribirte!
+            </p>
+          )}
         </div>
       </div>
     </footer>

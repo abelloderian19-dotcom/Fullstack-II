@@ -192,8 +192,53 @@ footer.bg-light {
   background-color: var(--fondo-superficie-secundaria)!important;
 }
 
+.checkout-panel,
+.receipt-panel {
+  max-width: 860px;
+}
+
+.auth-panel,
+.article-content {
+  max-width: 760px;
+}
+
+.admin-sidebar {
+  background-color: var(--fondo-superficie);
+  border-right: 1px solid var(--borde-suave);
+}
+
+.admin-sidebar .nav-link {
+  border-radius: 0.375rem;
+  color: var(--marron-oscuro);
+  margin-bottom: 0.25rem;
+}
+
+.admin-sidebar .nav-link:hover,
+.admin-sidebar .nav-link.active {
+  background-color: var(--rosa-suave);
+  color: var(--chocolate);
+  font-weight: 700;
+}
+
+.admin-shortcut:hover {
+  border-color: var(--chocolate);
+  box-shadow: var(--sombra-suave);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  @media print {
+    header,
+    footer,
+    .btn {
+      display: none !important;
+    }
+
+    body {
+      background: #fff;
+    }
   }
 }

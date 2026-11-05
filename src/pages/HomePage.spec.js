@@ -1,10 +1,36 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import SiteHeader from "../components/SiteHeader.jsx";
+import { StoreProvider } from "../context/StoreContext.jsx";
 import HomePage from "./HomePage.jsx";
 
 describe("HomePage", () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  function renderHome() {
+    return render(
+      React.createElement(
+        StoreProvider,
+        null,
+        React.createElement(
+          BrowserRouter,
+          null,
+          React.createElement(
+            React.Fragment,
+            null,
+            React.createElement(SiteHeader),
+            React.createElement(HomePage),
+          ),
+        ),
+      ),
+    );
+  }
+
   it("renders the store introduction and product link", () => {
-    render(React.createElement(HomePage));
+    renderHome();
 
     expect(
       screen.getByRole("heading", {
@@ -13,15 +39,28 @@ describe("HomePage", () => {
     ).toBeTruthy();
     expect(
       screen.getByRole("link", { name: "Ver productos" }).getAttribute("href"),
-    ).toBe("./productos.html");
+    ).toBe("/productos");
   });
 
   it("renders the primary store navigation", () => {
-    render(React.createElement(HomePage));
+    renderHome();
 
     expect(
       screen.getByRole("navigation", { name: "Navegación principal" }),
     ).toBeTruthy();
     expect(screen.getByRole("link", { name: "Contacto" })).toBeTruthy();
+  });
+
+  it("renders catalog products and updates the cart after a click", () => {
+    renderHome();
+
+    expect(screen.getAllByRole("button", { name: "Agregar al carrito" }).length)
+      .toBeGreaterThan(0);
+    fireEvent.click(screen.getAllByRole("button", { name: "Agregar al carrito" })[0]);
+
+    expect(
+      screen.getByRole("link", { name: "Carrito de compras, 1 producto" }),
+    ).toBeTruthy();
+    expect(screen.getByText("Añadido al carrito.")).toBeTruthy();
   });
 });

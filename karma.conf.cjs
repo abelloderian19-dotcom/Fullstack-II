@@ -10,7 +10,6 @@ module.exports = (config) => {
       jsx: "automatic",
     },
     browsers: ["jsdom"],
-    singleRun: true,
     reporters: ["progress"],
   });
 };
