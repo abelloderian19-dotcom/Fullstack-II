@@ -57,6 +57,7 @@ export function validateLoginField(field, value) {
 export function validateRegistrationField(field, form, regions) {
   switch (field) {
     case "run":
+      if (!form.run.trim()) return "";
       return isValidChileanRun(form.run.trim()) ? "" : "Ingresa los números del RUN sin puntos y el dígito verificador correcto.";
     case "nombre":
       return form.nombre.trim() && form.nombre.trim().length <= 50 ? "" : "Ingresa un nombre de hasta 50 caracteres.";
@@ -80,6 +81,7 @@ export function validateRegistrationField(field, form, regions) {
 }
 
 export function validateRegistration(form, regions) {
+  if (!form.run.trim()) return "El RUN es obligatorio.";
   for (const field of ["run", "nombre", "apellidos", "correo", "password", "region", "comuna", "direccion"]) {
     const error = validateRegistrationField(field, form, regions);
     if (error) return error;
