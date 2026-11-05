@@ -93,6 +93,8 @@ export function RegisterPage() {
     comuna: "",
     direccion: "",
   });
+  const [runBody, setRunBody] = useState("");
+  const [runVerifier, setRunVerifier] = useState("");
   const [error, setError] = useState("");
   const [fieldErrors, setFieldErrors] = useState({});
   const selectedRegion = regions.find((region) => region.nombre === form.region);
@@ -114,6 +116,37 @@ export function RegisterPage() {
       }
       return next;
     });
+  }
+
+  function updateRunBody(event) {
+    const value = event.target.value;
+    setRunBody(value);
+    setForm((current) => ({ ...current, run: `${value}${runVerifier}` }));
+    if (Object.prototype.hasOwnProperty.call(fieldErrors, "run")) {
+      setFieldErrors((current) => ({
+        ...current,
+        run: validateRegistrationField("run", { ...form, run: `${value}${runVerifier}` }, regions),
+      }));
+    }
+  }
+
+  function updateRunVerifier(event) {
+    const value = event.target.value.toUpperCase();
+    setRunVerifier(value);
+    setForm((current) => ({ ...current, run: `${runBody}${value}` }));
+    if (Object.prototype.hasOwnProperty.call(fieldErrors, "run")) {
+      setFieldErrors((current) => ({
+        ...current,
+        run: validateRegistrationField("run", { ...form, run: `${runBody}${value}` }, regions),
+      }));
+    }
+  }
+
+  function blurRun() {
+    setFieldErrors((current) => ({
+      ...current,
+      run: validateRegistrationField("run", { ...form, run: `${runBody}${runVerifier}` }, regions),
+    }));
   }
 
   function blurField(event) {
@@ -159,8 +192,12 @@ export function RegisterPage() {
           <div className="row g-3">
           <div className="col-12 col-md-4">
             <label className="form-label" htmlFor="register-run">RUN*</label>
-            <input className={`form-control${fieldErrors.run ? " is-invalid" : ""}`} id="register-run" name="run" autoComplete="off" value={form.run} onChange={update} onBlur={blurField} placeholder="12345678K" minLength="7" maxLength="9" required aria-invalid={Boolean(fieldErrors.run)} />
-            {fieldErrors.run && <div className="invalid-feedback" role="alert">{fieldErrors.run}</div>}
+            <div className="input-group">
+              <input className={`form-control${fieldErrors.run ? " is-invalid" : ""}`} id="register-run" autoComplete="off" value={runBody} onChange={updateRunBody} onBlur={blurRun} placeholder="12345678" maxLength="8" aria-label="RUN sin dígito verificador" required aria-invalid={Boolean(fieldErrors.run)} />
+              <span className="input-group-text" aria-hidden="true">-</span>
+              <input className={`form-control flex-grow-0 text-center${fieldErrors.run ? " is-invalid" : ""}`} value={runVerifier} onChange={updateRunVerifier} onBlur={blurRun} placeholder="K" maxLength="1" style={{ width: "4rem" }} aria-label="Dígito verificador del RUN" required aria-invalid={Boolean(fieldErrors.run)} />
+            </div>
+            {fieldErrors.run && <div className="invalid-feedback d-block" role="alert">{fieldErrors.run}</div>}
           </div>
           <div className="col-12 col-md-4">
             <label className="form-label" htmlFor="register-name">Nombre*</label>
