@@ -121,3 +121,32 @@ export function validateCheckoutDetails(address, regions) {
   }
   return "";
 }
+
+export function validateContactField(field, value) {
+  const trimmedValue = typeof value === "string" ? value.trim() : "";
+  switch (field) {
+    case "nombre":
+      return trimmedValue.length >= 3 && trimmedValue.length <= 80
+        ? ""
+        : "Ingresa tu nombre completo (entre 3 y 80 caracteres).";
+    case "correo":
+      return typeof value === "string" && value.trim().length <= 120 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())
+        ? ""
+        : "Ingresa un correo válido.";
+    case "mensaje":
+      return trimmedValue.length >= 10 && trimmedValue.length <= 1000
+        ? ""
+        : "El mensaje debe tener entre 10 y 1000 caracteres.";
+    default:
+      return "";
+  }
+}
+
+export function validateContact(form) {
+  const errors = {};
+  for (const field of ["nombre", "correo", "mensaje"]) {
+    const error = validateContactField(field, form[field]);
+    if (error) errors[field] = error;
+  }
+  return errors;
+}

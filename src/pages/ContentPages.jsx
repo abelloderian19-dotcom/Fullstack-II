@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
+import { validateContact, validateContactField } from "../utils/validators.js";
 
 const articles = [
   {
@@ -111,29 +112,55 @@ export function BlogDetailPage() {
 
 export function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState({ nombre: "", correo: "", mensaje: "" });
+  const [fieldErrors, setFieldErrors] = useState({});
+
+  function updateField(event) {
+    const { name, value } = event.target;
+    setForm((current) => ({ ...current, [name]: value }));
+    setSubmitted(false);
+    setFieldErrors((current) => Object.prototype.hasOwnProperty.call(current, name)
+      ? { ...current, [name]: validateContactField(name, value) }
+      : current);
+  }
+
+  function blurField(event) {
+    const { name, value } = event.target;
+    setFieldErrors((current) => ({
+      ...current,
+      [name]: validateContactField(name, value),
+    }));
+  }
 
   function submit(event) {
     event.preventDefault();
+    const errors = validateContact(form);
+    setFieldErrors(errors);
+    if (Object.keys(errors).length > 0) return;
+
     setSubmitted(true);
-    event.currentTarget.reset();
+    setForm({ nombre: "", correo: "", mensaje: "" });
   }
 
   return (
     <main className="container d-flex justify-content-center py-4">
       <section className="col-12 col-sm-10 col-md-7 col-lg-6" aria-labelledby="contact-title">
         <h1 className="h2 text-center mb-4" id="contact-title">Contáctanos</h1>
-        <form className="card bg-light border p-3 p-md-4" onSubmit={submit}>
+        <form className="card bg-light border p-3 p-md-4" onSubmit={submit} noValidate>
           <div className="mb-3">
             <label className="form-label" htmlFor="contact-name">Nombre completo</label>
-            <input className="form-control" id="contact-name" name="nombre" type="text" autoComplete="name" minLength="3" maxLength="80" required />
+            <input className={`form-control${fieldErrors.nombre ? " is-invalid" : ""}`} id="contact-name" name="nombre" type="text" autoComplete="name" value={form.nombre} onChange={updateField} onBlur={blurField} minLength="3" maxLength="80" required aria-invalid={Boolean(fieldErrors.nombre)} />
+            {fieldErrors.nombre && <div className="invalid-feedback" role="alert">{fieldErrors.nombre}</div>}
           </div>
           <div className="mb-3">
             <label className="form-label" htmlFor="contact-email">Correo</label>
-            <input className="form-control" id="contact-email" name="correo" type="email" autoComplete="email" maxLength="120" required />
+            <input className={`form-control${fieldErrors.correo ? " is-invalid" : ""}`} id="contact-email" name="correo" type="email" autoComplete="email" value={form.correo} onChange={updateField} onBlur={blurField} maxLength="120" required aria-invalid={Boolean(fieldErrors.correo)} />
+            {fieldErrors.correo && <div className="invalid-feedback" role="alert">{fieldErrors.correo}</div>}
           </div>
           <div className="mb-3">
             <label className="form-label" htmlFor="contact-message">Mensaje</label>
-            <textarea className="form-control" id="contact-message" name="mensaje" rows="4" minLength="10" maxLength="1000" required />
+            <textarea className={`form-control${fieldErrors.mensaje ? " is-invalid" : ""}`} id="contact-message" name="mensaje" rows="4" value={form.mensaje} onChange={updateField} onBlur={blurField} minLength="10" maxLength="1000" required aria-invalid={Boolean(fieldErrors.mensaje)} />
+            {fieldErrors.mensaje && <div className="invalid-feedback" role="alert">{fieldErrors.mensaje}</div>}
           </div>
           {submitted && <p className="text-success" role="status">Tu mensaje fue registrado. ¡Gracias!</p>}
           <button className="btn btn-primary align-self-start" type="submit">Enviar mensaje</button>
