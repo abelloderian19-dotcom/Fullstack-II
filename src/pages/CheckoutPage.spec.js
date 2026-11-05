@@ -2,11 +2,13 @@ import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { StoreProvider } from "../context/StoreContext.jsx";
-import { getProducts } from "../data/database.js";
+import { getProducts, getRegions } from "../data/database.js";
 import CheckoutPage from "./CheckoutPage.jsx";
 import PaymentResultPage from "./PaymentResultPage.jsx";
 
-const region = "Región Metropolitana de Santiago";
+const region = getRegions().find(({ nombre }) =>
+  nombre.includes("Metropolitana"),
+).nombre;
 
 function renderCheckout() {
   const firstProduct = getProducts()[0];
