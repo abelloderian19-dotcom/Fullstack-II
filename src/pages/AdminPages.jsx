@@ -18,9 +18,11 @@ import { effectivePrice, formatPrice } from "../utils/pricing.js";
 import { isValidChileanRun } from "../utils/validators.js";
 
 export function AdminDashboardPage() {
-  const { products, categories } = useStore();
+  const { products } = useStore();
   const users = getUsers();
+  const customers = users.filter((user) => user.tipoUsuario === "Cliente").length;
   const orders = getOrders();
+  const paidOrders = orders.filter((order) => order.estado === "Pagada");
   const lowStock = products.filter(
     (product) =>
       Number.isFinite(product.stock) &&
@@ -28,50 +30,57 @@ export function AdminDashboardPage() {
       product.stock <= product.stockCritico,
   ).length;
   const stats = [
-    ["Compras", orders.length, "Órdenes registradas", "primary"],
-    ["Productos", products.length, `${lowStock} con stock crítico`, "success"],
-    ["Usuarios", users.length, `${categories.length} categorías`, "warning"],
+    { label: "Compras", value: paidOrders.length, note: `${orders.length} \u00f3rdenes registradas`, icon: "\u{1F6D2}", tone: "blue" },
+    { label: "Productos", value: products.length, note: `${lowStock} con stock cr\u00edtico`, icon: "\u25b1", tone: "green" },
+    { label: "Usuarios", value: users.length, note: `${customers} clientes registrados`, icon: "\u265f", tone: "yellow" },
+  ];
+  const shortcuts = [
+    { label: "Dashboard", path: "/admin", description: "Resumen general de las m\u00e9tricas y actividades.", icon: "\u25c9" },
+    { label: "\u00d3rdenes", path: "/admin/ordenes", description: "Revisa y gestiona las \u00f3rdenes de compra.", icon: "\u{1F6D2}" },
+    { label: "Productos", path: "/admin/productos", description: "Administra el inventario y el cat\u00e1logo.", icon: "\u25b1" },
+    { label: "Categor\u00edas", path: "/admin/categorias", description: "Organiza los productos para facilitar la navegaci\u00f3n.", icon: "\u25c7" },
+    { label: "Usuarios", path: "/admin/usuarios", description: "Gestiona las cuentas y sus roles.", icon: "\u265f" },
+    { label: "Reportes", path: "/admin/reportes", description: "Consulta las m\u00e9tricas de venta y stock.", icon: "\u25a5" },
+    { label: "Perfil", path: "/admin/perfil", description: "Administra la informaci\u00f3n de tu cuenta.", icon: "\u2659" },
+    { label: "Tienda", path: "/", description: "Visita la tienda como la ven tus clientes.", icon: "\u2302" },
   ];
 
   return (
-    <>
+    <div className="admin-dashboard">
       <header className="mb-4">
         <h1 className="h2">Dashboard</h1>
         <p className="text-secondary mb-0">Resumen de las actividades diarias.</p>
       </header>
       <div className="row g-3 mb-4">
-        {stats.map(([label, value, note, color]) => (
+        {stats.map(({ label, value, note, icon, tone }) => (
           <div className="col-12 col-md-4" key={label}>
-            <div className={`card text-bg-${color} h-100`}>
-              <div className="card-body">
-                <h2 className="h6">{label}</h2>
-                <p className="display-6 fw-bold mb-1">{value}</p>
-                <p className="small mb-0">{note}</p>
+            <div className={`card admin-stat admin-stat--${tone} h-100`}>
+              <div className="card-body d-flex align-items-center gap-3">
+                <span className="admin-stat-icon" aria-hidden="true">{icon}</span>
+                <div>
+                  <h2 className="h6 mb-1">{label}</h2>
+                  <p className="h2 fw-bold mb-1">{value.toLocaleString("es-CL")}</p>
+                  <p className="small mb-0">{note}</p>
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
       <div className="row g-3">
-        {[
-          ["Órdenes", "/admin/ordenes", "Revisa las compras recientes."],
-          ["Productos", "/admin/productos", "Administra inventario y catálogo."],
-          ["Categorías", "/admin/categorias", "Organiza los productos."],
-          ["Usuarios", "/admin/usuarios", "Gestiona cuentas de la tienda."],
-          ["Reportes", "/admin/reportes", "Consulta las métricas de venta."],
-          ["Perfil", "/admin/perfil", "Información de la cuenta."],
-        ].map(([label, path, description]) => (
-          <div className="col-12 col-sm-6 col-xl-4" key={path}>
-            <Link className="card admin-shortcut h-100 text-decoration-none" to={path}>
+        {shortcuts.map(({ label, path, description, icon }) => (
+          <div className="col-12 col-sm-6 col-xl-3" key={path}>
+            <Link className="card admin-shortcut h-100 text-decoration-none text-center" to={path}>
               <div className="card-body">
-                <h2 className="h5">{label}</h2>
-                <p className="text-secondary mb-0">{description}</p>
+                <span className="admin-shortcut-icon" aria-hidden="true">{icon}</span>
+                <h2 className="h6 mt-2">{label}</h2>
+                <p className="text-secondary small mb-0">{description}</p>
               </div>
             </Link>
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
