@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useStore } from "../context/StoreContext.jsx";
 
@@ -16,6 +16,18 @@ export default function Navbar() {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const { cartCount } = useStore();
+  const previousCartCount = useRef(cartCount);
+  const [cartUpdated, setCartUpdated] = useState(false);
+
+  useEffect(() => {
+    if (previousCartCount.current === cartCount) return undefined;
+
+    previousCartCount.current = cartCount;
+    setCartUpdated(true);
+    const timeout = window.setTimeout(() => setCartUpdated(false), 550);
+
+    return () => window.clearTimeout(timeout);
+  }, [cartCount]);
 
   function submitSearch(event) {
     event.preventDefault();
@@ -72,13 +84,17 @@ export default function Navbar() {
             ))}
           </ul>
           <Link
-            className="d-flex align-items-center gap-2 text-dark text-decoration-none text-nowrap"
+            className={
+              "navbar-cart d-flex align-items-center gap-2 text-decoration-none text-nowrap" +
+              (cartUpdated ? " is-updating" : "")
+            }
             to="/carrito"
-            aria-label={`Carrito de compras, ${cartCount} ${cartCount === 1 ? "producto" : "productos"}`}
+            aria-label={"Carrito de compras, " + cartCount + " " + (cartCount === 1 ? "producto" : "productos")}
           >
-            <span aria-hidden="true">🛒</span>
-            <span>
-              Carrito (<span aria-live="polite">{cartCount}</span>)
+            <span className="navbar-cart-icon" aria-hidden="true">{"\u{1F6D2}"}</span>
+            <span className="navbar-cart-label">Carrito</span>
+            <span className="navbar-cart-count" aria-live="polite">
+              {cartCount}
             </span>
           </Link>
           <div className="d-flex gap-2 ms-lg-auto">

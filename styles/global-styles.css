@@ -184,6 +184,67 @@ footer.bg-light {
   color: var(--chocolate);
 }
 
+.navbar-cart {
+  background: #fff;
+  border: 1px solid var(--borde-suave);
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgb(69 53 45 / 8%);
+  color: var(--marron-oscuro);
+  padding: 0.4rem 0.55rem 0.4rem 0.75rem;
+  transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.navbar-cart:hover {
+  background-color: var(--fondo-superficie-acento);
+  box-shadow: 0 5px 14px rgb(69 53 45 / 14%);
+  color: var(--marron-oscuro);
+  transform: translateY(-2px);
+}
+
+.navbar-cart-icon {
+  display: inline-block;
+  font-size: 1.1rem;
+  transform-origin: 50% 15%;
+}
+
+.navbar-cart-count {
+  align-items: center;
+  background-color: var(--chocolate);
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 0.75rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  min-height: 1.4rem;
+  min-width: 1.4rem;
+  padding: 0.2rem 0.35rem;
+}
+
+.navbar-cart.is-updating .navbar-cart-icon {
+  animation: navbar-cart-jiggle 550ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.navbar-cart.is-updating .navbar-cart-count {
+  animation: navbar-cart-count-pop 550ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes navbar-cart-jiggle {
+  0% { transform: translateY(0) rotate(0) scale(1); }
+  28% { transform: translateY(-3px) rotate(-14deg) scale(1.15); }
+  58% { transform: translateY(0) rotate(10deg) scale(0.96); }
+  82% { transform: rotate(-5deg) scale(1.04); }
+  100% { transform: translateY(0) rotate(0) scale(1); }
+}
+
+@keyframes navbar-cart-count-pop {
+  0% { transform: scale(0.75); }
+  45% { transform: scale(1.2); }
+  72% { transform: scale(0.94); }
+  100% { transform: scale(1); }
+}
+
 .home-carousel {
   background-color: #343a40;
   height: 300px;
@@ -583,6 +644,15 @@ footer.bg-light {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .navbar-cart {
+    transition: none;
+  }
+
+  .navbar-cart.is-updating .navbar-cart-icon,
+  .navbar-cart.is-updating .navbar-cart-count {
+    animation: none;
   }
 }
 
