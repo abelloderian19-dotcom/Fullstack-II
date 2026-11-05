@@ -24,8 +24,8 @@ export default function AdminLayout() {
         <aside className="col-12 col-md-3 col-lg-2 admin-sidebar p-0">
           <header className="admin-sidebar-brand">
             <Link to="/admin" aria-label={"Panel de administraci\u00f3n"}>
-              <span className="admin-brand-mark" aria-hidden="true">1000</span>
-              <span>Sabores</span>
+              <img className="admin-brand-logo" src="/img/logo-tienda.svg" alt="" />
+              <span>1000 Sabores</span>
             </Link>
           </header>
           <nav className="nav flex-column admin-sidebar-nav p-2" aria-label={"Navegaci\u00f3n administrativa"}>
@@ -45,7 +45,7 @@ export default function AdminLayout() {
                 <span aria-hidden="true">{"\u2302"}</span> Tienda
               </Link>
               <button className="nav-link admin-sidebar-action admin-signout text-start" type="button" onClick={signOut}>
-                <span aria-hidden="true">{"\u21aa"}</span> {"Cerrar sesi\u00f3n"}
+                <span aria-hidden="true">{""}</span> {"Cerrar sesion"}
               </button>
             </div>
           </nav>
@@ -55,7 +55,7 @@ export default function AdminLayout() {
             <Outlet />
           </main>
           <footer className="text-center p-3">
-            <p className="mb-0 text-secondary">{"\u00a9 2026 Pasteler\u00eda 1000 Sabores"}</p>
+            <p className="mb-0 text-secondary">{"Pasteleria 1000 Sabores"}</p>
           </footer>
         </div>
       </div>

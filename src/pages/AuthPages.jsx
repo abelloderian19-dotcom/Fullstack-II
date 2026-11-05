@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createUser, getRegions, getUsers } from "../data/database.js";
-import { isValidChileanRun } from "../utils/validators.js";
+import { validateLogin, validateRegistration } from "../utils/validators.js";
 
 function saveSession(user) {
   const { password: _password, ...sessionUser } = user;
@@ -16,6 +16,13 @@ export function LoginPage() {
 
   function submit(event) {
     event.preventDefault();
+    const validationError = validateLogin(email, password);
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+
+    setError("");
     const user = getUsers().find(
       (entry) =>
         entry.correo.toLowerCase() === email.trim().toLowerCase() &&
@@ -80,15 +87,20 @@ export function RegisterPage() {
   function submit(event) {
     event.preventDefault();
     setError("");
-    if (!isValidChileanRun(form.run)) {
-      setError("Ingresa un RUN válido sin puntos ni guion.");
+    const validationError = validateRegistration(form, regions);
+    if (validationError) {
+      setError(validationError);
       return;
     }
 
     try {
       const user = createUser({
         ...form,
-        run: form.run.toUpperCase(),
+        run: form.run.trim().toUpperCase(),
+        nombre: form.nombre.trim(),
+        apellidos: form.apellidos.trim(),
+        correo: form.correo.trim().toLowerCase(),
+        direccion: form.direccion.trim(),
         tipoUsuario: "Cliente",
         fechaNacimiento: "",
       });

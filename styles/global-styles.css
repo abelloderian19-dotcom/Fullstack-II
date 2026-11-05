@@ -313,16 +313,10 @@ footer.bg-light {
   text-decoration: none;
 }
 
-.admin-brand-mark {
-  align-items: center;
-  background-color: #fff;
-  border-radius: 50%;
-  color: #212529;
-  display: inline-flex;
-  font-size: 0.625rem;
-  height: 1.5rem;
-  justify-content: center;
-  width: 1.5rem;
+.admin-brand-logo {
+  display: block;
+  height: 2rem;
+  width: 2rem;
 }
 
 .admin-sidebar-nav {

@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import ProductCard from "./ProductCard.jsx";
 import { StoreProvider } from "../context/StoreContext.jsx";
@@ -48,7 +48,7 @@ describe("ProductCard", () => {
 
     const button = screen.getByRole("button", { name: "Comprar" });
     expect(button.className).toBe("test-button");
-    button.click();
+    fireEvent.click(button);
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
@@ -71,7 +71,7 @@ describe("ProductCard", () => {
     );
 
     expect(screen.queryByRole("status")).toBeNull();
-    screen.getByRole("button", { name: "Agregar al carrito" }).click();
+    fireEvent.click(screen.getByRole("button", { name: "Agregar al carrito" }));
     expect(screen.getByRole("status").textContent).toContain("No se pudo");
   });
 });
