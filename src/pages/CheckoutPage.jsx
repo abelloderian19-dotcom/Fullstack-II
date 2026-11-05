@@ -4,7 +4,7 @@ import { useStore } from "../context/StoreContext.jsx";
 import { getRegions, saveOrder } from "../data/database.js";
 import { effectivePrice, formatPrice } from "../utils/pricing.js";
 import ProductImage from "../components/ProductImage.jsx";
-import { validateCheckoutDetails } from "../utils/validators.js";
+import { validateCheckoutDetails, validateCheckoutField } from "../utils/validators.js";
 
 const blankAddress = {
   nombre: "",
@@ -42,6 +42,7 @@ export default function CheckoutPage() {
   const [address, setAddress] = useState(getCustomerDefaults);
   const [simulateFailure, setSimulateFailure] = useState(false);
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({});
   const selectedRegion = useMemo(
     () => regions.find((region) => region.nombre === address.region),
     [address.region, regions],
@@ -53,6 +54,24 @@ export default function CheckoutPage() {
       ...current,
       [name]: value,
       ...(name === "region" ? { comuna: "" } : {}),
+    }));
+    setFieldErrors((current) => {
+      const next = { ...current };
+      if (name === "region") {
+        delete next.comuna;
+        if (current.region) next.region = validateCheckoutField(name, { ...address, region: value }, regions);
+      } else if (Object.prototype.hasOwnProperty.call(current, name)) {
+        next[name] = validateCheckoutField(name, { ...address, [name]: value }, regions);
+      }
+      return next;
+    });
+  }
+
+  function blurAddressField(event) {
+    const { name, value } = event.target;
+    setFieldErrors((current) => ({
+      ...current,
+      [name]: validateCheckoutField(name, { ...address, [name]: value }, regions),
     }));
   }
 
@@ -187,15 +206,18 @@ export default function CheckoutPage() {
             </div>
             <div className="col-12 col-md-6">
               <label className="form-label" htmlFor="checkout-name">Nombre*</label>
-              <input className="form-control" id="checkout-name" name="nombre" value={address.nombre} onChange={updateAddress} required maxLength="50" />
+              <input className={`form-control${fieldErrors.nombre ? " is-invalid" : ""}`} id="checkout-name" name="nombre" value={address.nombre} onChange={updateAddress} onBlur={blurAddressField} required maxLength="50" aria-invalid={Boolean(fieldErrors.nombre)} />
+              {fieldErrors.nombre && <div className="invalid-feedback" role="alert">{fieldErrors.nombre}</div>}
             </div>
             <div className="col-12 col-md-6">
               <label className="form-label" htmlFor="checkout-lastname">Apellidos*</label>
-              <input className="form-control" id="checkout-lastname" name="apellidos" value={address.apellidos} onChange={updateAddress} required maxLength="100" />
+              <input className={`form-control${fieldErrors.apellidos ? " is-invalid" : ""}`} id="checkout-lastname" name="apellidos" value={address.apellidos} onChange={updateAddress} onBlur={blurAddressField} required maxLength="100" aria-invalid={Boolean(fieldErrors.apellidos)} />
+              {fieldErrors.apellidos && <div className="invalid-feedback" role="alert">{fieldErrors.apellidos}</div>}
             </div>
             <div className="col-12 col-md-6">
               <label className="form-label" htmlFor="checkout-email">Correo*</label>
-              <input className="form-control" id="checkout-email" type="email" name="correo" value={address.correo} onChange={updateAddress} required />
+              <input className={`form-control${fieldErrors.correo ? " is-invalid" : ""}`} id="checkout-email" type="email" name="correo" value={address.correo} onChange={updateAddress} onBlur={blurAddressField} required aria-invalid={Boolean(fieldErrors.correo)} />
+              {fieldErrors.correo && <div className="invalid-feedback" role="alert">{fieldErrors.correo}</div>}
             </div>
 
             <div className="col-12 mt-4">
@@ -203,29 +225,34 @@ export default function CheckoutPage() {
             </div>
             <div className="col-12 col-md-6">
               <label className="form-label" htmlFor="checkout-street">Calle y número*</label>
-              <input className="form-control" id="checkout-street" name="calle" value={address.calle} onChange={updateAddress} required maxLength="200" />
+              <input className={`form-control${fieldErrors.calle ? " is-invalid" : ""}`} id="checkout-street" name="calle" value={address.calle} onChange={updateAddress} onBlur={blurAddressField} required maxLength="200" aria-invalid={Boolean(fieldErrors.calle)} />
+              {fieldErrors.calle && <div className="invalid-feedback" role="alert">{fieldErrors.calle}</div>}
             </div>
             <div className="col-12 col-md-6">
               <label className="form-label" htmlFor="checkout-department">Departamento</label>
-              <input className="form-control" id="checkout-department" name="departamento" value={address.departamento} onChange={updateAddress} maxLength="50" />
+              <input className={`form-control${fieldErrors.departamento ? " is-invalid" : ""}`} id="checkout-department" name="departamento" value={address.departamento} onChange={updateAddress} onBlur={blurAddressField} maxLength="50" aria-invalid={Boolean(fieldErrors.departamento)} />
+              {fieldErrors.departamento && <div className="invalid-feedback" role="alert">{fieldErrors.departamento}</div>}
             </div>
             <div className="col-12 col-md-6">
               <label className="form-label" htmlFor="checkout-region">Región*</label>
-              <select className="form-select" id="checkout-region" name="region" value={address.region} onChange={updateAddress} required>
+              <select className={`form-select${fieldErrors.region ? " is-invalid" : ""}`} id="checkout-region" name="region" value={address.region} onChange={updateAddress} onBlur={blurAddressField} required aria-invalid={Boolean(fieldErrors.region)}>
                 <option value="">Selecciona una región</option>
                 {regions.map((region) => <option key={region.nombre}>{region.nombre}</option>)}
               </select>
+              {fieldErrors.region && <div className="invalid-feedback" role="alert">{fieldErrors.region}</div>}
             </div>
             <div className="col-12 col-md-6">
               <label className="form-label" htmlFor="checkout-commune">Comuna*</label>
-              <select className="form-select" id="checkout-commune" name="comuna" value={address.comuna} onChange={updateAddress} required disabled={!selectedRegion}>
+              <select className={`form-select${fieldErrors.comuna ? " is-invalid" : ""}`} id="checkout-commune" name="comuna" value={address.comuna} onChange={updateAddress} onBlur={blurAddressField} required disabled={!selectedRegion} aria-invalid={Boolean(fieldErrors.comuna)}>
                 <option value="">Selecciona una comuna</option>
                 {selectedRegion?.comunas.map((commune) => <option key={commune}>{commune}</option>)}
               </select>
+              {fieldErrors.comuna && <div className="invalid-feedback" role="alert">{fieldErrors.comuna}</div>}
             </div>
             <div className="col-12">
               <label className="form-label" htmlFor="checkout-notes">Indicaciones para la entrega</label>
-              <textarea className="form-control" id="checkout-notes" name="indicaciones" value={address.indicaciones} onChange={updateAddress} rows="3" maxLength="500" />
+              <textarea className={`form-control${fieldErrors.indicaciones ? " is-invalid" : ""}`} id="checkout-notes" name="indicaciones" value={address.indicaciones} onChange={updateAddress} onBlur={blurAddressField} rows="3" maxLength="500" aria-invalid={Boolean(fieldErrors.indicaciones)} />
+              {fieldErrors.indicaciones && <div className="invalid-feedback" role="alert">{fieldErrors.indicaciones}</div>}
             </div>
             <div className="col-12 col-md-6">
               <label className="form-label" htmlFor="checkout-delivery">Opción de entrega</label>
