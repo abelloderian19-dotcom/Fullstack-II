@@ -1,9 +1,9 @@
 module.exports = (config) => {
   config.set({
     frameworks: ["jasmine"],
-    files: ["src/**/*.spec.js"],
+    files: ["src/components/test/**/*.test.jsx"],
     preprocessors: {
-      "src/**/*.spec.js": ["esbuild"],
+      "src/components/test/**/*.test.jsx": ["esbuild"],
     },
     esbuild: {
       target: "es2020",

@@ -10,7 +10,7 @@ import {
   getProducts,
   getUsers,
   updateProduct,
-} from "./database.js";
+} from "../../data/database.js";
 
 describe("mock database", () => {
   beforeEach(() => {

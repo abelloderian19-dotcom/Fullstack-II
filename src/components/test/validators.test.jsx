@@ -4,7 +4,7 @@ import {
   isValidPassword,
   validateLogin,
   validateRegistration,
-} from "./validators.js";
+} from "../../utils/validators.js";
 
 describe("validators", () => {
   const regions = [{ nombre: "Region de prueba", comunas: ["Comuna"] }];

@@ -1,9 +1,9 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import SiteHeader from "../components/SiteHeader.jsx";
-import { StoreProvider } from "../context/StoreContext.jsx";
-import HomePage from "./HomePage.jsx";
+import SiteHeader from "../SiteHeader.jsx";
+import { StoreProvider } from "../../context/StoreContext.jsx";
+import HomePage from "../../pages/HomePage.jsx";
 
 describe("HomePage", () => {
   beforeEach(() => {
@@ -40,6 +40,23 @@ describe("HomePage", () => {
     expect(
       screen.getByRole("link", { name: "Ver productos" }).getAttribute("href"),
     ).toBe("/productos");
+  });
+
+  it("renders three carousel slides and moves to the next image", () => {
+    renderHome();
+
+    expect(
+      screen.getAllByRole("button", { name: /Ir a la diapositiva/ }).length,
+    ).toBe(3);
+    expect(
+      screen.getByRole("heading", { name: "Nuevos lanzamientos" }),
+    ).toBeTruthy();
+
+    fireEvent.click(screen.getByRole("button", { name: "Siguiente imagen" }));
+
+    expect(
+      screen.getByRole("heading", { name: "Pasteles para compartir" }),
+    ).toBeTruthy();
   });
 
   it("renders the primary store navigation", () => {

@@ -465,7 +465,7 @@ export function AdminOrdersPage() {
       <div className="table-responsive">
         <table className="table table-striped align-middle">
           <thead><tr><th>Número</th><th>Fecha</th><th>Cliente</th><th>Estado</th><th>Total</th><th>Detalle</th></tr></thead>
-          <tbody>{orders.map((order) => <tr key={order.id}><td>{order.id}</td><td>{new Date(order.fecha).toLocaleDateString("es-CL")}</td><td>{order.cliente.nombre} {order.cliente.apellidos}</td><td>{order.estado}</td><td>{formatPrice(order.total)}</td><td><Link to={`/admin/ordenes/${encodeURIComponent(order.id)}`}>Ver orden</Link></td></tr>)}</tbody>
+          <tbody>{orders.map((order) => <tr key={order.id}><td>{order.id}</td><td>{new Date(order.fecha).toLocaleDateString("es-CL")}</td><td>{order.cliente.nombre} {order.cliente.apellidos}</td><td>{order.estado}</td><td>{formatPrice(order.total)}</td><td><Link to={"/admin/ordenes/" + encodeURIComponent(order.id)}>Ver boleta</Link></td></tr>)}</tbody>
         </table>
       </div>
       {orders.length === 0 && <p className="alert alert-light border">Todavía no hay órdenes registradas.</p>}
@@ -476,16 +476,74 @@ export function AdminOrdersPage() {
 export function AdminOrderDetailPage() {
   const { orderId } = useParams();
   const order = getOrders().find((entry) => entry.id === orderId);
-  if (!order) return <p className="alert alert-warning">No se encontró esta orden.</p>;
+  if (!order) return <p className="alert alert-warning">No se encontr\u00f3 esta orden.</p>;
 
   return (
-    <>
-      <h1 className="h2">Orden {order.id}</h1>
-      <p>{order.cliente.nombre} {order.cliente.apellidos} · {order.estado}</p>
-      <div className="table-responsive"><table className="table"><thead><tr><th>Producto</th><th>Cantidad</th><th>Subtotal</th></tr></thead><tbody>{order.items.map((item) => <tr key={item.codigo}><td>{item.nombre}</td><td>{item.cantidad}</td><td>{formatPrice(item.subtotal)}</td></tr>)}</tbody></table></div>
-      <p className="h5 text-end">Total: {formatPrice(order.total)}</p>
-      <Link to="/admin/ordenes">Volver a órdenes</Link>
-    </>
+    <article className="admin-receipt card mx-auto">
+      <div className="card-body p-3 p-md-4">
+        <header className="d-flex flex-wrap justify-content-between align-items-start gap-3 border-bottom pb-3 mb-3">
+          <div>
+            <p className="text-uppercase text-secondary small mb-1">Boleta de compra</p>
+            <h1 className="h3 mb-1">Boleta {order.id}</h1>
+            <p className="text-secondary mb-0">
+              Emitida: {new Date(order.fecha).toLocaleString("es-CL")}
+            </p>
+          </div>
+          <span className={"badge " + (order.estado === "Pagada" ? "text-bg-success" : "text-bg-warning")}>
+            {order.estado}
+          </span>
+        </header>
+
+        <section className="mb-4" aria-labelledby="receipt-customer-title">
+          <h2 className="h5" id="receipt-customer-title">Datos del cliente</h2>
+          <dl className="row mb-0">
+            <dt className="col-sm-3">Nombre</dt>
+            <dd className="col-sm-9">{order.cliente.nombre} {order.cliente.apellidos}</dd>
+            <dt className="col-sm-3">Correo</dt>
+            <dd className="col-sm-9">{order.cliente.correo}</dd>
+          </dl>
+        </section>
+
+        <section className="mb-4" aria-labelledby="receipt-shipping-title">
+          <h2 className="h5" id="receipt-shipping-title">Entrega y pago</h2>
+          <dl className="row mb-0">
+            <dt className="col-sm-3">Direcci\u00f3n</dt>
+            <dd className="col-sm-9">
+              {order.envio.calle}{order.envio.departamento ? ", " + order.envio.departamento : ""}, {order.envio.comuna}, {order.envio.region}
+            </dd>
+            <dt className="col-sm-3">Tipo de entrega</dt>
+            <dd className="col-sm-9">{order.envio.entrega}</dd>
+            <dt className="col-sm-3">Medio de pago</dt>
+            <dd className="col-sm-9">{order.pago}</dd>
+          </dl>
+        </section>
+
+        <div className="table-responsive">
+          <table className="table align-middle">
+            <thead>
+              <tr><th>Producto</th><th className="text-end">Precio</th><th className="text-end">Cantidad</th><th className="text-end">Subtotal</th></tr>
+            </thead>
+            <tbody>
+              {order.items.map((item) => (
+                <tr key={item.codigo}>
+                  <td>{item.nombre}</td>
+                  <td className="text-end">{formatPrice(item.precio)}</td>
+                  <td className="text-end">{item.cantidad}</td>
+                  <td className="text-end">{formatPrice(item.subtotal)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="h5 text-end border-top pt-3">Total: {formatPrice(order.total)}</p>
+        <div className="d-flex flex-wrap justify-content-between gap-2">
+          <Link className="btn btn-outline-secondary" to="/admin/ordenes">Volver a \u00f3rdenes</Link>
+          <button className="btn btn-primary" type="button" onClick={() => window.print()}>
+            Imprimir boleta
+          </button>
+        </div>
+      </div>
+    </article>
   );
 }
 

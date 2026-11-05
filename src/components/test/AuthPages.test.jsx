@@ -1,7 +1,7 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import { LoginPage } from "./AuthPages.jsx";
+import { LoginPage } from "../../pages/AuthPages.jsx";
 
 describe("LoginPage", () => {
   beforeEach(() => {

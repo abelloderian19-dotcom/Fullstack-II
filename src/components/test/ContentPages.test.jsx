@@ -1,7 +1,7 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import { ContactPage } from "./ContentPages.jsx";
+import { ContactPage } from "../../pages/ContentPages.jsx";
 
 describe("ContactPage", () => {
   it("updates form values and reports successful submission", () => {

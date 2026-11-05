@@ -1,10 +1,10 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import ProductCard from "./ProductCard.jsx";
-import { StoreProvider } from "../context/StoreContext.jsx";
-import ActionButton from "./ActionButton.jsx";
-import { getProducts } from "../data/database.js";
+import ProductCard from "../ProductCard.jsx";
+import { StoreProvider } from "../../context/StoreContext.jsx";
+import ActionButton from "../ActionButton.jsx";
+import { getProducts } from "../../data/database.js";
 
 describe("ProductCard", () => {
   beforeEach(() => {

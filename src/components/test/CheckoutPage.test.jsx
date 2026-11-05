@@ -1,10 +1,10 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import { StoreProvider } from "../context/StoreContext.jsx";
-import { getProducts, getRegions } from "../data/database.js";
-import CheckoutPage from "./CheckoutPage.jsx";
-import PaymentResultPage from "./PaymentResultPage.jsx";
+import { StoreProvider } from "../../context/StoreContext.jsx";
+import { getProducts, getRegions } from "../../data/database.js";
+import CheckoutPage from "../../pages/CheckoutPage.jsx";
+import PaymentResultPage from "../../pages/PaymentResultPage.jsx";
 
 const region = getRegions().find(({ nombre }) =>
   nombre.includes("Metropolitana"),

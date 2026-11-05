@@ -3,6 +3,7 @@ import {
   getCategories,
   getProducts,
   saveOrder,
+  saveProducts,
 } from "../data/database.js";
 import { effectivePrice } from "../utils/pricing.js";
 

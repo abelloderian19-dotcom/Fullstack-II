@@ -1,9 +1,9 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import { StoreProvider } from "../context/StoreContext.jsx";
-import ProductCatalogPage from "./ProductCatalogPage.jsx";
-import { getProducts } from "../data/database.js";
+import { StoreProvider } from "../../context/StoreContext.jsx";
+import ProductCatalogPage from "../../pages/ProductCatalogPage.jsx";
+import { getProducts } from "../../data/database.js";
 
 function renderCatalog() {
   render(
