@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useStore } from "../context/StoreContext.jsx";
 import { effectivePrice, formatPrice } from "../utils/pricing.js";
+import ActionButton from "./ActionButton.jsx";
 
 export default function ProductCard({ product }) {
   const { addToCart } = useStore();
@@ -54,14 +55,13 @@ export default function ProductCard({ product }) {
             )}
             {formatPrice(effectivePrice(product))}
           </p>
-          <button
+          <ActionButton
             className="btn btn-primary btn-sm"
-            type="button"
             onClick={addProduct}
             disabled={product.stock === 0}
           >
             {product.stock === 0 ? "Agotado" : "Agregar al carrito"}
-          </button>
+          </ActionButton>
           {feedback && (
             <p
               className={`small mt-2 mb-0 text-center ${hasError ? "text-danger" : "text-success"}`}

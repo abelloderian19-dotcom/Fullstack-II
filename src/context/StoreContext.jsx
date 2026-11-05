@@ -3,7 +3,6 @@ import {
   getCategories,
   getProducts,
   saveOrder,
-  saveProducts,
 } from "../data/database.js";
 import { effectivePrice } from "../utils/pricing.js";
 
@@ -122,7 +121,6 @@ export function StoreProvider({ children }) {
   }
 
   function replaceProducts(nextProducts) {
-    saveProducts(nextProducts);
     setProducts(nextProducts);
     setCategories(getCategories());
     const validCart = cart.filter((item) =>

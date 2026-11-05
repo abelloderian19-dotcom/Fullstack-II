@@ -3,6 +3,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { StoreProvider } from "../context/StoreContext.jsx";
 import ProductCatalogPage from "./ProductCatalogPage.jsx";
+import { getProducts } from "../data/database.js";
 
 function renderCatalog() {
   render(
@@ -35,7 +36,7 @@ describe("ProductCatalogPage", () => {
 
     expect(
       screen.getAllByRole("button", { name: "Agregar al carrito" }).length,
-    ).toBe(16);
+    ).toBe(getProducts().length);
   });
 
   it("filters products by the selected category", () => {

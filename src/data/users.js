@@ -2,8 +2,6 @@
 // - Administrador: tiene acceso total al sistema.
 // - Vendedor: puede visualizar la lista de productos y su detalle, y la lista de órdenes y su detalle.
 // - Cliente: solo puede acceder a la tienda.
-export const tiposUsuario = ["Administrador", "Vendedor", "Cliente"];
-
 export const usuarios = [
   {
     run: "123456785",

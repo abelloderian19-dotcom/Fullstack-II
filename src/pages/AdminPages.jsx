@@ -9,11 +9,11 @@ import {
   deleteProduct,
   deleteUser,
   getOrders,
+  getRegions,
   getUsers,
   updateProduct,
   updateUser,
 } from "../data/database.js";
-import { getRegions } from "../data/database.js";
 import { effectivePrice, formatPrice } from "../utils/pricing.js";
 import { isValidChileanRun } from "../utils/validators.js";
 
