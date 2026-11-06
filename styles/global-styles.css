@@ -419,6 +419,69 @@ footer.bg-light {
   max-width: 860px;
 }
 
+.checkout-panel .form-label,
+.checkout-panel .form-check-label {
+  color: var(--marron-oscuro);
+  font-weight: 700;
+}
+
+.checkout-panel .form-control,
+.checkout-panel .form-select {
+  background-color: #fff;
+  border-color: #765b4d;
+  color: #2f211a;
+}
+
+.checkout-panel .form-control::placeholder {
+  color: #55443c;
+  opacity: 1;
+}
+
+.checkout-panel .form-control:focus,
+.checkout-panel .form-select:focus {
+  border-color: var(--chocolate);
+  box-shadow: 0 0 0 0.25rem rgb(117 69 44 / 28%);
+}
+
+.checkout-panel .form-control.is-invalid,
+.checkout-panel .form-select.is-invalid {
+  border-color: var(--color-error);
+}
+
+.checkout-panel .form-control.is-invalid:focus,
+.checkout-panel .form-select.is-invalid:focus {
+  box-shadow: 0 0 0 0.25rem rgb(180 35 24 / 22%);
+}
+
+.checkout-panel .invalid-feedback {
+  color: var(--color-error);
+  font-weight: 600;
+}
+
+.checkout-panel .form-select:disabled {
+  background-color: #e2d9cf;
+  color: #45352d;
+  opacity: 1;
+}
+
+.checkout-panel .form-check-input {
+  width: 1.15em;
+  height: 1.15em;
+  border: 2px solid #5c4033;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.checkout-panel .form-check-input:checked {
+  border-color: var(--chocolate);
+  background-color: var(--chocolate);
+}
+
+.checkout-panel .form-check-input:focus {
+  border-color: var(--chocolate);
+  box-shadow: 0 0 0 0.25rem rgb(117 69 44 / 32%);
+}
+
 .auth-panel,
 .article-content {
   max-width: 760px;
