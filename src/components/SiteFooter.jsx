@@ -1,13 +1,6 @@
-import { useState } from "react";
+import NewsletterSubscriptionForm from "./NewsletterSubscriptionForm.jsx";
 
 export default function SiteFooter() {
-  const [subscribed, setSubscribed] = useState(false);
-
-  function subscribe(event) {
-    event.preventDefault();
-    setSubscribed(true);
-  }
-
   return (
     <footer className="border-top bg-light mt-4 py-4">
       <div className="container d-flex flex-column flex-md-row justify-content-between align-items-start gap-4">
@@ -18,36 +11,7 @@ export default function SiteFooter() {
             <span className="border rounded px-2 py-1 small">💵 EFECTIVO</span>
           </div>
         </div>
-        <div className="footer-newsletter">
-          <p className="fw-semibold mb-2">
-            ¡Mantente en contacto! Únete a nuestro boletín
-          </p>
-          <form
-            className="d-flex gap-2"
-            onSubmit={subscribe}
-          >
-            <label className="visually-hidden" htmlFor="newsletter-email">
-              Correo electrónico
-            </label>
-            <input
-              className="form-control form-control-sm"
-              type="email"
-              id="newsletter-email"
-              name="email"
-              placeholder="Ingresa tu correo electrónico"
-              autoComplete="email"
-              required
-            />
-            <button className="btn btn-primary btn-sm flex-shrink-0" type="submit">
-              Suscribirse
-            </button>
-          </form>
-          {subscribed && (
-            <p className="small text-success mt-2 mb-0" role="status">
-              ¡Gracias por suscribirte!
-            </p>
-          )}
-        </div>
+        <NewsletterSubscriptionForm />
       </div>
     </footer>
   );

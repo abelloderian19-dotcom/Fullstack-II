@@ -1,25 +1,9 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useStore } from "../context/StoreContext.jsx";
 import { effectivePrice, formatPrice } from "../utils/pricing.js";
-import ActionButton from "./ActionButton.jsx";
+import AddToCartButton from "./AddToCartButton.jsx";
 import ProductImage from "./ProductImage.jsx";
 
 export default function ProductCard({ product }) {
-  const { addToCart } = useStore();
-  const [feedback, setFeedback] = useState("");
-  const [hasError, setHasError] = useState(false);
-
-  function addProduct() {
-    const added = addToCart(product.codigo);
-    setHasError(!added);
-    setFeedback(
-      added
-        ? "Añadido al carrito."
-        : "No se pudo añadir: revisa el stock y el límite de 99 unidades.",
-    );
-  }
-
   return (
     <article className="col-12 col-sm-6 col-lg-3">
       <div className="card h-100 border-secondary-subtle">
@@ -54,22 +38,7 @@ export default function ProductCard({ product }) {
             )}
             {formatPrice(effectivePrice(product))}
           </p>
-          <ActionButton
-            className="btn btn-primary btn-sm"
-            onClick={addProduct}
-            disabled={product.stock === 0}
-          >
-            {product.stock === 0 ? "Agotado" : "Agregar al carrito"}
-          </ActionButton>
-          {feedback && (
-            <p
-              className={`small mt-2 mb-0 text-center ${hasError ? "text-danger" : "text-success"}`}
-              role="status"
-              aria-live="polite"
-            >
-              {feedback}
-            </p>
-          )}
+          <AddToCartButton product={product} />
         </div>
       </div>
     </article>

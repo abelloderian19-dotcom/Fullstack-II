@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
+import ProductCatalogFilters from "../components/ProductCatalogFilters.jsx";
 import ProductGrid from "../components/ProductGrid.jsx";
 import { useStore } from "../context/StoreContext.jsx";
 
@@ -21,10 +22,10 @@ export default function ProductCatalogPage() {
               .toLocaleLowerCase("es")
               .includes(query)),
       )
-      .sort((a, b) => {
-        if (sort === "precio-asc") return a.precio - b.precio;
-        if (sort === "precio-desc") return b.precio - a.precio;
-        return a.nombre.localeCompare(b.nombre, "es");
+      .sort((first, second) => {
+        if (sort === "precio-asc") return first.precio - second.precio;
+        if (sort === "precio-desc") return second.precio - first.precio;
+        return first.nombre.localeCompare(second.nombre, "es");
       });
   }, [category, products, search, sort]);
 
@@ -42,48 +43,16 @@ export default function ProductCatalogPage() {
           <p className="text-uppercase small text-secondary mb-1">Catálogo</p>
           <h1 className="h2 mb-0">Nuestros productos</h1>
         </div>
-        <div className="d-flex flex-wrap gap-2">
-          <label className="visually-hidden" htmlFor="category-filter">
-            Filtrar por categoría
-          </label>
-          <select
-            className="form-select"
-            id="category-filter"
-            value={category}
-            onChange={(event) => updateFilter("categoria", event.target.value)}
-          >
-            <option value="">Todas las categorías</option>
-            {categories.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          <label className="visually-hidden" htmlFor="sort-products">
-            Ordenar productos
-          </label>
-          <select
-            className="form-select"
-            id="sort-products"
-            value={sort}
-            onChange={(event) => updateFilter("orden", event.target.value)}
-          >
-            <option value="nombre">Nombre</option>
-            <option value="precio-asc">Precio: menor a mayor</option>
-            <option value="precio-desc">Precio: mayor a menor</option>
-          </select>
-        </div>
-      </header>
-      {search && (
-        <p aria-live="polite">
-          Resultados para <strong>“{search}”</strong>
-        </p>
-      )}
-      {filteredProducts.length ? (
-        <ProductGrid
-          products={filteredProducts}
-          ariaLabel="Todos los productos"
+        <ProductCatalogFilters
+          categories={categories}
+          category={category}
+          sort={sort}
+          onChange={updateFilter}
         />
+      </header>
+      {search && <p aria-live="polite">Resultados para <strong>“{search}”</strong></p>}
+      {filteredProducts.length ? (
+        <ProductGrid products={filteredProducts} ariaLabel="Todos los productos" />
       ) : (
         <p className="alert alert-light border" role="status">
           No encontramos productos con esos filtros.

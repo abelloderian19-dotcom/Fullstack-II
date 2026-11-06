@@ -1,127 +1,36 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import HomeCarousel from "../components/HomeCarousel.jsx";
+import HomeCategoryLinks from "../components/HomeCategoryLinks.jsx";
 import ProductGrid from "../components/ProductGrid.jsx";
 import { useStore } from "../context/StoreContext.jsx";
 
-const slides = [
-  {
-    image: "/img/products/imagen_inicio.jpg",
-    title: "Nuevos lanzamientos",
-    description: "Descubre las especialidades de Pastelería 1000 Sabores.",
-  },
-  {
-    image: "/img/products/torta-frutas.jpg",
-    title: "Pasteles para compartir",
-    description: "Celebra tus momentos especiales con algo delicioso.",
-  },
-  {
-    image: "/img/products/cheesecake.jpg",
-    title: "Cheesecakes irresistibles",
-    description: "Encuentra tu próximo postre favorito en nuestra tienda.",
-  },
-];
-
 export default function HomePage() {
   const { products, categories } = useStore();
-  const [activeSlide, setActiveSlide] = useState(0);
-
-  function changeSlide(direction) {
-    setActiveSlide((current) => (current + slides.length + direction) % slides.length);
-  }
 
   return (
     <main className="home-page py-3">
-      <section
-        className="home-carousel"
-        role="region"
-        aria-label={"Carrusel de la pastelería"}
-        aria-roledescription="carrusel"
-      >
-        {slides.map((slide, index) => (
-          <div
-            className={"home-carousel-slide" + (activeSlide === index ? " is-active" : "")}
-            key={slide.image}
-            role="group"
-            aria-roledescription="diapositiva"
-            aria-label={"Diapositiva " + (index + 1) + " de " + slides.length}
-            aria-hidden={activeSlide !== index}
-          >
-            <img src={slide.image} alt="" />
-            <div className="home-carousel-shade" />
-            <div className="home-carousel-caption">
-              <h2>{slide.title}</h2>
-              <p>{slide.description}</p>
-              <Link className="btn btn-light btn-sm" to="/productos">
-                Ver productos
-              </Link>
-            </div>
-          </div>
-        ))}
-
-        <button
-          className="home-carousel-control home-carousel-control--previous"
-          type="button"
-          aria-label="Imagen anterior"
-          onClick={() => changeSlide(-1)}
-        >
-          <span aria-hidden="true">{"‹"}</span>
-        </button>
-        <button
-          className="home-carousel-control home-carousel-control--next"
-          type="button"
-          aria-label="Siguiente imagen"
-          onClick={() => changeSlide(1)}
-        >
-          <span aria-hidden="true">{"›"}</span>
-        </button>
-
-        <div className="home-carousel-indicators" aria-label="Seleccionar diapositiva">
-          {slides.map((slide, index) => (
-            <button
-              className={"home-carousel-indicator" + (activeSlide === index ? " is-active" : "")}
-              key={slide.image}
-              type="button"
-              aria-label={"Ir a la diapositiva " + (index + 1)}
-              aria-current={activeSlide === index ? "true" : undefined}
-              onClick={() => setActiveSlide(index)}
-            />
-          ))}
-        </div>
-      </section>
-
+      <HomeCarousel />
       <section className="container text-center py-4" aria-labelledby="home-title">
         <h1 id="home-title" className="display-5 text-primary mb-3">
           Dulces momentos, hechos para compartir.
         </h1>
         <p className="lh-lg mb-0">
-          {"Tortas y postres preparados para acompañar tus celebraciones."}
+          Tortas y postres preparados para acompañar tus celebraciones.
         </p>
       </section>
-
-      <section className="container mb-5 text-center" aria-labelledby="migration-title">
-        <h2 id="migration-title" className="h4 text-uppercase mb-3">
-          {"Los más recomendados"}
+      <section className="container mb-5 text-center" aria-labelledby="home-products-title">
+        <h2 id="home-products-title" className="h4 text-uppercase mb-3">
+          Los más recomendados
         </h2>
         <ProductGrid
           products={products.slice(0, 4)}
           className="row g-3 g-lg-4 text-start mb-4"
           ariaLabel="Productos recomendados"
         />
-        <h2 className="h4 text-uppercase mb-3">{"Compra por categoría"}</h2>
-        <div className="row row-cols-2 row-cols-md-4 g-3 mb-4">
-          {categories.slice(0, 4).map((category) => (
-            <div className="col" key={category}>
-              <Link
-                className="btn btn-light border w-100 h-100 py-3"
-                to={"/categorias?nombre=" + encodeURIComponent(category)}
-              >
-                {category}
-              </Link>
-            </div>
-          ))}
-        </div>
+        <h2 className="h4 text-uppercase mb-3">Compra por categoría</h2>
+        <HomeCategoryLinks categories={categories} />
         <Link to="/productos" className="btn btn-outline-primary">
-          {"Explorar catálogo"}
+          Explorar catálogo
         </Link>
       </section>
     </main>
