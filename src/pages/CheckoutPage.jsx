@@ -124,6 +124,7 @@ export default function CheckoutPage() {
       descuentoPrimeraCompra: firstPurchaseDiscount,
       total: payableTotal,
       cliente: {
+        run: activeCustomer?.run ?? null,
         nombre: address.nombre.trim(),
         apellidos: address.apellidos.trim(),
         correo: address.correo.trim(),

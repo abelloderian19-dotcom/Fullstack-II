@@ -382,6 +382,7 @@ export function AdminUsersPage() {
               <tr key={user.run}>
                 <td>{user.run}</td><td>{user.nombre} {user.apellidos}</td><td>{user.correo}</td><td>{user.tipoUsuario}</td>
                 <td className="text-nowrap">
+                  <Link className="btn btn-sm btn-outline-secondary me-1" to={`/admin/usuarios/${encodeURIComponent(user.run)}`}>Ver</Link>
                   <button className="btn btn-sm btn-primary me-1" type="button" onClick={() => navigate(`/admin/usuarios/${encodeURIComponent(user.run)}/editar`)}>Editar</button>
                   <button className="btn btn-sm btn-danger" type="button" onClick={() => remove(user)}>Eliminar</button>
                 </td>
@@ -390,6 +391,82 @@ export function AdminUsersPage() {
           </tbody>
         </table>
       </div>
+    </>
+  );
+}
+
+export function AdminUserDetailPage() {
+  const { run } = useParams();
+  const user = getUsers().find((entry) => entry.run === run);
+
+  if (!user) {
+    return (
+      <div className="alert alert-warning" role="alert">
+        No se encontró el usuario. <Link to="/admin/usuarios">Volver a usuarios</Link>
+      </div>
+    );
+  }
+
+  const userEmail = user.correo.trim().toLocaleLowerCase("es");
+  const orders = getOrders()
+    .filter((order) =>
+      order.cliente?.run === user.run ||
+      (!order.cliente?.run &&
+        order.cliente?.correo?.trim().toLocaleLowerCase("es") === userEmail),
+    )
+    .sort((first, second) => new Date(second.fecha) - new Date(first.fecha));
+
+  return (
+    <>
+      <header className="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+        <div>
+          <p className="text-secondary mb-1">Usuario {user.run}</p>
+          <h1 className="h2 mb-0">{user.nombre} {user.apellidos}</h1>
+        </div>
+        <div className="d-flex flex-wrap gap-2">
+          <Link className="btn btn-outline-secondary" to="/admin/usuarios">Volver a usuarios</Link>
+          <Link className="btn btn-primary" to={`/admin/usuarios/${encodeURIComponent(user.run)}/editar`}>Editar usuario</Link>
+        </div>
+      </header>
+
+      <section className="card mb-4" aria-labelledby="admin-user-details-title">
+        <div className="card-body">
+          <h2 className="h5" id="admin-user-details-title">Datos del usuario</h2>
+          <dl className="row mb-0">
+            <dt className="col-sm-3">Correo</dt><dd className="col-sm-9">{user.correo}</dd>
+            <dt className="col-sm-3">Tipo de usuario</dt><dd className="col-sm-9">{user.tipoUsuario}</dd>
+            <dt className="col-sm-3">Fecha de nacimiento</dt><dd className="col-sm-9">{user.fechaNacimiento || "No informada"}</dd>
+            <dt className="col-sm-3">Dirección</dt><dd className="col-sm-9">{user.direccion || "No informada"}</dd>
+            <dt className="col-sm-3">Comuna y región</dt><dd className="col-sm-9">{[user.comuna, user.region].filter(Boolean).join(", ") || "No informadas"}</dd>
+          </dl>
+        </div>
+      </section>
+
+      <section aria-labelledby="admin-user-orders-title">
+        <h2 className="h4" id="admin-user-orders-title">Historial de compras</h2>
+        {orders.length === 0 ? (
+          <p className="alert alert-light border" role="status">Este usuario todavía no tiene compras registradas.</p>
+        ) : (
+          <div className="table-responsive">
+            <table className="table table-striped align-middle">
+              <thead>
+                <tr><th scope="col">Orden</th><th scope="col">Fecha</th><th scope="col">Estado</th><th scope="col">Total</th><th scope="col">Detalle</th></tr>
+              </thead>
+              <tbody>
+                {orders.map((order) => (
+                  <tr key={order.id}>
+                    <th scope="row">{order.id}</th>
+                    <td>{new Date(order.fecha).toLocaleDateString("es-CL")}</td>
+                    <td>{order.estado}</td>
+                    <td>{formatPrice(order.total)}</td>
+                    <td><Link to={`/admin/ordenes/${encodeURIComponent(order.id)}`}>Ver boleta</Link></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
     </>
   );
 }

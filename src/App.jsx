@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdminLayout from "./components/AdminLayout.jsx";
 import StoreLayout from "./components/StoreLayout.jsx";
 import { StoreProvider } from "./context/StoreContext.jsx";
-import { AdminCategoriesPage, AdminDashboardPage, AdminOrderDetailPage, AdminOrdersPage, AdminProductFormPage, AdminProductsPage, AdminProfilePage, AdminReportsPage, AdminUserFormPage, AdminUsersPage } from "./pages/AdminPages.jsx";
+import { AdminCategoriesPage, AdminDashboardPage, AdminOrderDetailPage, AdminOrdersPage, AdminProductFormPage, AdminProductsPage, AdminProfilePage, AdminReportsPage, AdminUserDetailPage, AdminUserFormPage, AdminUsersPage } from "./pages/AdminPages.jsx";
 import { LoginPage, RegisterPage, RegistrationSuccessPage } from "./pages/AuthPages.jsx";
 import CartPage from "./pages/CartPage.jsx";
 import CategoryPage from "./pages/CategoryPage.jsx";
@@ -65,6 +65,7 @@ function ApplicationRoutes() {
         <Route path="producto-form.html" element={<AdminProductFormPage />} />
         <Route path="usuarios" element={<AdminUsersPage />} />
         <Route path="usuarios.html" element={<AdminUsersPage />} />
+        <Route path="usuarios/:run" element={<AdminUserDetailPage />} />
         <Route path="usuarios/nuevo" element={<AdminUserFormPage />} />
         <Route path="usuarios/:run/editar" element={<AdminUserFormPage />} />
         <Route path="usuario-form.html" element={<AdminUserFormPage />} />
