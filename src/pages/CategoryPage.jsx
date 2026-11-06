@@ -22,13 +22,13 @@ export default function CategoryPage() {
               to={`/categorias?nombre=${encodeURIComponent(category)}`}
               aria-current={category === selectedCategory ? "page" : undefined}
             >
-              <span className="ratio ratio-4x3 mb-2">
-                <ProductImage
-                  product={products.find((product) => product.categoria === category)}
-                  className="object-fit-cover"
-                  alt={"Productos de " + category}
-                />
-              </span>
+              <ProductImage
+                product={products.find((product) => product.categoria === category)}
+                className="d-block mx-auto object-fit-cover rounded mb-2"
+                width="100"
+                height="100"
+                alt={"Productos de " + category}
+              />
               <span className="fw-semibold">{category}</span>
             </Link>
           </div>
