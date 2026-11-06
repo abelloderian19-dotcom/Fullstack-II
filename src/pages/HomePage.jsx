@@ -7,7 +7,7 @@ const slides = [
   {
     image: "/img/products/imagen_inicio.jpg",
     title: "Nuevos lanzamientos",
-    description: "Descubre las especialidades de Pasteler\u00eda 1000 Sabores.",
+    description: "Descubre las especialidades de Pastelería 1000 Sabores.",
   },
   {
     image: "/img/products/torta-frutas.jpg",
@@ -17,7 +17,7 @@ const slides = [
   {
     image: "/img/products/cheesecake.jpg",
     title: "Cheesecakes irresistibles",
-    description: "Encuentra tu pr\u00f3ximo postre favorito en nuestra tienda.",
+    description: "Encuentra tu próximo postre favorito en nuestra tienda.",
   },
 ];
 
@@ -34,7 +34,7 @@ export default function HomePage() {
       <section
         className="home-carousel"
         role="region"
-        aria-label={"Carrusel de la pasteler\u00eda"}
+        aria-label={"Carrusel de la pastelería"}
         aria-roledescription="carrusel"
       >
         {slides.map((slide, index) => (
@@ -64,7 +64,7 @@ export default function HomePage() {
           aria-label="Imagen anterior"
           onClick={() => changeSlide(-1)}
         >
-          <span aria-hidden="true">{"\u2039"}</span>
+          <span aria-hidden="true">{"‹"}</span>
         </button>
         <button
           className="home-carousel-control home-carousel-control--next"
@@ -72,7 +72,7 @@ export default function HomePage() {
           aria-label="Siguiente imagen"
           onClick={() => changeSlide(1)}
         >
-          <span aria-hidden="true">{"\u203a"}</span>
+          <span aria-hidden="true">{"›"}</span>
         </button>
 
         <div className="home-carousel-indicators" aria-label="Seleccionar diapositiva">
@@ -94,20 +94,20 @@ export default function HomePage() {
           Dulces momentos, hechos para compartir.
         </h1>
         <p className="lh-lg mb-0">
-          {"Tortas y postres preparados para acompa\u00f1ar tus celebraciones."}
+          {"Tortas y postres preparados para acompañar tus celebraciones."}
         </p>
       </section>
 
       <section className="container mb-5 text-center" aria-labelledby="migration-title">
         <h2 id="migration-title" className="h4 text-uppercase mb-3">
-          {"Los m\u00e1s recomendados"}
+          {"Los más recomendados"}
         </h2>
         <ProductGrid
           products={products.slice(0, 4)}
           className="row g-3 g-lg-4 text-start mb-4"
           ariaLabel="Productos recomendados"
         />
-        <h2 className="h4 text-uppercase mb-3">{"Compra por categor\u00eda"}</h2>
+        <h2 className="h4 text-uppercase mb-3">{"Compra por categoría"}</h2>
         <div className="row row-cols-2 row-cols-md-4 g-3 mb-4">
           {categories.slice(0, 4).map((category) => (
             <div className="col" key={category}>
@@ -121,7 +121,7 @@ export default function HomePage() {
           ))}
         </div>
         <Link to="/productos" className="btn btn-outline-primary">
-          {"Explorar cat\u00e1logo"}
+          {"Explorar catálogo"}
         </Link>
       </section>
     </main>

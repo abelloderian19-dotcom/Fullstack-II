@@ -14,7 +14,7 @@ export default function CartItemCounter({
         disabled={clicks <= 1}
         onClick={() => setClicks((valorClicks) => valorClicks - 1)}
       >
-        {"\u2212"}
+        {"−"}
       </ActionButton>
       <span aria-label={clicks + (clicks === 1 ? " unidad" : " unidades")}>
         {clicks}

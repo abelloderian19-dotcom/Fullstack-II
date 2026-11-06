@@ -1,13 +1,13 @@
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 
 const adminNavigation = [
-  ["Dashboard", "/admin", "\u25a6"],
-  ["\u00d3rdenes", "/admin/ordenes", "\u25a1"],
-  ["Productos", "/admin/productos", "\u25a3"],
-  ["Categor\u00edas", "/admin/categorias", "\u2637"],
-  ["Usuarios", "/admin/usuarios", "\u2659"],
-  ["Reportes", "/admin/reportes", "\u25f7"],
-  ["Perfil", "/admin/perfil", "\u25c9"],
+  ["Dashboard", "/admin", "▦"],
+  ["Órdenes", "/admin/ordenes", "□"],
+  ["Productos", "/admin/productos", "▣"],
+  ["Categorías", "/admin/categorias", "☷"],
+  ["Usuarios", "/admin/usuarios", "♙"],
+  ["Reportes", "/admin/reportes", "◷"],
+  ["Perfil", "/admin/perfil", "◉"],
 ];
 
 export default function AdminLayout() {
@@ -23,12 +23,12 @@ export default function AdminLayout() {
       <div className="row min-vh-100">
         <aside className="col-12 col-md-3 col-lg-2 admin-sidebar p-0">
           <header className="admin-sidebar-brand">
-            <Link to="/admin" aria-label={"Panel de administraci\u00f3n"}>
+            <Link to="/admin" aria-label={"Panel de administración"}>
               <img className="admin-brand-logo" src="/img/logo-tienda.svg" alt="" />
               <span>1000 Sabores</span>
             </Link>
           </header>
-          <nav className="nav flex-column admin-sidebar-nav p-2" aria-label={"Navegaci\u00f3n administrativa"}>
+          <nav className="nav flex-column admin-sidebar-nav p-2" aria-label={"Navegación administrativa"}>
             {adminNavigation.map(([label, path, icon]) => (
               <NavLink
                 end={path === "/admin"}
@@ -42,7 +42,7 @@ export default function AdminLayout() {
             ))}
             <div className="admin-sidebar-actions">
               <Link className="nav-link admin-sidebar-action admin-store-link" to="/">
-                <span aria-hidden="true">{"\u2302"}</span> Tienda
+                <span aria-hidden="true">{"⌂"}</span> Tienda
               </Link>
               <button className="nav-link admin-sidebar-action admin-signout text-start" type="button" onClick={signOut}>
                 <span aria-hidden="true">{""}</span> {"Cerrar sesion"}

@@ -30,19 +30,19 @@ export function AdminDashboardPage() {
       product.stock <= product.stockCritico,
   ).length;
   const stats = [
-    { label: "Compras", value: paidOrders.length, note: `${orders.length} \u00f3rdenes registradas`, icon: "\u{1F6D2}", tone: "blue" },
-    { label: "Productos", value: products.length, note: `${lowStock} con stock cr\u00edtico`, icon: "\u25b1", tone: "green" },
-    { label: "Usuarios", value: users.length, note: `${customers} clientes registrados`, icon: "\u265f", tone: "yellow" },
+    { label: "Compras", value: paidOrders.length, note: `${orders.length} órdenes registradas`, icon: "🛒", tone: "blue" },
+    { label: "Productos", value: products.length, note: `${lowStock} con stock crítico`, icon: "▱", tone: "green" },
+    { label: "Usuarios", value: users.length, note: `${customers} clientes registrados`, icon: "♟", tone: "yellow" },
   ];
   const shortcuts = [
-    { label: "Dashboard", path: "/admin", description: "Resumen general de las m\u00e9tricas y actividades.", icon: "\u25c9" },
-    { label: "\u00d3rdenes", path: "/admin/ordenes", description: "Revisa y gestiona las \u00f3rdenes de compra.", icon: "\u{1F6D2}" },
-    { label: "Productos", path: "/admin/productos", description: "Administra el inventario y el cat\u00e1logo.", icon: "\u25b1" },
-    { label: "Categor\u00edas", path: "/admin/categorias", description: "Organiza los productos para facilitar la navegaci\u00f3n.", icon: "\u25c7" },
-    { label: "Usuarios", path: "/admin/usuarios", description: "Gestiona las cuentas y sus roles.", icon: "\u265f" },
-    { label: "Reportes", path: "/admin/reportes", description: "Consulta las m\u00e9tricas de venta y stock.", icon: "\u25a5" },
-    { label: "Perfil", path: "/admin/perfil", description: "Administra la informaci\u00f3n de tu cuenta.", icon: "\u2659" },
-    { label: "Tienda", path: "/", description: "Visita la tienda como la ven tus clientes.", icon: "\u2302" },
+    { label: "Dashboard", path: "/admin", description: "Resumen general de las métricas y actividades.", icon: "◉" },
+    { label: "Órdenes", path: "/admin/ordenes", description: "Revisa y gestiona las órdenes de compra.", icon: "🛒" },
+    { label: "Productos", path: "/admin/productos", description: "Administra el inventario y el catálogo.", icon: "▱" },
+    { label: "Categorías", path: "/admin/categorias", description: "Organiza los productos para facilitar la navegación.", icon: "◇" },
+    { label: "Usuarios", path: "/admin/usuarios", description: "Gestiona las cuentas y sus roles.", icon: "♟" },
+    { label: "Reportes", path: "/admin/reportes", description: "Consulta las métricas de venta y stock.", icon: "▥" },
+    { label: "Perfil", path: "/admin/perfil", description: "Administra la información de tu cuenta.", icon: "♙" },
+    { label: "Tienda", path: "/", description: "Visita la tienda como la ven tus clientes.", icon: "⌂" },
   ];
 
   return (
@@ -476,7 +476,7 @@ export function AdminOrdersPage() {
 export function AdminOrderDetailPage() {
   const { orderId } = useParams();
   const order = getOrders().find((entry) => entry.id === orderId);
-  if (!order) return <p className="alert alert-warning">No se encontr\u00f3 esta orden.</p>;
+  if (!order) return <p className="alert alert-warning">No se encontró esta orden.</p>;
 
   return (
     <article className="admin-receipt card mx-auto">
@@ -507,7 +507,7 @@ export function AdminOrderDetailPage() {
         <section className="mb-4" aria-labelledby="receipt-shipping-title">
           <h2 className="h5" id="receipt-shipping-title">Entrega y pago</h2>
           <dl className="row mb-0">
-            <dt className="col-sm-3">Direcci\u00f3n</dt>
+            <dt className="col-sm-3">Dirección</dt>
             <dd className="col-sm-9">
               {order.envio.calle}{order.envio.departamento ? ", " + order.envio.departamento : ""}, {order.envio.comuna}, {order.envio.region}
             </dd>
@@ -537,7 +537,7 @@ export function AdminOrderDetailPage() {
         </div>
         <p className="h5 text-end border-top pt-3">Total: {formatPrice(order.total)}</p>
         <div className="d-flex flex-wrap justify-content-between gap-2">
-          <Link className="btn btn-outline-secondary" to="/admin/ordenes">Volver a \u00f3rdenes</Link>
+          <Link className="btn btn-outline-secondary" to="/admin/ordenes">Volver a órdenes</Link>
           <button className="btn btn-primary" type="button" onClick={() => window.print()}>
             Imprimir boleta
           </button>

@@ -98,7 +98,7 @@ export default function Navbar() {
             to="/carrito"
             aria-label={"Carrito de compras, " + cartCount + " " + (cartCount === 1 ? "producto" : "productos")}
           >
-            <span className="navbar-cart-icon" aria-hidden="true">{"\u{1F6D2}"}</span>
+            <span className="navbar-cart-icon" aria-hidden="true">{"🛒"}</span>
             <span className="navbar-cart-label">Carrito</span>
             <span className="navbar-cart-count" aria-live="polite">
               {cartCount}

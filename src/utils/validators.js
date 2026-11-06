@@ -32,13 +32,13 @@ export function isValidPassword(password) {
 
 export function validateLogin(email, password) {
   if (typeof email !== "string" || !email.trim()) {
-    return "Ingresa tu correo electr\u00f3nico.";
+    return "Ingresa tu correo electrónico.";
   }
   if (!isValidEmail(email)) {
-    return "Ingresa un correo v\u00e1lido.";
+    return "Ingresa un correo válido.";
   }
   if (typeof password !== "string" || !password) {
-    return "Ingresa tu contrase\u00f1a.";
+    return "Ingresa tu contraseña.";
   }
   return "";
 }
