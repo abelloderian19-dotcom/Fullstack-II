@@ -18,6 +18,22 @@ export default function PaymentResultPage() {
     );
   }
 
+  const emailSubject = `Boleta de compra ${order.id}`;
+  const emailBody = [
+    `Hola ${order.cliente.nombre},`,
+    "Aquí tienes el resumen de tu compra:",
+    `Orden: ${order.id}`,
+    `Fecha: ${new Date(order.fecha).toLocaleString("es-CL")}`,
+    "",
+    "Productos:",
+    ...order.items.map(
+      (item) => `${item.cantidad} x ${item.nombre} — ${formatPrice(item.subtotal)}`,
+    ),
+    "",
+    `Total pagado: ${formatPrice(order.total)}`,
+  ].join("\n");
+  const emailHref = `mailto:${encodeURIComponent(order.cliente.correo)}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+
   return (
     <main className="container py-4 py-lg-5">
       <section className="card shadow-sm receipt-panel mx-auto">
@@ -81,9 +97,14 @@ export default function PaymentResultPage() {
           </p>
           <div className="d-flex flex-wrap justify-content-center gap-2">
             {succeeded && (
-              <button className="btn btn-outline-primary" type="button" onClick={() => window.print()}>
-                Imprimir comprobante
-              </button>
+              <>
+                <button className="btn btn-danger" type="button" onClick={() => window.print()}>
+                  Imprimir boleta en PDF
+                </button>
+                <a className="btn btn-success" href={emailHref}>
+                  Enviar boleta por email
+                </a>
+              </>
             )}
             <Link className="btn btn-primary" to="/productos">
               Seguir comprando
