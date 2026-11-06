@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import { Link, Navigate, NavLink, Outlet, useNavigate } from "react-router-dom";
 
 const adminNavigation = [
   ["Dashboard", "/admin", "▦"],
@@ -12,6 +12,16 @@ const adminNavigation = [
 
 export default function AdminLayout() {
   const navigate = useNavigate();
+  let currentUser = null;
+  try {
+    currentUser = JSON.parse(sessionStorage.getItem("usuarioActual") ?? "null");
+  } catch {
+    currentUser = null;
+  }
+
+  if (currentUser?.tipoUsuario !== "Administrador") {
+    return <Navigate to="/login" replace />;
+  }
 
   function signOut() {
     sessionStorage.removeItem("usuarioActual");

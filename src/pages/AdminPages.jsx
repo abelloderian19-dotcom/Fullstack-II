@@ -8,6 +8,7 @@ import {
   deleteCategory,
   deleteProduct,
   deleteUser,
+  getContactMessages,
   getOrders,
   getRegions,
   getUsers,
@@ -626,6 +627,9 @@ export function AdminOrderDetailPage() {
 
 export function AdminReportsPage() {
   const orders = getOrders();
+  const contactMessages = getContactMessages().sort(
+    (first, second) => new Date(second.fecha) - new Date(first.fecha),
+  );
   const { products } = useStore();
   const completedOrders = orders.filter((order) => order.estado === "Pagada");
   const revenue = completedOrders.reduce((total, order) => total + order.total, 0);
@@ -646,6 +650,30 @@ export function AdminReportsPage() {
       </div>
       <h2 className="h4 mt-4">Productos con stock crítico</h2>
       {criticalProducts.length ? <ul className="list-group">{criticalProducts.map((product) => <li className="list-group-item d-flex justify-content-between" key={product.codigo}><span>{product.nombre}</span><strong>{product.stock} unidades</strong></li>)}</ul> : <p>No hay productos con stock crítico.</p>}
+      <section className="mt-4" aria-labelledby="contact-messages-title">
+        <h2 className="h4" id="contact-messages-title">Mensajes de contacto</h2>
+        {contactMessages.length === 0 ? (
+          <p className="alert alert-light border" role="status">Todavía no hay mensajes de contacto.</p>
+        ) : (
+          <div className="table-responsive">
+            <table className="table table-striped align-middle">
+              <thead>
+                <tr><th scope="col">Fecha</th><th scope="col">Nombre</th><th scope="col">Correo</th><th scope="col">Mensaje</th></tr>
+              </thead>
+              <tbody>
+                {contactMessages.map((message) => (
+                  <tr key={message.id}>
+                    <td className="text-nowrap">{new Date(message.fecha).toLocaleString("es-CL")}</td>
+                    <td>{message.nombre}</td>
+                    <td><a href={`mailto:${message.correo}`}>{message.correo}</a></td>
+                    <td className="text-break">{message.mensaje}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
     </>
   );
 }

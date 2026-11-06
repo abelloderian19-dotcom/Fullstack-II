@@ -7,6 +7,7 @@ const keys = {
   users: "usuarios",
   categories: "pasteleria-categorias",
   orders: "pasteleria-ordenes",
+  contactMessages: "pasteleria-mensajes-contacto",
 };
 
 function readList(key, initialValue) {
@@ -192,6 +193,21 @@ export function getRegions() {
 
 export function getOrders() {
   return readList(keys.orders, []);
+}
+
+export function getContactMessages() {
+  return readList(keys.contactMessages, []);
+}
+
+export function createContactMessage(message) {
+  const messages = getContactMessages();
+  const savedMessage = {
+    ...message,
+    id: `MSG-${Date.now()}`,
+    fecha: new Date().toISOString(),
+  };
+  writeList(keys.contactMessages, [...messages, savedMessage]);
+  return savedMessage;
 }
 
 export function saveOrder(order) {

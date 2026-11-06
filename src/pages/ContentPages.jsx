@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
+import { createContactMessage } from "../data/database.js";
 import { validateContact, validateContactField } from "../utils/validators.js";
 
 const articles = [
@@ -112,6 +113,7 @@ export function BlogDetailPage() {
 
 export function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [form, setForm] = useState({ nombre: "", correo: "", mensaje: "" });
   const [fieldErrors, setFieldErrors] = useState({});
 
@@ -119,6 +121,7 @@ export function ContactPage() {
     const { name, value } = event.target;
     setForm((current) => ({ ...current, [name]: value }));
     setSubmitted(false);
+    setSubmitError("");
     setFieldErrors((current) => Object.prototype.hasOwnProperty.call(current, name)
       ? { ...current, [name]: validateContactField(name, value) }
       : current);
@@ -138,8 +141,20 @@ export function ContactPage() {
     setFieldErrors(errors);
     if (Object.keys(errors).length > 0) return;
 
-    setSubmitted(true);
-    setForm({ nombre: "", correo: "", mensaje: "" });
+    try {
+      createContactMessage({
+        nombre: form.nombre.trim(),
+        correo: form.correo.trim(),
+        mensaje: form.mensaje.trim(),
+      });
+      setSubmitted(true);
+      setSubmitError("");
+      setForm({ nombre: "", correo: "", mensaje: "" });
+      setFieldErrors({});
+    } catch {
+      setSubmitted(false);
+      setSubmitError("No se pudo guardar tu mensaje. Inténtalo nuevamente.");
+    }
   }
 
   return (
@@ -163,6 +178,7 @@ export function ContactPage() {
             {fieldErrors.mensaje && <div className="invalid-feedback" role="alert">{fieldErrors.mensaje}</div>}
           </div>
           {submitted && <p className="text-success" role="status">Tu mensaje fue registrado. ¡Gracias!</p>}
+          {submitError && <p className="text-danger" role="alert">{submitError}</p>}
           <button className="btn btn-primary align-self-start" type="submit">Enviar mensaje</button>
         </form>
       </section>
